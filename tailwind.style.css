@@ -1,0 +1,13 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+a {
+  @apply underline;
+}
+
+a:hover {
+  @apply text-orange-700;
+}
