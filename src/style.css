@@ -1,0 +1,25 @@
+@tailwind base;
+
+@tailwind components;
+
+a {
+  @apply underline;
+}
+
+a:hover {
+  @apply text-orange-700;
+}
+
+.mc-status:focus {
+  @apply outline-none
+}
+
+.mc-success {
+  @apply text-green-600;
+}
+
+.mc-error {
+  @apply text-red-600;
+}
+
+@tailwind utilities;
