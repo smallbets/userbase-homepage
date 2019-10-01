@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Userbase</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+  <div class="container mx-auto max-w-2xl px-4 text-blackish" style="font-size: 16px">
+    <%= require('html-loader!./partials/' + header + '.html') %>
+    <%= require('html-loader!./pages/' + page + '.html') %>
+    <%= require('html-loader!./partials/' + footer + '.html') %>
+  </div>
+</body>
+
+</html>

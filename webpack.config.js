@@ -1,3 +1,4 @@
+const fs = require('fs')
 const path = require('path')
 const glob = require('glob')
 const webpack = require('webpack')
@@ -6,12 +7,23 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
+const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const OpenBrowserPlugin = require('opn-browser-webpack-plugin')
 
 module.exports = (env, argv) => {
 
-  const PATHS = {
+  const pages = []
+
+  fs.readdirSync('./src/pages/').forEach(file => {
+    pages.push(new HtmlWebPackPlugin({
+      template: './src/template.html',
+      filename: './' + file,
+      templateParameters() { return { header: 'header', footer: 'footer', page: file.split('.')[0] } }
+    }))
+  })
+
+  const paths = {
     src: path.join(__dirname, 'src')
   }
 
@@ -52,18 +64,6 @@ module.exports = (env, argv) => {
           loader: 'babel-loader'
         },
         {
-          test: /\.html$/,
-          use: [
-            {
-              loader: 'html-loader',
-              options: {
-                interpolate: true,
-                minimize: false
-              }
-            }
-          ]
-        },
-        {
           test: /\.(woff|woff2|eot|ttf|otf|png|svg|jpg|gif)$/,
           use: ['file-loader']
         }
@@ -76,13 +76,21 @@ module.exports = (env, argv) => {
         ignoreOrder: false
       }),
       new PurgecssPlugin({
-        paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+        paths: glob.sync(`${paths.src}/**/*`, { nodir: true }),
       }),
-      new HtmlWebPackPlugin({
-        template: './src/index.html',
-        filename: './index.html'
-      }),
+      ...pages,
       new FaviconsWebpackPlugin('./src/img/icon.png'),
+      new HtmlBeautifyPlugin({
+        config: {
+          html: {
+            end_with_newline: true,
+            indent_size: 2,
+            indent_with_tabs: false,
+            indent_inner_html: false,
+            preserve_newlines: true
+          }
+        }
+      }),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.WatchIgnorePlugin(['./dist'])
     ]

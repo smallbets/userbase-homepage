@@ -3,7 +3,7 @@
 @tailwind components;
 
 body {
-  @apply pb-10;
+  @apply pb-10 text-center;
 }
 
 a {
