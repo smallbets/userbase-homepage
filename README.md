@@ -1,17 +1,16 @@
-
 # Userbase Homepage
 
 This is what generates the https://userbase.dev website.
 
-If you want to develop websites like it was 1997, feel free to reuse this for your website.
+If you want to develop websites like it was 1997, feel free to reuse this project for your website.
 
 ### Structure
 
-* [/src/template.html](src/template.html) contains the common HTML wrapping around every page.
+* [/src/template.html](src/template.html) contains the common HTML wrapper around every page.
 * [/src/pages](src/pages) contains the HTML body for each page of the website.
 * [/src/partials](src/partials) contains common HTML fragments shared by multiple pages.
-* [/src/style.css](src/style.css) holds all the CSS, using [Tailwind CSS](https://tailwindcss.com).
-* [/src/index.js](src/index.js) holds all the JS, which can be written in ES6.
+* [/src/style.css](src/style.css) holds all the CSS for the website, using [Tailwind CSS](https://tailwindcss.com).
+* [/src/index.js](src/index.js) holds all the JS for the website, which can be written in ES6.
 
 ### Development
 
@@ -41,7 +40,7 @@ npm run build
 
 ### Deployment
 
-You can 1-click deploy to the internet using [Netlify](https://www.netlify.com):
+You can 1-click deploy this to the internet using [Netlify](https://www.netlify.com):
 
 <!-- Markdown snippet -->
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/encrypted-dev/homepage)
