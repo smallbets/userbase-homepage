@@ -3,7 +3,13 @@
 @tailwind components;
 
 body {
-  @apply pb-10 text-center;
+  @apply pb-10 text-center text-xl;
+}
+
+@screen sm {
+  body {
+  @apply text-2xl;
+}
 }
 
 a {
@@ -23,15 +29,41 @@ h1 {
 }
 
 h2 {
-  @apply text-center text-3xl leading-tight mt-1 tracking-tight;
+  @apply text-center text-2xl leading-tight mt-1 tracking-tight;
 }
 
 h3 {
-  @apply text-center font-black text-4xl tracking-tight;
+  @apply text-center font-black text-3xl tracking-tight;
 }
 
 h4 {
-  @apply font-bold text-xl tracking-tight;
+  @apply font-bold text-2xl tracking-tight;
+}
+
+#logo {
+  @apply w-64
+}
+
+@screen sm {
+  h1 {
+    @apply text-6xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-5xl;
+  }
+
+  h4 {
+    @apply text-3xl;
+  }
+
+  #logo {
+    @apply w-96
+  }
 }
 
 ul {

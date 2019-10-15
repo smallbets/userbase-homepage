@@ -4,6 +4,11 @@ module.exports = {
       colors: {
         yellowish: '#ffe77a',
         blackish: '#1a2a30'
+      },
+      width: {
+        '72': '18rem',
+        '84': '21rem',
+        '96': '24rem'
       }
     },
     fontFamily: {
