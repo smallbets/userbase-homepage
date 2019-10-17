@@ -8,8 +8,8 @@
 </head>
 
 <body>
-  <div class="container mx-auto max-w-4xl px-4 text-blackish">
-    <%= require('html-loader!./partials/' + header + '.html') %>
+  <%= require('html-loader!./partials/' + header + '.html') %>
+  <div class="container mx-auto max-w-4xl px-4">
     <%= require('html-loader!./pages/' + page + '.html') %>
     <%= require('html-loader!./partials/' + footer + '.html') %>
   </div>

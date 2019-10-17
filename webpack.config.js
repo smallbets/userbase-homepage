@@ -5,7 +5,6 @@ const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const PurgecssPlugin = require('purgecss-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
@@ -22,10 +21,6 @@ module.exports = (env, argv) => {
       templateParameters() { return { header: 'header', footer: 'footer', page: file.split('.')[0] } }
     }))
   })
-
-  const paths = {
-    src: path.join(__dirname, 'src')
-  }
 
   const config = {
     entry: {
@@ -74,9 +69,6 @@ module.exports = (env, argv) => {
         filename: 'style.css',
         chunkFilename: 'style.css',
         ignoreOrder: false
-      }),
-      new PurgecssPlugin({
-        paths: glob.sync(`${paths.src}/**/*`, { nodir: true }),
       }),
       ...pages,
       new FaviconsWebpackPlugin('./src/img/icon.png'),

@@ -3,13 +3,13 @@
 @tailwind components;
 
 body {
-  @apply pb-10 text-center text-xl;
+  @apply pb-10 text-center text-xl text-blackish;
 }
 
 @screen sm {
   body {
-  @apply text-2xl;
-}
+    @apply text-2xl;
+  }
 }
 
 a {
@@ -25,44 +25,28 @@ p {
 }
 
 h1 {
-  @apply text-center font-black text-6xl leading-none tracking-tight;
+  @apply text-center text-2xl font-black leading-tight tracking-tight;
 }
 
 h2 {
-  @apply text-center text-2xl leading-tight mt-1 tracking-tight;
+  @apply text-center text-2xl font-black leading-tight tracking-tight mb-4;
 }
 
 h3 {
-  @apply text-center font-black text-3xl tracking-tight;
-}
-
-h4 {
-  @apply font-bold text-2xl tracking-tight;
-}
-
-#logo {
-  @apply w-64
+  @apply font-bold text-xl tracking-tight;
 }
 
 @screen sm {
   h1 {
-    @apply text-6xl;
-  }
-
-  h2 {
     @apply text-4xl;
   }
 
-  h3 {
+  h2 {
     @apply text-5xl;
   }
 
-  h4 {
+  h3 {
     @apply text-3xl;
-  }
-
-  #logo {
-    @apply w-96
   }
 }
 
@@ -84,6 +68,16 @@ ul {
 
 .mc-error {
   @apply text-red-600;
+}
+
+.button {
+  @apply rounded-lg w-40 h-10 bg-yellowish font-bold cursor-pointer text-gray-900 inline-block relative text-lg;
+  top: 1px;
+}
+
+.highlight {
+  @apply px-2 rounded-tl-lg rounded-bl-sm rounded-tr-lg rounded-br-lg;
+  background-image: linear-gradient(119deg, rgb(255, 255, 255), rgb(255, 246, 151) 10.5%, #fdf59d 85.29%, #ffffff);
 }
 
 @tailwind utilities;

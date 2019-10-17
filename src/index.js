@@ -19,7 +19,7 @@ window.displayMailChimpStatus = function (data) {
     return;
   }
 
-  mcStatus.classList.remove('mc-error');
+  mcStatus.classList.remove('mc-error')
   mcStatus.classList.add('mc-success')
 }
 
@@ -64,3 +64,23 @@ document.addEventListener('submit', function (event) {
   submitMailChimpForm(event.target)
 
 }, false)
+
+window.toggleMenu = function () {
+  const menu = document.querySelector('.menu')
+  const menuOpen = document.querySelector('.menu-open')
+  const menuClose = document.querySelector('.menu-close')
+
+  if (!menu || !menuOpen || !menuClose) return
+
+  const isOpen = !menu.classList.contains('hidden')
+
+  if (isOpen) {
+    menu.classList.add('hidden')
+    menuOpen.classList.remove('hidden')
+    menuClose.classList.add('hidden')
+  } else {
+    menu.classList.remove('hidden')
+    menuOpen.classList.add('hidden')
+    menuClose.classList.remove('hidden')
+  }
+}
