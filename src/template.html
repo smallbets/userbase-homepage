@@ -8,10 +8,40 @@
 </head>
 
 <body>
-  <%= require('html-loader!./partials/' + header + '.html') %>
+  <header class="sticky top-0 bg-white">
+    <div class="sm:flex sm:justify-between sm:items-center py-2 px-4">
+      <div class="flex items-center justify-between h-10">
+        <div class="flex-shrink-0">
+          <%= page !== 'index' ? require('html-loader!./partials/logo.html') : null %>
+        </div>
+        <div class="sm:hidden">
+          <button onclick="toggleMenu()" type="button" class="block text-blackish hover:text-orange-700 focus:text-orange-700 focus:outline-none">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+              <path class="hidden menu-close" fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
+              <path class="menu-open" fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="pt-2 pb-4 hidden sm:flex sm:p-0 text-lg text-center menu">
+        <a href="/mailing-list" class="menu-item">Mailing list</a>
+        <a href="mailto:daniel@encrypted.dev" class="menu-item">Contact</a>
+      </nav>
+    </div>
+  </header>
   <div class="container mx-auto max-w-4xl px-4">
     <%= require('html-loader!./pages/' + page + '.html') %>
-    <%= require('html-loader!./partials/' + footer + '.html') %>
+    <footer class="sm:flex sm:justify-between sm:items-center py-4 tracking-tight text-xs">
+      <div class="flex items-center justify-center sm:justify-between">
+        <div class="flex-shrink-0">
+          <div class="flex items-center justify-between">Copyright © 2019 Encrypted Development LLC</div>
+        </div>
+      </div>
+      <nav class="pt-2 pb-4 sm:flex sm:p-0 text-center sm:text-right menu">
+        <a href="http://github.com/encrypted-dev/userbase" class="block py-2 leading-none sm:px-2">GitHub</a>
+        <a href="https://twitter.com/UserbaseHQ" class="block py-2 leading-none sm:px-2">Twitter</a>
+      </nav>
+    </footer>
   </div>
 </body>
 

@@ -15,10 +15,12 @@ module.exports = (env, argv) => {
   const pages = []
 
   fs.readdirSync('./src/pages/').forEach(file => {
+    const page = file.split('.')[0]
+
     pages.push(new HtmlWebPackPlugin({
       template: './src/template.html',
       filename: './' + file,
-      templateParameters() { return { header: 'header', footer: 'footer', page: file.split('.')[0] } }
+      templateParameters() { return { page: file.split('.')[0] } }
     }))
   })
 
