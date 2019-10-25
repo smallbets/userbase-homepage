@@ -1,19 +1,21 @@
-<header class="sm:flex sm:justify-between sm:items-center p-4">
-  <div class="flex items-center justify-between">
-    <div class="flex-shrink-0">
-      <a href="/"><img alt="Userbase" class="h-8 sm:h-12" src="../img/logo.png"></a>
+<header class="pb-4">
+  <div class="sm:flex sm:justify-end sm:items-center p-4">
+    <div class="flex items-center justify-end">
+      <div class="sm:hidden">
+        <button onclick="toggleMenu()" type="button" class="block text-blackish hover:text-orange-700 focus:text-orange-700 focus:outline-none">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+            <path class="hidden menu-close" fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
+            <path class="menu-open" fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
+          </svg>
+        </button>
+      </div>
     </div>
-    <div class="sm:hidden">
-      <button onclick="toggleMenu()" type="button" class="block text-blackish hover:text-orange-700 focus:text-orange-700 focus:outline-none">
-        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-          <path class="hidden menu-close" fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z" />
-          <path class="menu-open" fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z" />
-        </svg>
-      </button>
-    </div>
+    <nav class="pt-2 pb-4 hidden sm:flex sm:p-0 text-lg text-center menu">
+      <a href="/mailing-list" class="menu-item">Mailing list</a>
+      <a href="mailto:daniel@encrypted.dev" class="menu-item">Contact</a>
+    </nav>
   </div>
-  <nav class="pt-2 pb-4 hidden sm:flex sm:p-0 text-lg text-right menu">
-    <a href="/mailing-list.html" class="block font-extrabold py-2 leading-none sm:px-4">Mailing list</a>
-    <a href="mailto:daniel@encrypted.dev" class="block font-extrabold py-2 leading-none sm:px-4">Contact</a>
-  </nav>
+  <div class="flex justify-center mb-2">
+    <a href="/"><img alt="Userbase" id="logo" src="../img/logo.png"></a>
+  </div>
 </header>

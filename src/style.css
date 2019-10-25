@@ -20,12 +20,32 @@ a:hover {
   @apply text-orange-700;
 }
 
+a.menu-item {
+  @apply block font-black py-2 leading-none no-underline
+}
+
+@screen sm {
+  a.menu-item {
+    @apply px-3
+  }
+}
+
+#logo {
+  @apply w-84
+}
+
+@screen sm {
+  #logo {
+    width: 441px;
+  }
+}
+
 p {
   @apply mb-4;
 }
 
 h1 {
-  @apply text-center text-2xl font-black leading-tight tracking-tight;
+  @apply text-center text-2xl font-extrabold leading-tight tracking-tight;
 }
 
 h2 {
@@ -38,7 +58,7 @@ h3 {
 
 @screen sm {
   h1 {
-    @apply text-4xl;
+    @apply text-3xl;
   }
 
   h2 {
