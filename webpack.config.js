@@ -93,12 +93,20 @@ module.exports = (env, argv) => {
 
     config.devServer = {
       watchContentBase: true,
-      historyApiFallback: true,
       hot: true,
       inline: true,
-
       host: '0.0.0.0',
-      port: 3000
+      port: 3000,
+      historyApiFallback: {
+        rewrites: [
+          {
+            from: /^\/.*$/,
+            to: function (context) {
+              return '/' + context.parsedUrl.pathname + '.html';
+            }
+          }
+        ]
+      }
     }
 
     config.plugins.push(new webpack.HotModuleReplacementPlugin())
