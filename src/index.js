@@ -1,5 +1,18 @@
 import './style.css'
 
+import Prism from 'prismjs'
+
+import 'prismjs/themes/prism-coy.css'
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-javascript'
+
+import 'prismjs/plugins/line-numbers/prism-line-numbers'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+
+import './prism.css'
+
+Prism.highlightAll();
+
 window.displayMailChimpStatus = function (data) {
   if (!data.result || !data.msg) return
 

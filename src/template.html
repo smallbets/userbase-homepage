@@ -31,16 +31,16 @@
   </header>
   <div class="container mx-auto max-w-4xl px-4">
     <%= require('html-loader!./pages/' + page + '.html') %>
-    <footer class="sm:flex sm:justify-between sm:items-center py-4 tracking-tight text-xs">
-      <div class="flex items-center justify-center sm:justify-between">
-        <div class="flex-shrink-0">
-          <div class="flex items-center justify-between">Copyright © 2019 Encrypted Development LLC</div>
-        </div>
+    <footer class="text-center py-4 tracking-tight text-sm">
+      <div>
+        <nav class="pt-2 pb-4 text-center menu">
+          <a href="http://github.com/encrypted-dev/userbase" class="py-2 leading-none px-2">GitHub</a>
+          <a href="https://twitter.com/UserbaseHQ" class="py-2 leading-none px-2">Twitter</a>
+        </nav>
       </div>
-      <nav class="pt-2 pb-4 sm:flex sm:p-0 text-center sm:text-right menu">
-        <a href="http://github.com/encrypted-dev/userbase" class="block py-2 leading-none sm:px-2">GitHub</a>
-        <a href="https://twitter.com/UserbaseHQ" class="block py-2 leading-none sm:px-2">Twitter</a>
-      </nav>
+      <div class="text-gray-500 text-xs">
+        Copyright © 2019 Encrypted Development LLC
+      </div>
     </footer>
   </div>
 </body>

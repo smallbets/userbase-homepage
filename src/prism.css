@@ -1,0 +1,20 @@
+pre[class*="language-"]:before, pre[class*="language-"]:after {
+  content: normal;
+}
+
+pre[class*="language-"], :not(pre) > code[class*="language-"], pre[class*="language-"] {
+  margin: 0;
+  line-height: 0.6em;
+}
+
+code[class*="language"] {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+pre[class*="language-"]>code {
+  background-color: #f6f6f6;
+  box-shadow: none;
+  background-image: none;
+  font-size: 0.7em;
+}

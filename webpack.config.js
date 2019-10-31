@@ -16,11 +16,21 @@ module.exports = (env, argv) => {
 
   fs.readdirSync('./src/pages/').forEach(file => {
     const page = file.split('.')[0]
+    let filename = './'
+
+    if (page !== 'index') {
+      const pagePath = page.split('_')
+      for (let i = 0; i < pagePath.length; i++) {
+        filename += pagePath[i] + '/'
+      }
+    }
+
+    filename += 'index.html'
 
     pages.push(new HtmlWebPackPlugin({
       template: './src/template.html',
-      filename: './' + file,
-      templateParameters() { return { page: file.split('.')[0] } }
+      filename,
+      templateParameters() { return { page } }
     }))
   })
 
@@ -98,17 +108,7 @@ module.exports = (env, argv) => {
       hot: true,
       inline: true,
       host: '0.0.0.0',
-      port: 3000,
-      historyApiFallback: {
-        rewrites: [
-          {
-            from: /^\/.*$/,
-            to: function (context) {
-              return '/' + context.parsedUrl.pathname + '.html';
-            }
-          }
-        ]
-      }
+      port: 3000
     }
 
     config.plugins.push(new webpack.HotModuleReplacementPlugin())
