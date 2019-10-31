@@ -1,5 +1,5 @@
 <div class="section">
-  <h2><a href="/docs">Docs</a> : <a href="/docs/sdk">SDK</a> : Transaction</h2>
+  <h2><a href="/docs/#sdk">SDK</a> : Transaction</h2>
 
   <pre>
     <code class="language-javascript">userbase.transaction(databaseName, operations)
@@ -24,14 +24,19 @@
 
   <ul>
     <li>DatabaseNotOpen</li>
+    <li>DatabaseNameCannotBeBlank</li>
+    <li>DatabaseNameTooLong</li>
+    <li>DatabaseNameMustBeString</li>
+    <li>OperationsMustBeArray</li>
     <li>ItemIdCannotBeBlank</li>
     <li>ItemIdTooLong</li>
     <li>ItemIdMustBeString</li>
     <li>ItemTooLarge</li>
     <li>ItemAlreadyExists</li>
     <li>ItemDoesNotExist</li>
-    <li>UpdateConflict</li>
+    <li>ItemUpdateConflict</li>
     <li>AppIdNotSet</li>
+    <li>AppIdNotValid</li>
     <li>ServiceUnavailable</li>
   </ul>
 

@@ -1,12 +1,75 @@
 <div class="section">
-  <h2 id="getting-started">Docs</h2>
+  <h2>Docs</h2>
 
   <ul>
-    <li><a href="/docs/getting-started" class="font-semibold">Getting started</a></li>
-    <li><a href="/docs/sdk" class="font-semibold">SDK</a></li>
+    <li><a href="#getting-started" class="font-semibold">Getting started</a></li>
+    <li><a href="#sdk" class="font-semibold">SDK</a></li>
     <li><a href="https://github.com/encrypted-dev/userbase/blob/ugliest-tutorial/docs/examples/ugliest-todo-app/tutorial.md" class="font-semibold">Tutorial</a></li>
   </ul>
 
+</div>
+
+<hr>
+
+<div class="section">
+  <a class="anchor" id="getting-started"></a>
+  <h2 id=>Getting Started</h2>
+
+  <h3>Create a free Userbase account</h3>
+  <p>First you need a Userbase account. You will be able to create a free account when Userbase gets launched. No credit card required.</p>
+
+  <h3>Install the SDK</h3>
+  <p>Then you need to include the Userbase SDK into your web app.</p>
+  <p>You can either include the SDK with a &lt;script&gt; tag:</p>
+
+  <pre>
+    <code class="language-html">&lt;script type="text/javascript"
+  src="https://userbase-public.s3-us-west-2.amazonaws.com/userbase-js/userbase.js"&gt;
+&lt;/script&gt;</code>
+  </pre>
+
+  <p>Or else you can include the SDK into your build pipeline:</p>
+
+  <pre>
+    <code class="language-bash">npm --install --save userbase-js</code>
+  </pre>
+
+  <h3>Set the Application ID</h3>
+  <p>From your Userbase account, create a new App and get the Application ID. Then you just need to configure the Userbase SDK to use it:</p>
+
+  <pre>
+    <code class="language-bash">userbase.configure({ appId: 'a43ae910-fc89-43fe-a7a3-a11a53b49325' })</code>
+  </pre>
+
+  <p>And you're all set.</p>
+</div>
+
+<hr>
+
+<div class="section">
+  <a class="anchor" id="sdk"></a>
+  <h2>SDK</h2>
+
+  <p>You can use Userbase through a simple JavaScript SDK in the browser. The following is the complete set of Userbase APIs that let you create user accounts, handle logins, and persist user data.</p>
+
+  <h3 id="zero-management-database">Users</h3>
+  <p>Use these APIs to create user accounts, handle logins and logouts, and resume sessions when a user returns to your web app.</p>
+  <ul>
+    <li><a href="/docs/sdk/sign-up" class="font-semibold">SignUp</a></li>
+    <li><a href="/docs/sdk/sign-in" class="font-semibold">SignIn</a></li>
+    <li><a href="/docs/sdk/sign-in-with-session" class="font-semibold">SignInWithSession</a></li>
+    <li><a href="/docs/sdk/sign-out" class="font-semibold">SignOut</a></li>
+  </ul>
+
+  <h3 id="user-accounts">Data</h3>
+  <p>Use these APIs to store and retrieve user data. All data handled by these APIs is highly-durable, immediately consistent, and end-to-end encrypted.</p>
+  <ul>
+    <li><a href="/docs/sdk/open-database" class="font-semibold">OpenDatabase</a></li>
+    <li><a href="/docs/sdk/insert" class="font-semibold">Insert</a></li>
+    <li><a href="/docs/sdk/update" class="font-semibold">Update</a></li>
+    <li><a href="/docs/sdk/delete" class="font-semibold">Delete</a></li>
+    <li><a href="/docs/sdk/transaction" class="font-semibold">Transaction</a></li>
+  </ul>
 </div>
 
 <hr>

@@ -1,10 +1,10 @@
 <div class="section">
-  <h2><a href="/docs">Docs</a> : <a href="/docs/sdk">SDK</a> : Insert</h2>
+  <h2><a href="/docs/#sdk">SDK</a> : Insert</h2>
 
   <p><span class="font-semibold">Insert</span> lets your add items to a user's database. This API with will return a promise that gets resolved once the item has been durably inserted into the database.</p>
 
   <pre>
-    <code class="language-javascript">userbase.insert(databaseName, itemId, item)
+    <code class="language-javascript">userbase.insert(databaseName, item, itemId)
   .then(() => {
     // item inserted
   })
@@ -21,7 +21,7 @@
       <span class="field">itemId</span> [string | Len: 1-100] - The item's unique identifier.
     </li>
     <li>
-      <span class="field">item</span> [object | Max size: 100KB] - The item to insert.
+      <span class="field">item</span> [object | Max size: 10&nbsp;KB] - The item to insert.
     </li>
   </ul>
 
@@ -29,12 +29,16 @@
 
   <ul>
     <li>DatabaseNotOpen</li>
+    <li>DatabaseNameCannotBeBlank</li>
+    <li>DatabaseNameTooLong</li>
+    <li>DatabaseNameMustBeString</li>
     <li>ItemIdCannotBeBlank</li>
     <li>ItemIdTooLong</li>
     <li>ItemIdMustBeString</li>
     <li>ItemTooLarge</li>
     <li>ItemAlreadyExists</li>
     <li>AppIdNotSet</li>
+    <li>AppIdNotValid</li>
     <li>ServiceUnavailable</li>
   </ul>
 

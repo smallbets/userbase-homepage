@@ -110,4 +110,9 @@ ul {
   @apply font-semibold
 }
 
+a.anchor {
+  @apply block relative;
+  top: -50px;
+}
+
 @tailwind utilities;

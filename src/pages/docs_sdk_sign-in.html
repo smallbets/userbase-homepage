@@ -1,5 +1,5 @@
 <div class="section">
-  <h2><a href="/docs">Docs</a> : <a href="/docs/sdk">SDK</a> : SignIn</h2>
+  <h2><a href="/docs/#sdk">SDK</a> : SignIn</h2>
 
   <p><span class="font-semibold">SignIn</span> lets your users log into your web app. This API with will return a promise that gets resolved once the user has been logged in.</p>
 
@@ -29,8 +29,7 @@
       <span class="field">user</span> [object] - Contains information about the logged in user.
       <ul>
         <li><span class="field">username</span> [string] - The user's username.</li>
-        <li><span class="field">seed</span> [string] - The user's encryption key.</li>
-        <li><span class="field">creationTime</span> [Date] - The timestamp when the user was created.</li>
+        <li><span class="field">key</span> [string] - The user's encryption key.</li>
       </ul>
     </li>
   </ul>
@@ -47,6 +46,7 @@
     <li>PasswordTooLong</li>
     <li>PasswordMustBeString</li>
     <li>AppIdNotSet</li>
+    <li>AppIdNotValid</li>
     <li>ServiceUnavailable</li>
   </ul>
 
