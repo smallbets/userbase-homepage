@@ -16,10 +16,10 @@ If you want to develop websites like it was 1997, feel free to reuse this projec
 
 ```
 # clone this repo
-git clone https://github.com/encrypted-dev/homepage.git
+git clone https://github.com/encrypted-dev/userbase-homepage.git
 
 # go to the repo directory
-cd homepage
+cd userbase-homepage
 
 # install all dependencies
 npm install
