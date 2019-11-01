@@ -53,7 +53,11 @@ h2 {
 }
 
 h3 {
-  @apply font-bold text-xl tracking-tight;
+  @apply font-bold text-xl tracking-tight mt-4;
+}
+
+h4 {
+  @apply font-bold text-xl tracking-tight mt-3;
 }
 
 @screen sm {
@@ -67,6 +71,10 @@ h3 {
 
   h3 {
     @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
   }
 }
 
@@ -113,6 +121,47 @@ ul {
 a.anchor {
   @apply block relative;
   top: -50px;
+}
+
+pre[class*="language-"]:before, pre[class*="language-"]:after {
+  content: normal;
+}
+
+pre[class*="language-"], :not(pre) > code[class*="language-"], pre[class*="language-"] {
+  line-height: 24px;
+  font-size: 16px;
+}
+
+code[class*="language"] {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+pre[class*="language-"]>code {
+  background-color: #f6f6f6;
+  box-shadow: none;
+  background-image: none;
+}
+
+.line-highlight:before, .line-highlight[data-end]:after {
+  content: normal;
+}
+
+pre[data-line] code {
+  padding-left: 1em;
+}
+
+pre .line-highlight {
+  margin-top: 16px;
+  background-image: none;
+  background-color: rgba(0, 255, 0, 0.12);
+}
+
+.token.operator, .token.entity, .token.url, .token.variable {
+  color: #ff8000;
+  background: none;
 }
 
 @tailwind utilities;
