@@ -85,52 +85,22 @@
   <h2>Tutorial</h2>
 
   <p>
-    In this tutorial we will build a simple to-do web app. Even if the web app you're
-    building has nothing to do with to-dos, the techniques we'll cover can be
-    applied to make many other kinds of web apps.
+    In this tutorial we will build a simple to-do web app. Even if what you're building has nothing to do with to-dos, the techniques we'll cover here can be applied to many other kinds of web apps.
   </p>
 
   <p>
-    With just 199 lines code inside a single static HTML file we will create an
-    end-to-end encrypted web application with:
+    You can think of this tutorial as a demonstration of the core functionality of Userbase in the simplest way possible. We are going to focus solely on building a fully functional web app. Making things pretty is left as an exercise to the reader.
   </p>
-
-  <ul>
-    <li>User sign up, sign in and sign out.</li>
-    <li>User data persistence.</li>
-    <li>End-to-end encryption of user data.</li>
-    <li>Live data synchornization across different devices.</li>
-  </ul>
 
   <p>You can see a live demo of what we'll building <a href="https://ugliest-todo.netlify.com/" target="_blank">here</a>.</p>
 
   <h3>Prerequisites</h3>
 
-  <p>You'll need to be familiar with HTML and JavaScript. Beyond the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">basics of JavaScript</a>, you will need to be familiar with <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents#Active_learning_Basic_DOM_manipulation">DOM manipulation</a>, <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">events</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">Promises</a>.</p>
-
-
-  <h3>What's in a name?</h3>
-
-  <p>
-    The reason we are calling our application "Ugly To-Do" is because we aren't
-    going to apply any styling but solely focus on core functionality. You can think
-    of this tutorial as a sort of "hello world" for Userbase, a demonstration of the
-    core functionality in the simplest way possible.
-  </p>
-
-  <p>
-    In a real project you'll likely want a more sophisticated approach: for instance, you may use React to control the DOM or a module bundler to package your application from multiple files, and at the very
-    least you'll want to display better error messages and add some styling.
-  </p>
-
-  <p>
-    We are working on a collection of tutorials and sample applications that will
-    show you how to do all these things with Userbase and more. You can <a href="https://userbase.dev/mailing-list">subscribe to our mailing list</a> to get updates on these and more.
-  </p>
+  <p>You just need to be familiar with HTML and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank">JavaScript basics</a>.</p>
 
   <h3>Setting up</h3>
 
-  <p>Let's get setup to build our application. Open up a new file in your favorite editor:</p>
+  <p>Let's get going. Open up a new file in your favorite code editor:</p>
 
   <pre>
     <code class="language-bash">
@@ -161,66 +131,54 @@
   </div>
 
   <p>
-    Now open up this file in a web browser of your choosing. At this point all
-    you'll see is a blank page. As we add functionality throughout the tutorial, you
-    can reload the app by refreshing this page to see changes.
+    Now open up this file in a web browser of your choosing. At this point all you'll see is a blank page. As we add functionality throughout the tutorial, you can refresh this page to see the changes.
   </p>
 
   <h3>Creating a developer account</h3>
 
-  <p>To complete this tutorial, you'll need to create a Userbase developer account, and then create an app from within your account. Take not of the Application ID of your app.</p>
+  <p>To complete this tutorial, you'll need to create a Userbase developer account, and then create an app from within your account. Take note of the Application ID of your app.</p>
 
   <p>
-    We are now ready to start building the application. We'll start by implementing
-    functionality to sign up and sign in users and then implement to-do
-    functionality.
+    We're now ready to start building our web app. We'll start by implementing the sign up and login features, and then in the second part we'll implement the to-do functionality.
   </p>
 
   <h3>Installing the SDK</h3>
 
-  To use the Userbase SDK in our app, we'll load it from a CDN with a <code class="language-markup">&lt;script&gt;</code> tag in the head of
+  We're going to load the Userbase SDK from a CDN with a <code class="language-markup">&lt;script&gt;</code> tag in the head of
   our page:
 
-  <div>
-    <pre data-line="4-6">
-      <code class="language-markup"><!--
-      <head>
-        <meta charset="UTF-8">
-        <title>Ugliest To-Do App</title>
-        <script type="text/javascript" 
-          src="https://userbase-public.s3-us-west-2.amazonaws.com/userbase-js/userbase.js">
-        </script>
-      </head>
-      --></code>
-    </pre>
-  </div>
+  <pre data-line="4-6">
+    <code class="language-markup"><!--
+    <head>
+      <meta charset="UTF-8">
+      <title>Ugliest To-Do App</title>
+      <script type="text/javascript" 
+        src="https://userbase-public.s3-us-west-2.amazonaws.com/userbase-js/userbase.js">
+      </script>
+    </head>
+    --></code>
+  </pre>
 
-  The Userbase SDK will now be accessible via the global <code class="language-javascript">userbase</code> variable.
+  <p>The Userbase SDK will now be accessible via the <code class="language-javascript">userbase</code> variable. This will be our only dependency.</p>
 
   <h3>Configuring the SDK</h3>
 
   <p>
-    Before doing anything with the Userbase SDK, we need to configure it with our
-    Application ID (make sure to replace <code class="language-javascript">'YOUR_APP_ID'</code> with the Application ID of the Userbase App you created earlier):
+    Before doing anything with the Userbase SDK, we need to let it know our Application ID.
+    Simply replace <code class="language-javascript">'YOUR_APP_ID'</code> with the Application ID of the app you created earlier:
   </p>
 
-  <div>
-    <pre data-line="8-10">
-      <code class="language-markup"><!--
-      <head>
-        <meta charset="UTF-8">
-        <title>Ugliest To-Do App</title>
-        <script type="text/javascript" 
-          src="https://userbase-public.s3-us-west-2.amazonaws.com/userbase-js/userbase.js">
-        </script>
-        
-        <script type="text/javascript">
-          userbase.configure({ appId: 'YOUR_APP_ID' })
-        </script>
-      </head>
-  --></code>
+  <pre data-line="4">
+    <code class="language-markup">
+    &#x3C;body&#x3E;
+      &#x3C;!-- application code --&#x3E;
+      &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+        userbase.configure({ appId: 'YOUR_APP_ID' })
+      &#x3C;/script&#x3E;
+    &#x3C;/body&#x3E;
+    &#x3C;/html&#x3E;
+    </code>
   </pre>
-  </div>
 
   <p>
     Now anything we do with the client (e.g. sign in a user, persist data) will
@@ -230,8 +188,7 @@
   <h3>Letting new users create an account</h3>
 
   <p>
-    Any actions that our users take will need to take place within an authenticated session.
-    We'll start off by adding a way to for new users to create an account with our app.
+    Any actions that our users take needs to happen within an authenticated session. We'll start by adding a way to for new users to create an account with our app.
   </p>
 
   <p>First, we'll add a sign up form:</p>
@@ -244,11 +201,11 @@
         &lt;div id=&quot;auth-view&quot;&gt;
           &lt;h1&gt;Create an account&lt;/h1&gt;
           &lt;form id=&quot;signup-form&quot;&gt;
-            &lt;input id=&quot;create-account-username&quot; type=&quot;email&quot; required placeholder=&quot;Email&quot;&gt;
-            &lt;input id=&quot;create-account-password&quot; type=&quot;password&quot; required placeholder=&quot;Password&quot;&gt;
+            &lt;input id=&quot;signup-username&quot; type=&quot;text&quot; required placeholder=&quot;Username&quot;&gt;
+            &lt;input id=&quot;signup-password&quot; type=&quot;password&quot; required placeholder=&quot;Password&quot;&gt;
             &lt;input type=&quot;submit&quot; value=&quot;Create an account&quot;&gt;
           &lt;/form&gt;
-          &lt;div id=&quot;create-account-error&quot;&gt;&lt;/div&gt;
+          &lt;div id=&quot;signup-error&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
 
         &lt;!-- application code --&gt;
@@ -258,22 +215,24 @@
     </pre>
   </div>
 
-  <p>Then, we'll add code to handle the form submissions:</p>
+  <p>Then, we'll add the code to handle the form submission:</p>
 
   <div>
-    <pre data-line="3-14">
+    <pre data-line="5-16">
       <code class="language-markup">
       &lt;!-- application code --&gt;
       &lt;script type=&quot;text/javascript&quot;&gt;
+        userbase.configure({ appId: 'YOUR_APP_ID' })
+
         function handleSignUp(e) {
           e.preventDefault()
   
-          const username = document.getElementById('create-account-username').value
-          const password = document.getElementById('create-account-password').value
+          const username = document.getElementById('signup-username').value
+          const password = document.getElementById('signup-password').value
   
           userbase.signUp(username, password)
-            .then((session) =&gt; alert('You signed up!'))
-            .catch((e) =&gt; document.getElementById('create-account-error').innerHTML = e)
+            .then((user) =&gt; alert('You signed up!'))
+            .catch((e) =&gt; document.getElementById('signup-error').innerHTML = e)
         }
   
         document.getElementById('signup-form').addEventListener('submit', handleSignUp)
@@ -283,46 +242,36 @@
   </div>
 
   <p>
-    Whenever a submit event is triggered on our sign up form, <code class="language-javascript">handleSignUp</code> will be called.
+    Whenever someone submits the form, the <code class="language-javascript">handleSignUp</code> function will be called.
   </p>
 
   <p>
     The first thing we do in <code class="language-javascript">handleSignUp</code> is call <code class="language-javascript">preventDefault()</code> on the
-    submit event. This will prevent the page from submitting to the server.
+    submit event. This will prevent the page from submitting to the server. We want to handle this form completely on the client-side.
   </p>
 
   <p>
     Next we get the values of the username and password inputs and call
-    <code class="language-javascript">userbase.signUp(username, password)</code> which will request a new account to be created with the Userbase service. A Promise is returned that either resolves
-    with a new session object, in which case we fire an alert (for now), or rejects
-    with an error, in which case we display the error message.
+    <code class="language-javascript">userbase.signUp(username, password)</code>. This will request a new account to be created with the Userbase service, and returns a Promise that resolves with a <code class="language-javascript">user</code> object.
   </p>
 
   <p>
-    Go ahead and reload the web app in your browser. Enter a username and password
-    in the form under "Sign Up" and submit. You'll get an alert saying "You signed
-    up!".
+    Go ahead and reload the web app in your browser. Enter a username and password in the form under "Sign Up" and submit. You'll get an alert saying that you signed up. And if go to your Userbase developer account, you should see the new user under your app.
   </p>
 
   <p>
-    Now try signing up for another account using the same username and you'll see an
-    error message displayed under the form (since an account already exists with
-    this username).
+    Now try signing up for another account using the same username and you'll see an error message displayed under the form.
   </p>
 
   <p>
-    We'll come back in a bit and change this function to do something more
-    interesting than just sending an alert when an user successfully signs up.
+    We'll come back to this in a bit to change this function to do something more interesting.
   </p>
 
   <h3>Letting users log in</h3>
 
   <p>Now that users can create accounts, let's give them the ability to sign in.</p>
 
-  <p>
-    First, we'll add a "Login" form to the page above our "Create Account"
-    form:
-  </p>
+  <p>First, we'll add a "Login" form to the page above our "Create Account" form:</p>
 
   <pre data-line="4-10">
     <code class="language-markup">
@@ -331,7 +280,7 @@
       &lt;div id=&quot;auth-view&quot;&gt;
         &lt;h1&gt;Login&lt;/h1&gt;
         &lt;form id=&quot;login-form&quot;&gt; 
-          &lt;input id=&quot;login-username&quot; type=&quot;email&quot; required placeholder=&quot;Email&quot;&gt;
+          &lt;input id=&quot;login-username&quot; type=&quot;text&quot; required placeholder=&quot;Username&quot;&gt;
           &lt;input id=&quot;login-password&quot; type=&quot;password&quot; required placeholder=&quot;Password&quot;&gt;
           &lt;input type=&quot;submit&quot; value=&quot;Sign in&quot;&gt;
         &lt;/form&gt;
@@ -344,10 +293,12 @@
 
   <p>Then, we'll add code to handle the form submission:</p>
 
-  <pre data-line="3-12">
+  <pre data-line="5-14">
     <code class="language-markup">
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+      userbase.configure({ appId: 'YOUR_APP_ID' })
+
       function handleLogin(e) {
         e.preventDefault()
 
@@ -355,7 +306,7 @@
         const password = document.getElementById(&#x27;login-password&#x27;).value
 
         userbase.signIn(username, password)
-          .then((session) =&#x3E; alert(&#x27;You signed in!&#x27;))
+          .then((user) =&#x3E; alert(&#x27;You signed in!&#x27;))
           .catch((e) =&#x3E; document.getElementById(&#x27;login-error&#x27;).innerHTML = e)
       }
 
@@ -369,7 +320,7 @@
     </code>
   </pre>
 
-  <p>And finally, bind the login form within our login handler:</p>
+  <p>And finally, let's bind our login form within our login handler:</p>
 
   <pre data-line="9">
     <code class="language-markup">
@@ -378,7 +329,7 @@
 
     ...
 
-        .catch((e) => document.getElementById('create-account-error').innerHTML = e)
+        .catch((e) => document.getElementById('signup-error').innerHTML = e)
       }
 
       document.getElementById('login-form').addEventListener('submit', handleLogin)
@@ -388,19 +339,14 @@
     </code>
   </pre>
 
-  <p>You'll notice this looks very similar to the sign up code above.</p>
-
   <p>
-    We define a function, <code class="language-javascript">handleLogin</code>, to handle form submissions. The function
-    prevents the default form behavior, extracts the input values from the DOM, and
-    calls <code class="language-javascript">userbase.signIn(username, password)</code>. This will attempt to sign in the user with the Userbase service, handling a success with an alert and a failure
-    by displaying the error.
+    You'll notice this looks very similar to the sign up code above. The <code class="language-javascript">handleLogin</code> function prevents the default form behavior, extracts the input values from the DOM, and calls <code class="language-javascript">userbase.signIn(username, password)</code>. This will attempt to sign in the user with the Userbase service, handling a success with an alert and a failure by displaying the error.
   </p>
 
   <p>
-    Reload the app and you'll now see a "Sign In" form. Enter the username and
-    password you used to create an account in the step above and submit the form.
-    You'll get an alert saying "You signed in!"
+    Reload the app and you should see our new login form. Enter the username and
+    password you used to create an account in the step above, and submit the form.
+    You should get an alert saying that you signed in.
   </p>
 
   <p>
@@ -411,13 +357,13 @@
   <h3>Showing the to-do view</h3>
 
   <p>
-    After a r is signed in, we'll want to hide the authentication forms, indicate
+    After a user signs in, we'll want to hide the authentication forms, indicate
     to the user they are logged in, and display their to-do list.
   </p>
 
-  <p>First, we'll add a new container to the body:</p>
+  <p>First, we'll add a new container under the authentication forms:</p>
 
-  <pre data-line="4-9">
+  <pre data-line="3-9">
     <code class="language-markup">
     &#x3C;/div&#x3E;
 
@@ -426,11 +372,12 @@
       &#x3C;div id=&#x22;username&#x22;&#x3E;&#x3C;/div&#x3E;
 
       &#x3C;h1&#x3E;To-Do List&#x3C;/h1&#x3E;
+      &lt;div id=&quot;todos&quot;&gt;&lt;/div&gt;
     &#x3C;/div&#x3E;
 
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
-      function handleLogin(e) {
+      userbase.configure({ appId: 'YOUR_APP_ID' })
 
     ...
 
@@ -438,7 +385,7 @@
     </code>
   </pre>
 
-  <p>Then, we'll add function to display this view and initially make it hidden:</p>
+  <p>Then, we'll add a function to display this view and initially make it hidden:</p>
 
   <div>
     <pre data-line="1-5,10">
@@ -459,7 +406,7 @@
 
   <p>
     Now that we have a function to show a view for signed in users, let's change
-    <code class="language-javascript">handleLogin</code> to call this function when it succeed:
+    <code class="language-javascript">handleLogin</code> to call this function when it succeeds:
   </p>
 
   <pre data-line="7">
@@ -470,7 +417,7 @@
       const password = document.getElementById('login-password').value
 
       userbase.signIn(username, password)
-        .then((session) => showTodos(session.username))
+        .then((user) => showTodos(user.username))
         .catch((e) => document.getElementById('login-error').innerHTML = e)
     }
     </code>
@@ -483,18 +430,18 @@
     function handleSignUp(e) {
       e.preventDefault()
 
-      const password = document.getElementById('create-account-password').value
+      const password = document.getElementById('signup-password').value
 
       userbase.signUp(username, password)
-        .then((session) => showTodos(session.username))
-        .catch((e) => document.getElementById('create-account-error').innerHTML = e)
+        .then((user) => showTodos(user.username))
+        .catch((e) => document.getElementById('signup-error').innerHTML = e)
     }
     </code>
   </pre>
 
   <p>
-    Reload the app and sign in using your username and password. You'll see the
-    authentication view disappear and your username show up along with "To-Do List".
+    Reload the app and sign in again using your username and password. You should see the
+    authentication view disappear and your username show up along with the to-do list heading.
   </p>
 
   <h3>Using to the database</h3>
@@ -505,11 +452,11 @@
   </p>
 
   <p>
-    First, let's add a couple elements for showing a loading indicator and error
+    First, let's add a couple of elements for showing a loading indicator and error
     messages:
   </p>
 
-  <pre data-line="5-7">
+  <pre data-line="6-7">
     <code class="language-markup"><!--
     <div id="todo-view">
       <div id="username"></div>
@@ -561,22 +508,11 @@
   </pre>
 
   <p>
-    We change <code class="language-javascript">showTodos</code> to make a call to <code class="language-javascript">userbase.openDatabase('todos',
-    handleDatabaseChange)</code>, <code class="language-javascript">'todos'</code> being the name of the database we want to open
-    and <code class="language-javascript">handleDatabaseChange</code> being a callback for receiving changes to data in the
-    database. The Userbase service will attempt to open the user's database by the
-    name of <code class="language-javascript">'todos'</code> (creating it if it doesn't already exist). After the <code class="language-javascript">'todos'</code>
-    database is opened, and whenever data changes in the database, our callback
-    function <code class="language-javascript">handleDatabaseChanges</code> will be called. A Promise is returned that will
-    either resolve if the database was successfully opened, in which case we hide
-    the loading indicator, or otherwise reject, in which case we display the error
-    message.
-  </p>
-
-  <p>
-    We add a function <code class="language-javascript">handleDatabaseChange</code> for receiving changes to the database.
-    We check to see if there are any items in the database and if it's empty we display
-    this in the to-dos container. We'll implement the other case in the next step.
+    We changed <code class="language-javascript">showTodos</code> to make a call to <code class="language-javascript">userbase.openDatabase('todos',
+    handleDatabaseChange)</code>. The <code class="language-javascript">'todos'</code> parameter is the name of the database we want to open, and <code class="language-javascript">handleDatabaseChange</code> is a callback for receiving changes to data in the database. The Userbase service will attempt to open the user's database by the
+    name of <code class="language-javascript">'todos'</code> (creating one if it doesn't already exist). After the <code class="language-javascript">'todos'</code>
+    database is opened, our callback
+    function <code class="language-javascript">handleDatabaseChanges</code> will be called whenever data changes in the database. When the Promise is resolved, the database is ready for use and we hide the loading indicator.
   </p>
 
   <p>
@@ -586,10 +522,10 @@
   </p>
 
 
-  <h3>Display the to-dos</h3>
+  <h3>Showing the to-dos</h3>
 
   <p>
-    If the database has items in it, we'll want to render those under to-do list.
+    If the database has items in it, we'll want to render those under our to-do list.
     Let's implement that case in <code class="language-javascript">handleDatabaseChange</code>:
   </p>
 
@@ -609,8 +545,8 @@
 
           // build the todo label
           const todoLabel = document.createElement('label')
-          todoLabel.innerHTML = items[i].record.todo
-          todoLabel.style.textDecoration = items[i].record.complete ? 'line-through' : 'none'
+          todoLabel.innerHTML = items[i].item.todo
+          todoLabel.style.textDecoration = items[i].item.complete ? 'line-through' : 'none'
 
           // append the todo item to the list
           const todoItem = document.createElement('div')
@@ -644,7 +580,7 @@
   </div>
   </script>
 
-  <p>Then, add code to handle form submissions:</p>
+  <p>Then, add code to handle the form submission:</p>
 
   <pre data-line="5-13,18">
     <code class="language-markup">
@@ -657,7 +593,7 @@
 
         const todo = document.getElementById('add-todo').value
 
-        userbase.insert('todos', { 'todo': todo }, Date.now())
+        userbase.insert('todos', { 'todo': todo })
           .then(() =&gt; document.getElementById('add-todo').value = '')
           .catch((e) =&gt; document.getElementById('add-todo-error').innerHTML = e)
       }
@@ -675,15 +611,18 @@
   <p>
     In <code class="language-javascript">addTodoHandler</code> we first call <code class="language-javascript">preventDefault()</code> to stop the default form
     behavior, pull the to-do text from the input, and then call <code class="language-javascript">userbase.insert</code>
-    with the database name, object we want the persist, and the current time. This
-    will return a Promise that will resolve if the data is successfully persisted to
-    the database, in which case we clear the form input, or reject if the insert
-    failed, in which case we display the error message below the form.
+    with the database name and the object we want the persist. This
+    will return a Promise that resolves when the data is successfully persisted to
+    the database.
+  </p>
+
+  <p>
+    Reload the app and add some to-dos. Then reload the app again and the to-dos should automatically appear after you login.
   </p>
 
   <h3>Updating to-dos</h3>
 
-  <p>Let's modify how we are rendering a to-do so we can mark a to-do as completed:</p>
+  <p>Let's modify how we are rendering the to-do items so we can mark them as completed:</p>
 
   <pre data-line="4-16,26">
     <code class="language-javascript">
@@ -694,19 +633,19 @@
       const todoBox = document.createElement('input')
       todoBox.type = 'checkbox'
       todoBox.id = items[i].itemId
-      todoBox.checked = items[i].record.complete ? true : false
+      todoBox.checked = items[i].item.complete ? true : false
       todoBox.onclick = (e) => {
         e.preventDefault()
         userbase.update('todos', { 
-          'todo': items[i].record.todo, 
-          'complete': !items[i].record.complete 
+          'todo': items[i].item.todo, 
+          'complete': !items[i].item.complete 
         }, items[i].itemId)
         .catch((e) => document.getElementById('add-todo-error').innerHTML = e)
       }
 
       // build the todo label
       const todoLabel = document.createElement('label')
-      todoLabel.innerHTML = items[i].record.todo
+      todoLabel.innerHTML = items[i].item.todo
 
     ...
 
@@ -718,6 +657,10 @@
     }
     </code>
   </pre>
+
+  <p>
+    Reload the app and complete some to-dos. Their state should presist after you reload the app and login again.
+  </p>
 
   <h3>Deleting to-dos</h3>
 
@@ -743,7 +686,7 @@
     </code>
   </pre>
 
-  <p>And append the delete button to to-do element:</p>
+  <p>And append the delete button to the to-do element:</p>
 
   <pre data-line="3">
     <code class="language-javascript">
@@ -756,13 +699,17 @@
     </code>
   </pre>
 
+  <p>
+    Reload the app and delete some to-dos. They should no longer show up even after you reload the app and login again.
+  </p>
+
   <h3>Polishing up</h3>
 
-  <p>Before we wrap up, let's add two final pieces of account functionality: user logout and automatic login for users who already have a session.</p>
+  <p>Before we wrap up, let's add two final pieces of account functionality: user logout and automatic login for returning users.</p>
 
   <h3>Signing out users</h3>
 
-  <p>First, add a logout button along with a container for displaying error messages:</p>
+  <p>First, let's add a logout button along with a container for displaying error messages:</p>
 
   <script type="text/plain" data-line="4-5" class="language-markup">
   <!-- To-dos View -->
@@ -775,7 +722,7 @@
     <div id="todos"></div>
   </script>
 
-  <p>Then, add code to handle click events and log out the user:</p>
+  <p>Then, add code to handle click event and log out the user:</p>
 
   <pre data-line="9-13,21-30,40">
     <code class="language-markup">
@@ -784,7 +731,7 @@
     
     ...
 
-        .catch((e) => document.getElementById('create-account-error').innerHTML = e)
+        .catch((e) => document.getElementById('signup-error').innerHTML = e)
       }
 
       function handleLogout() {
@@ -805,9 +752,9 @@
         document.getElementById('login-username').value = ''
         document.getElementById('login-password').value = ''
         document.getElementById('login-error').innerText = ''
-        document.getElementById('create-account-username').value = ''
-        document.getElementById('create-account-password').value = ''
-        document.getElementById('create-account-error').innerText = ''
+        document.getElementById('signup-username').value = ''
+        document.getElementById('signup-password').value = ''
+        document.getElementById('signup-error').innerText = ''
       }
 
       function handleDatabaseChange(items) {
@@ -824,23 +771,23 @@
     </code>
   </pre>
 
-  <p>The logout function calls <code class="language-javascript">userbase.signOut</code> which sends a request to end the user's session to the Userbase service. A Promise is returned that either resolves if the user was signed out successfully, in which case we hide the to-do view and show the account view using showAuth, or rejects with an error, in which case we display the error message.</p>
+  <p>The <code class="language-javascript">handleLogout</code> function calls <code class="language-javascript">userbase.signOut</code> which sends a request to end the user's session to the Userbase service. A Promise is returned that resolves when the user was signed out, in which case we hide the to-do view and show the authentication view.</p>
 
   <h3>Automatically resuming a session</h3>
 
-  <p>Whenever a new session is created, either by signing up or signing in a user, the Userbase client will store information about the session in browser storage to allow for the session to be resumed when the user returns after having navigating away, whether by closing the page or otherwise.</p>
+  <p>Whenever a user logs in, the Userbase SDK will store information about the session in browser to allow the session to be resumed when the user returns after having navigating away.</p>
 
   <p>Let's modify our app to automatically sign in a user when the page loads. We'll add a view that indicates we are signing in the user:</p>
 
-  <p>Add add a view to show when initializing:</p>
+  <p>Add a view to show when the app is figuring out whether it can resume a previous session:</p>
 
   <pre data-line="4-5">
     <code class="language-markup">
     &lt;/head&gt;
  
     &lt;body&gt;
-      &lt;!-- Init View --&gt;
-      &lt;div id=&quot;init-view&quot;&gt;Signing you in...&lt;/div&gt;
+      &lt;!-- Loading View --&gt;
+      &lt;div id=&quot;loading-view&quot;&gt;Loading...&lt;/div&gt;
 
       &lt;!-- Auth View --&gt;
       &lt;div id=&quot;auth-view&quot;&gt;
@@ -850,7 +797,7 @@
 
   <p>In order to automatically resume a session if one is available, we add the following to our application code:</p>
 
-  <pre data-line="9,12, 14-17">
+  <pre data-line="9,12, 14-23">
     <code class="language-markup">
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
@@ -866,17 +813,22 @@
       document.getElementById('auth-view').style.display = 'none'
 
       userbase.signInWithSession()
-        .then((session) => showTodos(session.username))
+        .then((session) => {
+          if (session.user) {
+            showTodos(session.user.username)
+          } else {
+            showAuth()
+            document.getElementById('loading-view').style.display = 'none')
+          }
+        })
         .catch(() => showAuth())
-        .then(() => document.getElementById('init-view').style.display = 'none')
 
     &lt;/script&gt;
     </code>
   </pre>
 
   <p>
-    We hide the auth view initially, as we'll now only show it if an existing
-    session can't be resumed.
+    We hide the authentication view initially, as we'll now only show it if an existing session can't be resumed.
   </p>
 
   <p>
@@ -885,16 +837,27 @@
   </p>
 
   <p>
-    This function looks for a previous session in browser storage and if one is
-    found tries to sign in the user automatically with the Userbase service. It
-    returns a Promise that will resolve with a new session if the user was able to
-    be signed in or otherwise reject with ann error message? indicating the reason
-    for failure.
+    The <code class="language-javascript">userbase.signInWithSession</code> function returns a Promise that resolves when the SDK has determined if it can reuse the previous session. If so, the user gets automatically logged in, and the <code class="language-javascript">session.user</code> object gets set. If there was no previous session, or the session cannot be resumed, the <code class="language-javascript">session.user</code> object will not be set.
   </p>
 
   <p>
-    A failure could be due to either no previous session, the user had
-    signed out, or their session expired. In our simple app we'll just send the user
+    If <code class="language-javascript">userbase.signInWithSession</code> fails, we'll just send the user
     to the sign in page regardless of the reason.
   </p>
+
+  <h3>What's next?</h3>
+
+  <p>
+    In a real project you'll likely want a more sophisticated approach: for instance, you may use React to control the DOM or a module bundler to package your application from multiple files, and at the very
+    least you'll want to display better error messages and add some styling.
+  </p>
+
+  <p>
+    We are working on a collection of tutorials and sample applications that will
+    show you how to do all these things with Userbase and more. You can <a href="/mailing-list">subscribe to our mailing list</a> to get updates on these and more.
+  </p>
+
+  <p>If you have any questions, or there's anything we can do to help you with your web app, please get in touch via <a href="mailto:daniel@encrypted.dev">email</a> or <a href="https://twitter.com/UserbaseHQ">Twitter</a>. Thank you!</p>
 </div>
+
+<hr>
