@@ -18,10 +18,10 @@
       <span class="field">databaseName</span> [string | Len: 1-50] - The database name to use.
     </li>
     <li>
-      <span class="field">itemId</span> [string | Len: 1-100] - The item's unique identifier.
+      <span class="field">item</span> [object | Max size: 10&nbsp;KB] - The item to insert.
     </li>
     <li>
-      <span class="field">item</span> [object | Max size: 10&nbsp;KB] - The item to insert.
+      <span class="field">itemId</span> [string | Len: 1-100] - The item's unique identifier.
     </li>
   </ul>
 
@@ -32,13 +32,12 @@
     <li>DatabaseNameCannotBeBlank</li>
     <li>DatabaseNameTooLong</li>
     <li>DatabaseNameMustBeString</li>
-    <li>ItemIdCannotBeBlank</li>
     <li>ItemIdTooLong</li>
     <li>ItemIdMustBeString</li>
+    <li>ItemMissing</li>
     <li>ItemTooLarge</li>
     <li>ItemAlreadyExists</li>
-    <li>AppIdNotSet</li>
-    <li>AppIdNotValid</li>
+    <li>UserNotSignedIn</li>
     <li>ServiceUnavailable</li>
   </ul>
 

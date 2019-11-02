@@ -18,10 +18,10 @@
       <span class="field">databaseName</span> [string | Len: 1-50] - The database name to use.
     </li>
     <li>
-      <span class="field">itemId</span> [string | Len: 1-100] - The unique identifier of the item to replace.
+      <span class="field">item</span> [object | Max size: 10&nbsp;KB] - The object to overwrite the existing item with.
     </li>
     <li>
-      <span class="field">item</span> [object | Max size: 10&nbsp;KB] - The object to overwrite the existing item with.
+      <span class="field">itemId</span> [string | Len: 1-100] - The unique identifier of the item to replace.
     </li>
   </ul>
 
@@ -34,11 +34,12 @@
     <li>DatabaseNameMustBeString</li>
     <li>ItemIdCannotBeBlank</li>
     <li>ItemIdMustBeString</li>
+    <li>ItemIdTooLong</li>
+    <li>ItemMissing</li>
     <li>ItemTooLarge</li>
     <li>ItemDoesNotExist</li>
     <li>ItemUpdateConflict</li>
-    <li>AppIdNotSet</li>
-    <li>AppIdNotValid</li>
+    <li>UserNotSignedIn</li>
     <li>ServiceUnavailable</li>
   </ul>
 
