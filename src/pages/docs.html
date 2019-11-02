@@ -15,11 +15,11 @@
   <a class="anchor" id="getting-started"></a>
   <h2 id=>Getting Started</h2>
 
-  <h3>Create a free Userbase account</h3>
-  <p>First you need a Userbase developer account. You will be able to create a free account when Userbase gets launched. No credit card required.</p>
+  <h3>Create a developer account</h3>
+  <p>First, you need a Userbase developer account. You will be able to create a free account when Userbase gets launched. No credit card required.</p>
 
   <h3>Install the SDK</h3>
-  <p>Then you need to include the Userbase SDK into your web app.</p>
+  <p>Then, you need to include the Userbase SDK into your web app.</p>
   <p>You can either include the SDK with a <code class="language-markup">&lt;script&gt;</code> tag:</p>
 
   <pre>
@@ -28,7 +28,7 @@
     --></code>
   </pre>
 
-  <p>Or else you can include the SDK into your build pipeline:</p>
+  <p>Or else, you can include the SDK into your build pipeline:</p>
 
   <pre>
     <code class="language-bash">
@@ -37,7 +37,7 @@
   </pre>
 
   <h3>Set the Application ID</h3>
-  <p>From your Userbase account, create a new App and get the Application ID. Then you just need to configure the Userbase SDK to use it:</p>
+  <p>From your developer account, create a new App and get the Application ID. Then, you just need to configure the Userbase SDK to use it:</p>
 
   <pre>
     <code class="language-javascript"><!--
@@ -54,7 +54,7 @@
   <a class="anchor" id="sdk"></a>
   <h2>SDK</h2>
 
-  <p>You can use Userbase through a simple JavaScript SDK in the browser. The following is the complete set of Userbase APIs that let you create user accounts, handle logins, and persist user data.</p>
+  <p>Userbase is accessible directly from the browser through a very simple JavaScript SDK. The following is the complete set of APIs that let you create user accounts, handle logins, and persist user data.</p>
 
   <h3 id="sdk-users">Users</h3>
   <p>Use these APIs to create user accounts, handle logins and logouts, and resume sessions when a user returns to your web app.</p>
@@ -83,22 +83,22 @@
   <h2>Tutorial</h2>
 
   <p>
-    In this tutorial we will build a simple to-do web app. Even if what you're building has nothing to do with to-dos, the techniques we'll cover here can be applied to many other kinds of web apps.
+    In this tutorial we will build a very basic to-do web app. Even if what you're building has nothing to do with to-dos, the techniques we'll cover here can be applied to many other kinds of web apps.
   </p>
 
   <p>
-    You can think of this tutorial as a demonstration of the core functionality of Userbase in the simplest way possible. We are going to focus solely on building a fully functional web app. Making things pretty is left as an exercise to the reader.
+    You can think of this tutorial as a demonstration of the core functionality of Userbase in the simplest way possible. We are going to focus solely on building a functional web app, and making things pretty is left as an exercise to the reader.
   </p>
 
-  <p>You can see a live demo of what we'll be building <a href="https://ugliest-todo.netlify.com/" target="_blank">here</a>.</p>
+  <p>The entire web app we'll be building will fit in a <a href="https://github.com/encrypted-dev/userbase/blob/7746e98c27c7d4fe6b8846592db88cd576a907a6/docs/examples/ugliest-todo-app/index.html" target="_blank">single static HTML file of 185 lines</a>. You can also see a <a href="https://ugliest-todo.netlify.com/" target="_blank">live demo</a> of the final result.</p>
 
   <h3>Prerequisites</h3>
 
-  <p>You just need to be familiar with <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank">JavaScript basics</a>.</p>
+  <p>The only requirement is basic familiarity of <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank">JavaScript</a>.</p>
 
   <h3>Setting up</h3>
 
-  <p>Let's get going. Open up a new file in your favorite code editor:</p>
+  <p>Let's get going. Open a new file in your favorite code editor:</p>
 
   <pre>
     <code class="language-bash">
@@ -129,17 +129,13 @@
   </div>
 
   <p>
-    Now open up this file in a web browser of your choosing. At this point all you'll see is a blank page. As we add functionality throughout the tutorial, you can refresh this page to see the changes.
+    Now, open this file in a web browser of your choosing. At this point all you'll see is a blank page. As we add functionality throughout the tutorial, you can refresh this page to see the changes.
   </p>
 
   <a class="anchor" id="creating-a-developer-account"></a>
   <h3>Creating a developer account</h3>
 
-  <p>To complete this tutorial, you'll need to create a Userbase developer account. Upon creation, a default application named "Preview" will be created. Take note of the App ID, you'll need it in a second.</p>
-
-  <p>
-    We're now ready to start building our web app. We'll start by implementing the sign up and login features, and then in the second part we'll implement the to-do functionality.
-  </p>
+  <p>To complete this tutorial, you'll need to create a Userbase developer account. Upon creation, a default application named "Preview" will be created. Take note of the App ID because you'll need it in a second.</p>
 
   <h3>Installing the SDK</h3>
 
@@ -161,7 +157,7 @@
   <h3>Configuring the SDK</h3>
 
   <p>
-    Before doing anything with the Userbase SDK, we need to let it know our Application ID.
+    Before doing anything with the Userbase SDK, we need to let it know our App ID.
     Simply replace <code class="language-javascript">'YOUR_APP_ID'</code> with the App ID you received when you <a href="#creating-a-developer-account">created your developer account</a>:
   </p>
 
@@ -180,10 +176,10 @@
   <h3>Letting new users create an account</h3>
 
   <p>
-    Before a user can start creating to-dos, the user needs to create an account with our app.
+    Before our users can start creating to-dos, we need to give them a way to create an account with our app.
   </p>
 
-  <p>First, we'll add a sign up form:</p>
+  <p>First, let's add a sign up form:</p>
 
   <div>
     <pre data-line="2-11">
@@ -207,7 +203,7 @@
     </pre>
   </div>
 
-  <p>Then, we'll add the code to handle the form submission:</p>
+  <p>Then, let's add the code to handle the form submission:</p>
 
   <div>
     <pre data-line="5-16">
@@ -234,7 +230,7 @@
   </div>
 
   <p>
-    Whenever someone submits the form, the <code class="language-javascript">handleSignUp</code> function will be called.
+    Now, whenever someone submits the form, the <code class="language-javascript">handleSignUp</code> function will be called.
   </p>
 
   <p>
@@ -243,12 +239,12 @@
   </p>
 
   <p>
-    Next we get the values of the username and password inputs and call
+    Next, we get the values of the username and password inputs and call
     <code class="language-javascript">userbase.signUp(username, password)</code>. This will request a new account to be created with the Userbase service, and returns a Promise that resolves with a <code class="language-javascript">user</code> object.
   </p>
 
   <p>
-    Go ahead and reload the web app in your browser. Enter a username and password in the form under "Sign Up" and submit. You'll get an alert saying that you signed up. And if go to your Userbase developer account, you should see the new user under your app.
+    Go ahead and reload the page in your browser. Enter a username and password in the form and submit. You should get an alert saying that you signed up. And if go to your Userbase developer account, you should also see the new user under your app.
   </p>
 
   <p>
@@ -261,9 +257,9 @@
 
   <h3>Letting users log in</h3>
 
-  <p>Now that users can create accounts, let's give them the ability to sign in.</p>
+  <p>Now that our users can create accounts, let's give them the ability to login.</p>
 
-  <p>First, we'll add a "Login" form to the page above our "Create Account" form:</p>
+  <p>First, let's add a "Login" form to the page above our "Create Account" form:</p>
 
   <pre data-line="4-10">
     <code class="language-markup">
@@ -283,7 +279,7 @@
     </code>
   </pre>
 
-  <p>Then, we'll add code to handle the form submission:</p>
+  <p>Then, let's add the code to handle the form submission:</p>
 
   <pre data-line="5-14">
     <code class="language-markup">
@@ -332,12 +328,12 @@
   </pre>
 
   <p>
-    You'll notice this looks very similar to the sign up code above. The <code class="language-javascript">handleLogin</code> function prevents the default form behavior, extracts the input values from the DOM, and calls <code class="language-javascript">userbase.signIn(username, password)</code>. This will attempt to sign in the user with the Userbase service, handling a success with an alert and a failure by displaying the error.
+    You'll notice that this looks very similar to the sign up code from before. The <code class="language-javascript">handleLogin</code> function prevents the default form behavior, extracts the input values from the DOM, and calls <code class="language-javascript">userbase.signIn(username, password)</code>. This will attempt to sign in the user with the Userbase service, handling a success with an alert and a failure by displaying the error.
   </p>
 
   <p>
-    Reload the app and you should see our new login form. Enter the username and
-    password you used to create an account in the step above, and submit the form.
+    Reload the page and you should see our new login form. Enter the username and
+    password you used to create an account in the previous step, and submit the form.
     You should get an alert saying that you signed in.
   </p>
 
@@ -353,7 +349,7 @@
     to the user they are logged in, and display their to-do list.
   </p>
 
-  <p>First, we'll add a new container under the authentication forms:</p>
+  <p>First, let's add a container for the to-do list under the authentication forms:</p>
 
   <pre data-line="8-14">
     <code class="language-markup">
@@ -383,7 +379,7 @@
     </code>
   </pre>
 
-  <p>Then, we'll add a function to display this view and initially make it hidden:</p>
+  <p>Then, let's add a function to display this view and initially make it hidden:</p>
 
   <div>
     <pre data-line="9-13,18">
@@ -413,7 +409,7 @@
 
   <p>
     Now that we have a function to show a view for signed in users, let's change
-    <code class="language-javascript">handleLogin</code> to call this function when it succeeds:
+    <code class="language-javascript">handleLogin</code> to call this function instead of showing an alert:
   </p>
 
   <pre data-line="7">
@@ -447,20 +443,18 @@
   </pre>
 
   <p>
-    Reload the app and sign in again using your username and password. You should see the
+    Reload the page and login again using your username and password. You should see the
     authentication view disappear and your username show up along with the to-do list heading.
   </p>
 
   <h3>Using the database</h3>
 
   <p>
-    Each time a new session is started when a user signs up or logs in, we need to establish a
-    connection with the database that will hold that user's to-dos.
+    Each time a user signs in, we need to establish a connection with the database that will hold that user's to-dos.
   </p>
 
   <p>
-    First, let's add a couple of elements for showing a loading indicator and error
-    messages:
+    First, let's add a couple of elements for showing a loading indicator and error messages:
   </p>
 
   <pre data-line="6-7">
@@ -520,9 +514,9 @@
   </p>
 
   <p>
-    Reload the app and sign in. You'll see the "Loading to-dos..." as a connection
-    to the database is established followed by "Empty" indicating there are
-    currently no to-dos.
+    Reload the page and sign in again. You'll see the "Loading to-dos..." as a connection
+    to the database is established followed by "Empty", indicating there are
+    currently no to-dos in the database.
   </p>
 
 
@@ -566,7 +560,7 @@
 
   <h3>Adding to-dos</h3>
 
-  <p>Let's add a form for creating new to-dos:</p>
+  <p>Now, let's add a form for creating new to-dos:</p>
 
   <script type="text/plain" data-line="10-14" class="language-markup">
   <!-- To-dos View -->
@@ -586,7 +580,7 @@
   </div>
   </script>
 
-  <p>Then, add code to handle the form submission:</p>
+  <p>Then, let's add the code to handle the form submission:</p>
 
   <pre data-line="5-13,17">
     <code class="language-markup">
@@ -623,12 +617,12 @@
   </p>
 
   <p>
-    Reload the app and add some to-dos. Then reload the app again and the to-dos should automatically appear after you login.
+    Reload the page and add some to-dos. Then, reload the page again and the to-dos should automatically appear after you login. These to-dos have been successfully persisted in the end-to-end encrypted Userbase database.
   </p>
 
   <h3>Updating to-dos</h3>
 
-  <p>Let's modify how we are rendering the to-do items so we can mark them as completed:</p>
+  <p>Now, let's add a checkbox to allow to-dos to be marked as completed:</p>
 
   <pre data-line="4-16,26">
     <code class="language-javascript">
@@ -665,12 +659,12 @@
   </pre>
 
   <p>
-    Reload the app and complete some to-dos. Their state should presist after you reload the app and login again.
+    Reload the page and complete some to-dos. Their state should persist even after you reload the page and login again.
   </p>
 
   <h3>Deleting to-dos</h3>
 
-  <p>Let's create a button for deleting a to-do:</p>
+  <p>And finally, let's create a button for deleting a to-do:</p>
 
   <pre data-line="4-11">
     <code class="language-javascript">
@@ -692,7 +686,7 @@
     </code>
   </pre>
 
-  <p>And append the delete button to the to-do element:</p>
+  <p>And now let's append the delete button to the to-do element:</p>
 
   <pre data-line="3">
     <code class="language-javascript">
@@ -706,7 +700,7 @@
   </pre>
 
   <p>
-    Reload the app and delete some to-dos. They should no longer show up even after you reload the app and login again.
+    Reload the page and delete some to-dos. They should no longer show up even after you reload the page and login again.
   </p>
 
   <h3>Polishing up</h3>
@@ -728,7 +722,7 @@
     <div id="todos"></div>
   </script>
 
-  <p>Then, add code to handle click event and log out the user:</p>
+  <p>Then, let's add the code to handle the logout:</p>
 
   <pre data-line="9-13,21-30,40">
     <code class="language-markup">
@@ -778,15 +772,13 @@
     </code>
   </pre>
 
-  <p>The <code class="language-javascript">handleLogout</code> function calls <code class="language-javascript">userbase.signOut</code> which sends a request to end the user's session to the Userbase service. A Promise is returned that resolves when the user was signed out, in which case we hide the to-do view and show the authentication view.</p>
+  <p>The <code class="language-javascript">handleLogout</code> function calls <code class="language-javascript">userbase.signOut</code> which sends a request to end the user's session to the Userbase service. A Promise is returned that resolves when the user is signed out, in which case we hide the to-do view and show the authentication view.</p>
 
   <h3>Automatically resuming a session</h3>
 
-  <p>Whenever a user logs in, the Userbase SDK will store information about the session in browser to allow the session to be resumed when the user returns after having navigating away.</p>
+  <p>Whenever a user logs in, the Userbase SDK will store information about the session in the browser to allow it to be resumed when the user returns after having navigating away.</p>
 
-  <p>Let's modify our app to automatically sign in a user when the page loads. We'll add a view that indicates we are signing in the user:</p>
-
-  <p>Add a view to show when the app is figuring out whether it can resume a previous session:</p>
+  <p>Let's modify our app to automatically sign in a returning user when the page loads. First, we'll add a view that indicates we are signing in the user:</p>
 
   <pre data-line="4-5">
     <code class="language-markup">
@@ -802,7 +794,7 @@
     </code>
   </pre>
 
-  <p>In order to automatically resume a session if one is available, we add the following to our application code:</p>
+  <p>In order to automatically resume a session if one is available, we need to add the following to our application code:</p>
 
   <pre data-line="12-17">
     <code class="language-markup">
@@ -833,7 +825,7 @@
   </p>
 
   <p>
-    We make a call to <code class="language-javascript">userbase.signInWithSession</code> to attempt to sign in the user
+    Then, we make a call to <code class="language-javascript">userbase.signInWithSession</code> to attempt to sign in the user
     using an existing session as soon as our app loads.
   </p>
 
@@ -848,14 +840,16 @@
 
   <h3>What's next?</h3>
 
+  <p>And that was it! A fully working (but ugly) web app in just 185 lines of code, including markup and comments.</p>
+
   <p>
-    In a real project you'll likely want a more sophisticated approach: for instance, you may use React to control the DOM or a module bundler to package your application from multiple files, and at the very
-    least you'll want to display better error messages and add some styling.
+    In a real project you'll likely want to use a more sophisticated approach. For instance, you may want to use React to control the DOM, or a module bundler to package your application from multiple files. At the very
+    least, you'll want to add some styling.
   </p>
 
   <p>
-    We are working on a collection of tutorials and sample applications that will
-    show you how to do all these things with Userbase and more. You can <a href="/mailing-list">subscribe to our mailing list</a> to get updates on these and more.
+    We are working on a collection of new tutorials and sample applications that will
+    show you how to do all these things with Userbase, and more. You can <a href="/mailing-list">subscribe to our mailing list</a> to get updates like these in your inbox.
   </p>
 
   <p>If you have any questions, or there's anything we can do to help you with your web app, please get in touch via <a href="mailto:daniel@encrypted.dev">email</a> or <a href="https://twitter.com/UserbaseHQ">Twitter</a>. Thank you!</p>
