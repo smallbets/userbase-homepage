@@ -24,7 +24,7 @@
 
   <pre>
     <code class="language-markup"><!--
-    <script type="text/javascript" src="https://sdk.userbase.dev/userbase-0.0.5.js"></script>    
+    <script type="text/javascript" src="https://sdk.userbase.dev/userbase-0.0.5.js"></script>
     --></code>
   </pre>
 
@@ -94,7 +94,7 @@
 
   <h3>Prerequisites</h3>
 
-  <p>You just need to be familiar with <a href="https://www.w3schools.com/html/html_editors.asp" target="_blank"">HTML</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank">JavaScript basics</a>.</p>
+  <p>You just need to be familiar with <a href="https://www.w3schools.com/html/html_editors.asp" target="_blank"">HTML</a> and <a href=" https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank">JavaScript basics</a>.</p>
 
   <h3>Setting up</h3>
 
@@ -133,7 +133,7 @@
   </p>
 
   <a class="anchor" id="creating-a-developer-account"></a>
-  <h3 >Creating a developer account</h3>
+  <h3>Creating a developer account</h3>
 
   <p>To complete this tutorial, you'll need to create a Userbase developer account. Upon creation, a default application named "Preview" will be created. Take note of the App ID, you'll need it in a second.</p>
 
@@ -466,7 +466,7 @@
   <pre data-line="6-7">
     <code class="language-markup"><!--
     <div id="todo-view">
-      <div id="username"></div>
+      <span id="username"></span>
 
       <h1>To-Do List</h1>
       <div id="todos"></div>
@@ -478,32 +478,29 @@
 
   <p>Then, we'll change <code class="language-javascript">showTodos</code> to open a new database with the Userbase service:</p>
 
-  <pre data-line="5,7-17,20-28">
+  <pre data-line="5,7-12,15-25">
     <code class="language-javascript">
     function showTodos(username) {
       document.getElementById('auth-view').style.display = 'none'
       document.getElementById('todo-view').style.display = 'block'
-        
+
       // reset the todos view
       document.getElementById('username').innerHTML = username
+      document.getElementById('todos').innerText = ''
       document.getElementById('db-loading').style.display = 'block'
       document.getElementById('db-error').innerText = ''
 
       userbase.openDatabase('todos', handleDatabaseChange)
-        .then(() => {
-          document.getElementById('db-loading').style.display = 'none'
-        })
-        .catch((e) => {
-          document.getElementById('db-loading').style.display = 'none'
-          document.getElementById('db-error').innerText = e
-        })
+        .catch((e) => document.getElementById('db-error').innerText = e)
     }
 
     function handleDatabaseChange(items) {
+      document.getElementById('db-loading').style.display = 'none'
+
       const todosList = document.getElementById('todos')
 
       if (items.length === 0) {
-        todosList.innerText = "Empty"
+        todosList.innerText = 'Empty'
       } else {
         // render to-dos, not yet implemented
       }
@@ -536,13 +533,15 @@
     Let's implement that case in <code class="language-javascript">handleDatabaseChange</code>:
   </p>
 
-  <pre data-line="7-22">
+  <pre data-line="9-24">
     <code class="language-javascript"><!--
     function handleDatabaseChange(items) {
+      document.getElementById('db-loading').style.display = 'none'
+
       const todosList = document.getElementById('todos')
 
       if (items.length === 0) {
-        todosList.innerText = "Empty"
+        todosList.innerText = 'Empty'
       } else {
         // clear the list
         todosList.innerHTML = ''
@@ -572,7 +571,7 @@
   <script type="text/plain" data-line="10-14" class="language-markup">
   <!-- To-dos View -->
   <div id="todo-view">
-    <div id="username"></div>
+    <span id="username"></span>
 
     <h1>To-Do List</h1>
     <div id="todos"></div>
@@ -589,7 +588,7 @@
 
   <p>Then, add code to handle the form submission:</p>
 
-  <pre data-line="5-13,18">
+  <pre data-line="5-13,17">
     <code class="language-markup">
     &lt;!-- application code --&gt;
     &lt;script type=&quot;text/javascript&quot;&gt;
@@ -607,8 +606,8 @@
 
       document.getElementById('login-form').addEventListener('submit', handleLogin)
       document.getElementById('signup-form').addEventListener('submit', handleSignUp)
-
       document.getElementById('add-todo-form').addEventListener('submit', addTodoHandler)
+
       document.getElementById('todo-view').style.display = 'none'
       
     &lt;/script&gt;
@@ -721,7 +720,7 @@
   <script type="text/plain" data-line="4-5" class="language-markup">
   <!-- To-dos View -->
   <div id="todo-view">
-    <div id="username"></div>
+    <span id="username"></span>
     <input type="button" value="Logout" id="logout-button">
     <div id="logout-error"></div>
 
@@ -773,6 +772,7 @@
       document.getElementById('signup-form').addEventListener('submit', handleSignUp)
       document.getElementById('add-todo-form').addEventListener('submit', addTodoHandler)
       document.getElementById('logout-button').addEventListener('click', handleLogout)
+
       document.getElementById('todo-view').style.display = 'none'
     &lt;/script&gt;
     </code>
@@ -804,7 +804,7 @@
 
   <p>In order to automatically resume a session if one is available, we add the following to our application code:</p>
 
-  <pre data-line="9,12, 14-23">
+  <pre data-line="12-17">
     <code class="language-markup">
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
@@ -820,15 +820,9 @@
       document.getElementById('auth-view').style.display = 'none'
 
       userbase.signInWithSession()
-        .then((session) => {
-          if (session.user) {
-            showTodos(session.user.username)
-          } else {
-            showAuth()
-            document.getElementById('loading-view').style.display = 'none')
-          }
-        })
+        .then((session) => session.user ? showTodos(session.user.username) : showAuth())
         .catch(() => showAuth())
+        .finally(() => document.getElementById('loading-view').style.display = 'none')
 
     &lt;/script&gt;
     </code>
