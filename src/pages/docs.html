@@ -102,7 +102,7 @@
 
   <pre>
     <code class="language-bash">
-      code ulgy-todo.html
+      code ugly-todo.html
     </code>
   </pre>
 
@@ -132,7 +132,8 @@
     Now open up this file in a web browser of your choosing. At this point all you'll see is a blank page. As we add functionality throughout the tutorial, you can refresh this page to see the changes.
   </p>
 
-  <h3>Creating a developer account</h3>
+  <a class="anchor" id="creating-a-developer-account"></a>
+  <h3 >Creating a developer account</h3>
 
   <p>To complete this tutorial, you'll need to create a Userbase developer account. Upon creation, a default application named "Preview" will be created. Take note of the App ID, you'll need it in a second.</p>
 
@@ -161,7 +162,7 @@
 
   <p>
     Before doing anything with the Userbase SDK, we need to let it know our Application ID.
-    Simply replace <code class="language-javascript">'YOUR_APP_ID'</code> with the App ID you received when you created your developer account:
+    Simply replace <code class="language-javascript">'YOUR_APP_ID'</code> with the App ID you received when you <a href="#creating-a-developer-account">created your developer account</a>:
   </p>
 
   <pre data-line="4">
@@ -176,15 +177,10 @@
     </code>
   </pre>
 
-  <p>
-    Now anything we do with the client (e.g. sign in a user, persist data) will
-    happen within the context of the app whose ID we specified.
-  </p>
-
   <h3>Letting new users create an account</h3>
 
   <p>
-    Any actions that our users take needs to happen within an authenticated session. We'll start by adding a way to for new users to create an account with our app.
+    Before a user can start creating to-dos, the user needs to create an account with our app.
   </p>
 
   <p>First, we'll add a sign up form:</p>
