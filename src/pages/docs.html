@@ -24,9 +24,7 @@
 
   <pre>
     <code class="language-markup"><!--
-    <script type="text/javascript"
-      src="https://userbase-public.s3-us-west-2.amazonaws.com/userbase-js/userbase.js">
-    </script>
+    <script type="text/javascript" src="https://sdk.userbase.dev/userbase-0.0.5.js"></script>    
     --></code>
   </pre>
 
@@ -92,11 +90,11 @@
     You can think of this tutorial as a demonstration of the core functionality of Userbase in the simplest way possible. We are going to focus solely on building a fully functional web app. Making things pretty is left as an exercise to the reader.
   </p>
 
-  <p>You can see a live demo of what we'll building <a href="https://ugliest-todo.netlify.com/" target="_blank">here</a>.</p>
+  <p>You can see a live demo of what we'll be building <a href="https://ugliest-todo.netlify.com/" target="_blank">here</a>.</p>
 
   <h3>Prerequisites</h3>
 
-  <p>You just need to be familiar with HTML and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank">JavaScript basics</a>.</p>
+  <p>You just need to be familiar with <a href="https://www.w3schools.com/html/html_editors.asp" target="_blank"">HTML</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank">JavaScript basics</a>.</p>
 
   <h3>Setting up</h3>
 
@@ -136,7 +134,7 @@
 
   <h3>Creating a developer account</h3>
 
-  <p>To complete this tutorial, you'll need to create a Userbase developer account, and then create an app from within your account. Take note of the Application ID of your app.</p>
+  <p>To complete this tutorial, you'll need to create a Userbase developer account. Upon creation, a default application named "Preview" will be created. Take note of the App ID, you'll need it in a second.</p>
 
   <p>
     We're now ready to start building our web app. We'll start by implementing the sign up and login features, and then in the second part we'll implement the to-do functionality.
@@ -147,14 +145,12 @@
   We're going to load the Userbase SDK from a CDN with a <code class="language-markup">&lt;script&gt;</code> tag in the head of
   our page:
 
-  <pre data-line="4-6">
+  <pre data-line="4">
     <code class="language-markup"><!--
     <head>
       <meta charset="UTF-8">
       <title>Ugliest To-Do App</title>
-      <script type="text/javascript" 
-        src="https://userbase-public.s3-us-west-2.amazonaws.com/userbase-js/userbase.js">
-      </script>
+      <script type="text/javascript" src="https://sdk.userbase.dev/userbase-0.0.5.js"></script>
     </head>
     --></code>
   </pre>
@@ -165,7 +161,7 @@
 
   <p>
     Before doing anything with the Userbase SDK, we need to let it know our Application ID.
-    Simply replace <code class="language-javascript">'YOUR_APP_ID'</code> with the Application ID of the app you created earlier:
+    Simply replace <code class="language-javascript">'YOUR_APP_ID'</code> with the App ID you received when you created your developer account:
   </p>
 
   <pre data-line="4">
@@ -313,7 +309,7 @@
       function handleSignUp(e) {
         e.preventDefault()
 
-    ...
+    …
 
     &lt;/script&gt;
 
@@ -327,7 +323,7 @@
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
 
-    ...
+    …
 
         .catch((e) => document.getElementById('signup-error').innerHTML = e)
       }
@@ -363,8 +359,14 @@
 
   <p>First, we'll add a new container under the authentication forms:</p>
 
-  <pre data-line="3-9">
+  <pre data-line="8-14">
     <code class="language-markup">
+
+    &#x3C;!-- Auth View --&#x3E;
+    &#x3C;div id=&#x22;auth-view&#x22;&#x3E;
+
+    …
+
     &#x3C;/div&#x3E;
 
     &#x3C;!-- To-dos View --&#x3E;
@@ -379,7 +381,7 @@
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
       userbase.configure({ appId: 'YOUR_APP_ID' })
 
-    ...
+    …
 
     &#x3C;/script&#x3E;
     </code>
@@ -388,18 +390,27 @@
   <p>Then, we'll add a function to display this view and initially make it hidden:</p>
 
   <div>
-    <pre data-line="1-5,10">
+    <pre data-line="9-13,18">
       <code class="language-javascript">
-      function showTodos(username) {
-        document.getElementById('auth-view').style.display = 'none'
-        document.getElementById('todo-view').style.display = 'block'
-        document.getElementById('username').innerHTML = username
-      }
+      &#x3C;!-- application code --&#x3E;
+      &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+
+      …
+
+          .catch((e) => document.getElementById('signup-error').innerHTML = e)
+        }
+
+        function showTodos(username) {
+          document.getElementById('auth-view').style.display = 'none'
+          document.getElementById('todo-view').style.display = 'block'
+          document.getElementById('username').innerHTML = username
+        }
+        
+        document.getElementById('login-form').addEventListener('submit', handleLogin)
+        document.getElementById('signup-form').addEventListener('submit', handleSignUp)
       
-      document.getElementById('login-form').addEventListener('submit', handleLogin)
-      document.getElementById('signup-form').addEventListener('submit', handleSignUp)
-      
-      document.getElementById('todo-view').style.display = 'none'
+        document.getElementById('todo-view').style.display = 'none'
+      &#x3C;/script&#x3E;
       </code>
     </pre>
   </div>
@@ -444,11 +455,11 @@
     authentication view disappear and your username show up along with the to-do list heading.
   </p>
 
-  <h3>Using to the database</h3>
+  <h3>Using the database</h3>
 
   <p>
-    Each time a new session is started, we need to establish a connection with the
-    database that will hold that user's to-dos.
+    Each time a new session is started when a user signs up or logs in, we need to establish a
+    connection with the database that will hold that user's to-dos.
   </p>
 
   <p>
@@ -586,7 +597,7 @@
     <code class="language-markup">
     &lt;!-- application code --&gt;
     &lt;script type=&quot;text/javascript&quot;&gt;
-    ...
+    …
 
       function addTodoHandler(e) {
         e.preventDefault()
@@ -647,7 +658,7 @@
       const todoLabel = document.createElement('label')
       todoLabel.innerHTML = items[i].item.todo
 
-    ...
+    …
 
       // append the todo item to the list
       const todoItem = document.createElement('div')
@@ -729,7 +740,7 @@
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
     
-    ...
+    …
 
         .catch((e) => document.getElementById('signup-error').innerHTML = e)
       }
@@ -744,7 +755,7 @@
         document.getElementById('auth-view').style.display = 'none'
         document.getElementById('todo-view').style.display = 'block'
 
-    ...
+    …
 
       function showAuth() {
         document.getElementById('todo-view').style.display = 'none'
@@ -760,7 +771,7 @@
       function handleDatabaseChange(items) {
         const todosList = document.getElementById('todos')
 
-    ...
+    …
 
       document.getElementById('login-form').addEventListener('submit', handleLogin)
       document.getElementById('signup-form').addEventListener('submit', handleSignUp)
@@ -802,7 +813,7 @@
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
     
-    ...
+    …
     
       document.getElementById('login-form').addEventListener('submit', handleLogin)
       document.getElementById('signup-form').addEventListener('submit', handleSignUp)
