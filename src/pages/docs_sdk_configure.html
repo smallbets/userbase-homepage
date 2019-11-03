@@ -1,0 +1,31 @@
+<div class="section">
+  <h2><a href="/docs/#sdk">SDK</a> : Configure</h2>
+
+  <p><span class="font-semibold">Configure</span> lets you configure your Userbase client.</p>
+
+  <pre>
+    <code class="language-javascript">userbase.configure({ appId, endpoint })</code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">settings</span> [object] - Contains your configuration settings.
+      <ul>
+        <li><span class="field">appId</span> [string] - Your App ID you received when you created a Userbase application.</li>
+        <li><span class="field">endpoint</span> [string] - If you're hosting your own Userbase server, you can provide its endpoint here.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="errors">Errors</h3>
+
+  <ul>
+    <li>ConfigParametersMissing</li>
+    <li>UserAlreadySignedIn</li>
+  </ul>
+
+</div>
+
+<hr>
