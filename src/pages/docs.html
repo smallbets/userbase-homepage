@@ -588,7 +588,7 @@
 
   <p>Then, let's add the code to handle the form submission:</p>
 
-  <pre data-line="5-13,17">
+  <pre data-line="5-13,17,20">
     <code class="language-markup">
     &lt;!-- application code --&gt;
     &lt;script type=&quot;text/javascript&quot;&gt;
@@ -609,7 +609,8 @@
       document.getElementById('add-todo-form').addEventListener('submit', addTodoHandler)
 
       document.getElementById('todo-view').style.display = 'none'
-      
+      document.getElementById('add-todo-form').style.display = 'none'
+
     &lt;/script&gt;
     </code>
   </pre>
@@ -621,6 +622,36 @@
     will return a Promise that resolves when the data is successfully persisted to
     the database.
   </p>
+
+  <p>
+    We hide the <code class="language-markup">add-todo-form</code> element until
+    the user logs in:
+  </p>
+
+  <pre data-line="8">
+    <code class="language-markup">
+    &lt;!-- application code --&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+    …
+
+      function showTodos(username) {
+        document.getElementById('auth-view').style.display = 'none'
+        document.getElementById('todo-view').style.display = 'block'
+        document.getElementById('add-todo-form').style.display = 'block'
+
+        // reset the todos view
+        document.getElementById('username').innerHTML = username
+        document.getElementById('todos').innerText = ''
+        document.getElementById('db-loading').style.display = 'block'
+        document.getElementById('db-error').innerText = ''
+
+        userbase.openDatabase('todos', handleDatabaseChange)
+          .catch((e) => document.getElementById('db-error').innerText = e)
+      }
+
+    &lt;/script&gt;
+    </code>
+  </pre>
 
   <p>
     Reload the page and add some to-dos. Then, reload the page again and the to-dos should automatically appear after you login. These to-dos have been successfully persisted in the end-to-end encrypted Userbase database.
