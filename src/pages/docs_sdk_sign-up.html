@@ -4,7 +4,7 @@
   <p><span class="font-semibold">SignUp</span> lets you create user accounts for your web app. This API will return a promise that gets resolved once the user account has been created.</p>
 
   <pre>
-    <code class="language-javascript">userbase.signUp(username, password)
+    <code class="language-javascript">userbase.signUp(username, password, email, profile)
   .then((user) => {
     // user account created
   })
@@ -20,6 +20,12 @@
     <li>
       <span class="field">password</span> [string | Len: 6-1000] - The password for the account to be created.
     </li>
+    <li>
+      <span class="field">email</span> [string | optional] - The email for the account to be created.
+    </li>
+    <li>
+      <span class="field">profile</span> [object | optional | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - The profile for the account to be created. Stored unencrypted. All keys and values must be strings.
+    </li>
   </ul>
 
   <h3 id="result">Result</h3>
@@ -30,6 +36,8 @@
       <ul>
         <li><span class="field">username</span> [string] - The user's username.</li>
         <li><span class="field">key</span> [string] - The user's encryption key.</li>
+        <li><span class="field">email</span> [string] - The user's email.</li>
+        <li><span class="field">profile</span> [object] - The user's profile.</li>
       </ul>
     </li>
   </ul>
@@ -45,6 +53,14 @@
     <li>PasswordTooShort</li>
     <li>PasswordTooLong</li>
     <li>PasswordMustBeString</li>
+    <li>EmailNotValid</li>
+    <li>ProfileMustBeObject</li>
+    <li>ProfileCannotBeEmpty</li>
+    <li>ProfileHasTooManyKeys</li>
+    <li>ProfileKeyMustBeString</li>
+    <li>ProfileKeyTooLong</li>
+    <li>ProfileValueMustBeString</li>
+    <li>ProfileValueTooLong</li>
     <li>AppIdNotSet</li>
     <li>AppIdNotValid</li>
     <li>UserAlreadySignedIn</li>
