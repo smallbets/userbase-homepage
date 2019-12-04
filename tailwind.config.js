@@ -14,6 +14,12 @@ module.exports = {
       fontFamily: {
         'logo': 'Tahoma, Geneva, Verdana, sans-serif'
       }
+    },
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      latin: 'lower-latin'
     }
   },
   variants: {},
