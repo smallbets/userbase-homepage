@@ -84,12 +84,12 @@ h4 {
   }
 }
 
-ul {
+ul, ol {
   @apply list-disc mb-4 ml-8;
 }
 
 .section {
-  @apply my-10 text-left tracking-tight;
+  @apply my-10 text-left tracking-tight font-light text-lg;
 }
 
 .mc-status:focus {
@@ -128,8 +128,8 @@ pre[class*="language-"]:before, pre[class*="language-"]:after {
 }
 
 pre[class*="language-"], :not(pre) > code[class*="language-"], pre[class*="language-"] {
-  line-height: 24px;
-  font-size: 16px;
+  line-height: 21px;
+  font-size: 14px;
 }
 
 code[class*="language"] {
