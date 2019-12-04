@@ -1,10 +1,10 @@
 <div class="section">
-  <h2><a href="/docs/#sdk">SDK</a> : SignIn</h2>
+  <h2><a href="/docs/#sdk">SDK</a> : signIn</h2>
 
-  <p><span class="font-semibold">SignIn</span> lets your users log into your web app. This API will return a promise that gets resolved once the user has been logged in.</p>
+  <p><span class="font-semibold">signIn</span> lets your users log into your web app. This API will return a promise that gets resolved once the user has been logged in.</p>
 
   <pre>
-    <code class="language-javascript">userbase.signIn(username, password)
+    <code class="language-javascript">userbase.signIn(username, password, rememberMe = false)
   .then((user) => {
     // user logged in
   })
@@ -19,6 +19,9 @@
     </li>
     <li>
       <span class="field">password</span> [string | Len: 6-1000] - The password for the account to be created.
+    </li>
+    <li>
+      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and key will be stored in local storage and the user will automatically sign back in when <a href="/docs/sdk/init" class="font-semibold">init</a> is called. Defaults to false.
     </li>
   </ul>
 

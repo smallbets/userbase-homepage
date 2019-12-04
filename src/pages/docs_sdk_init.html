@@ -1,0 +1,74 @@
+<div class="section">
+  <h2><a href="/docs/#sdk">SDK</a> : init</h2>
+
+  <p><span class="font-semibold">init</span> lets you initialize your Userbase client and automatically log in a user using the last used session.</p>
+
+  <pre>
+    <code class="language-javascript">userbase.init({ appId, endpoint, keyNotFoundHandler })
+      .then((session) => {
+        // Userbase client initialized successfully
+        
+        if (session.user) {
+          // there is a valid active session
+          console.log(session.user.username)
+        }
+      })
+      .catch((e) => console.error(e))
+    </code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">settings</span> [object] - Contains your configuration settings.
+      <ul>
+        <li><span class="field">appId</span> [string] - Your App ID you received when you created a Userbase application.</li>
+        <li><span class="field">endpoint</span> [string | optional] - If you're hosting your own Userbase server, you can provide its endpoint here.</li>
+        <li>
+          <span class="field">keyNotFoundHandler</span> [function | optional] - If a user signs in and the Userbase client can't recover the user's key, by default
+          Userbase displays instructions the user can follow to recover their key. This default behavior can be overridden with this function.</li>
+          <ul>
+              <li><span class="field">username</span> [string] - The username Userbase cannot recover the key for.</li>
+              <li><span class="field">deviceId</span> [string] - This device's unique ID used when requesting the key from another signed in device.</li>
+          </ul>
+
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="result">Result</h3>
+
+  <ul>
+    <li>
+      <span class="field">session</span> [object] - Contains information about the last used session.
+      <ul>
+        <li>
+          <span class="field">user</span> [object] - If set, this contains information about the logged in user.
+          <ul>
+            <li><span class="field">username</span> [string] - The user's username.</li>
+            <li><span class="field">key</span> [string] - The user's encryption key.</li>
+            <li><span class="field">email</span> [string] - The user's email.</li>
+            <li><span class="field">profile</span> [object] - The user's profile.</li>
+          </ul>
+        </li>
+        <li><span class="field">lastUsedUsername</span> [string] - If set, this is the username of the last user that was logged in.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="errors">Errors</h3>
+
+  <ul>
+    <li>AppIdMustBeString</li>
+    <li>AppIdCannotBeBlank</li>
+    <li>AppIdNotValid</li>
+    <li>KeyNotFoundHandlerMustBeFunction</li>
+    <li>UserAlreadySignedIn</li>
+    <li>UserCanceledSignIn</li>
+    <li>ServiceUnavailable</li>
+  </ul>
+
+</div>
+
+<hr>
