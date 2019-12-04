@@ -42,7 +42,7 @@
 
   <pre>
     <code class="language-javascript"><!--
-    userbase.configure({ appId: 'a43ae910-fc89-43fe-a7a3-a11a53b49325' })
+    userbase.init({ appId: 'a43ae910-fc89-43fe-a7a3-a11a53b49325' })
     --></code>
   </pre>
 
@@ -57,29 +57,33 @@
 
   <p>Userbase is accessible directly from the browser through a very simple JavaScript SDK. The following is the complete set of APIs that let you create user accounts, handle logins, and persist user data.</p>
 
-  <h3 id="sdk-configure">Configure</h3>
-  <p>Use this API to configure your Userbase client.</p>
+  <h3 id="sdk-initialize">Initialize</h3>
+  <p>Use this API to initialize your Userbase client and resume a session when a user returns to your web app.</p>
   <ul>
-    <li><a href="/docs/sdk/configure" class="font-semibold">Configure</a></li>
+    <li><a href="/docs/sdk/init" class="font-semibold">init</a></li>
   </ul>
 
   <h3 id="sdk-users">Users</h3>
-  <p>Use these APIs to create user accounts, handle logins and logouts, and resume sessions when a user returns to your web app.</p>
+  <p>Use these APIs to create/update/delete user accounts, handle logins and logouts, and handle a user forgetting their password.</p>
   <ul>
-    <li><a href="/docs/sdk/sign-up" class="font-semibold">SignUp</a></li>
-    <li><a href="/docs/sdk/sign-in" class="font-semibold">SignIn</a></li>
-    <li><a href="/docs/sdk/sign-in-with-session" class="font-semibold">SignInWithSession</a></li>
-    <li><a href="/docs/sdk/sign-out" class="font-semibold">SignOut</a></li>
+    <li><a href="/docs/sdk/sign-up" class="font-semibold">signUp</a></li>
+    <li><a href="/docs/sdk/sign-in" class="font-semibold">signIn</a></li>
+    <li><a href="/docs/sdk/sign-out" class="font-semibold">signOut</a></li>
+    <li><a href="/docs/sdk/get-last-used-username" class="font-semibold">getLastUsedUsername</a></li>
+    <li><a href="/docs/sdk/import-key" class="font-semibold">importKey</a></li>
+    <li><a href="/docs/sdk/forgot-password" class="font-semibold">forgotPassword</a></li>
+    <li><a href="/docs/sdk/update-user" class="font-semibold">updateUser</a></li>
+    <li><a href="/docs/sdk/delete-user" class="font-semibold">deleteUser</a></li>
   </ul>
 
   <h3 id="sdk-data">Data</h3>
   <p>Use these APIs to store and retrieve user data. All data handled by these APIs is highly-durable, immediately consistent, and end-to-end encrypted.</p>
   <ul>
-    <li><a href="/docs/sdk/open-database" class="font-semibold">OpenDatabase</a></li>
-    <li><a href="/docs/sdk/insert" class="font-semibold">Insert</a></li>
-    <li><a href="/docs/sdk/update" class="font-semibold">Update</a></li>
-    <li><a href="/docs/sdk/delete" class="font-semibold">Delete</a></li>
-    <li><a href="/docs/sdk/transaction" class="font-semibold">Transaction</a></li>
+    <li><a href="/docs/sdk/open-database" class="font-semibold">openDatabase</a></li>
+    <li><a href="/docs/sdk/insert-item" class="font-semibold">insertItem</a></li>
+    <li><a href="/docs/sdk/update-item" class="font-semibold">updateItem</a></li>
+    <li><a href="/docs/sdk/delete-item" class="font-semibold">deleteItem</a></li>
+    <li><a href="/docs/sdk/transaction" class="font-semibold">transaction</a></li>
   </ul>
 </div>
 

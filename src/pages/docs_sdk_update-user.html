@@ -1,0 +1,61 @@
+<div class="section">
+  <h2><a href="/docs/#sdk">SDK</a> : updateUser</h2>
+
+  <p><span class="font-semibold">updateUser</span> lets you update a user's account. A user must be signed in first. This API will return a promise that gets resolved once the user account has been updated.</p>
+
+  <pre>
+    <code class="language-javascript">userbase.updateUser({ username, password, email, profile })
+  .then(() => {
+    // user account updated
+  })
+  .catch((e) => console.error(e))</code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">username</span> [string | Len: 1-50] - The new username for the account.
+    </li>
+    <li>
+      <span class="field">password</span> [string | Len: 6-1000] - The new password for the account.
+    </li>
+    <li>
+      <span class="field">email</span> [string | null | undefined | false] - The new email for the account. If explicitly set to a falsey value, deletes the user's email.
+    </li>
+    <li>
+      <span class="field">profile</span> [object | null | undefined | false | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - The new profile for the account. Stored unencrypted. All keys and values must be strings. If explicitly set to a falsey value, deletes the user's profile.
+    </li>  
+  </ul>
+
+  <h3 id="errors">Errors</h3>
+
+  <ul>
+    <li>UserMustBeObject</li>
+    <li>UserMissingExpectedProperties</li>
+    <li>UsernameAlreadyExists</li>
+    <li>UsernameMustBeString</li>
+    <li>UsernameCannotBeBlank</li>
+    <li>UsernameTooLong</li>
+    <li>PasswordMustBeString</li>
+    <li>PasswordCannotBeBlank</li>
+    <li>PasswordTooShort</li>
+    <li>PasswordTooLong</li>
+    <li>EmailNotValid</li>
+    <li>ProfileMustBeObject</li>
+    <li>ProfileCannotBeEmpty</li>
+    <li>ProfileHasTooManyKeys</li>
+    <li>ProfileKeyMustBeString</li>
+    <li>ProfileKeyTooLong</li>
+    <li>ProfileValueMustBeString</li>
+    <li>ProfileValueTooLong</li>
+    <li>AppIdNotSet</li>
+    <li>AppIdNotValid</li>
+    <li>UserNotFound</li>
+    <li>UserNotSignedIn</li>
+    <li>ServiceUnavailable</li>
+  </ul>
+
+</div>
+
+<hr>
