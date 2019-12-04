@@ -38,7 +38,7 @@
   </pre>
 
   <h3>Set the Application ID</h3>
-  <p>From your developer account, create a new App and get the Application ID. Then, you just need to configure the Userbase SDK to use it:</p>
+  <p>From your developer account, create a new App and get the Application ID. Then, you just need to initialize the Userbase SDK to use it:</p>
 
   <pre>
     <code class="language-javascript"><!--
@@ -165,7 +165,7 @@
 
   <p>The Userbase SDK will now be accessible via the <code class="language-javascript">userbase</code> variable. This will be our only dependency.</p>
 
-  <h3>Configuring the SDK</h3>
+  <h3>Initializing the SDK</h3>
 
   <p>
     Before doing anything with the Userbase SDK, we need to let it know our App ID.
@@ -177,7 +177,7 @@
     &#x3C;body&#x3E;
       &#x3C;!-- application code --&#x3E;
       &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
-        userbase.configure({ appId: 'YOUR_APP_ID' })
+        userbase.init({ appId: 'YOUR_APP_ID' })
       &#x3C;/script&#x3E;
     &#x3C;/body&#x3E;
     &#x3C;/html&#x3E;
@@ -221,7 +221,7 @@
       <code class="language-markup">
       &lt;!-- application code --&gt;
       &lt;script type=&quot;text/javascript&quot;&gt;
-        userbase.configure({ appId: 'YOUR_APP_ID' })
+        userbase.init({ appId: 'YOUR_APP_ID' })
 
         function handleSignUp(e) {
           e.preventDefault()
@@ -296,7 +296,7 @@
     <code class="language-markup">
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
-      userbase.configure({ appId: 'YOUR_APP_ID' })
+      userbase.init({ appId: 'YOUR_APP_ID' })
 
       function handleLogin(e) {
         e.preventDefault()
@@ -382,7 +382,7 @@
 
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
-      userbase.configure({ appId: 'YOUR_APP_ID' })
+      userbase.init({ appId: 'YOUR_APP_ID' })
 
     …
 
@@ -423,11 +423,12 @@
     <code class="language-javascript">handleLogin</code> to call this function instead of showing an alert:
   </p>
 
-  <pre data-line="7">
+  <pre data-line="8">
     <code class="language-javascript">
     function handleLogin(e) {
       e.preventDefault()
 
+      const username = document.getElementById(&#x27;login-username&#x27;).value
       const password = document.getElementById('login-password').value
 
       userbase.signIn(username, password)
@@ -604,7 +605,7 @@
 
         const todo = document.getElementById('add-todo').value
 
-        userbase.insert('todos', { 'todo': todo })
+        userbase.insertItem('todos', { 'todo': todo })
           .then(() =&gt; document.getElementById('add-todo').value = '')
           .catch((e) =&gt; document.getElementById('add-todo-error').innerHTML = e)
       }
@@ -622,7 +623,7 @@
 
   <p>
     In <code class="language-javascript">addTodoHandler</code> we first call <code class="language-javascript">preventDefault()</code> to stop the default form
-    behavior, pull the to-do text from the input, and then call <code class="language-javascript">userbase.insert</code>
+    behavior, pull the to-do text from the input, and then call <code class="language-javascript">userbase.insertItem</code>
     with the database name and the object we want the persist. This
     will return a Promise that resolves when the data is successfully persisted to
     the database.
@@ -678,7 +679,7 @@
       todoBox.checked = items[i].item.complete ? true : false
       todoBox.onclick = (e) => {
         e.preventDefault()
-        userbase.update('todos', { 
+        userbase.updateItem('todos', { 
           'todo': items[i].item.todo, 
           'complete': !items[i].item.complete 
         }, items[i].itemId)
@@ -718,7 +719,7 @@
       todoDelete.innerHTML = 'X'
       todoDelete.style.display = 'inline-block'
       todoDelete.onclick = () => {
-        userbase.delete('todos', items[i].itemId)
+        userbase.deleteItem('todos', items[i].itemId)
           .catch((e) => document.getElementById('add-todo-error').innerHTML = e)
       }
 
@@ -836,13 +837,48 @@
     </code>
   </pre>
 
-  <p>In order to automatically resume a session if one is available, we need to add the following to our application code:</p>
+  <p>In order to store a session in the browser, we need to first tell the SDK to remember the user on signIn:</p>
+    
+  <pre data-line="10, 12">
+    <code class="language-markup">
+    &#x3C;!-- application code --&#x3E;
+    &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+      userbase.init({ appId: 'YOUR_APP_ID' })
 
-  <pre data-line="12-17">
+      function handleLogin(e) {
+        e.preventDefault()
+
+        const username = document.getElementById(&#x27;login-username&#x27;).value
+        const password = document.getElementById(&#x27;login-password&#x27;).value
+        const rememberMe = true
+
+        userbase.signIn(username, password, rememberMe)
+          .then((user) => showTodos(user.username))
+          .catch((e) => document.getElementById('login-error').innerHTML = e)
+      }
+
+      function handleSignUp(e) {
+        e.preventDefault()
+
+    …
+
+    &lt;/script&gt;
+
+    </code>
+  </pre>  
+    
+  <p>Then, we add the following to our application code:</p>
+
+  <pre data-line="5-7, 17">
     <code class="language-markup">
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
     
+      userbase.init({ appId: 'YOUR_APP_ID' })
+        .then((session) => session.user ? showTodos(session.user.username) : showAuth())
+        .catch(() => showAuth())
+        .finally(() => document.getElementById('loading-view').style.display = 'none')
+
     …
     
       document.getElementById('login-form').addEventListener('submit', handleLogin)
@@ -853,11 +889,6 @@
       document.getElementById('todo-view').style.display = 'none'
       document.getElementById('auth-view').style.display = 'none'
 
-      userbase.signInWithSession()
-        .then((session) => session.user ? showTodos(session.user.username) : showAuth())
-        .catch(() => showAuth())
-        .finally(() => document.getElementById('loading-view').style.display = 'none')
-
     &lt;/script&gt;
     </code>
   </pre>
@@ -867,16 +898,16 @@
   </p>
 
   <p>
-    Then, we make a call to <code class="language-javascript">userbase.signInWithSession</code> to attempt to sign in the user
+    Then, we make a call to <code class="language-javascript">userbase.init</code> which attempts to sign in the user
     using an existing session as soon as our app loads.
   </p>
 
   <p>
-    The <code class="language-javascript">userbase.signInWithSession</code> function returns a Promise that resolves when the SDK has determined if it can reuse the previous session. If so, the user gets automatically logged in, and the <code class="language-javascript">session.user</code> object gets set. If there was no previous session, or the session cannot be resumed, the <code class="language-javascript">session.user</code> object will not be set.
+    The <code class="language-javascript">userbase.init</code> function returns a Promise that resolves when the SDK has determined if it can reuse the previous session. If so, the user gets automatically logged in, and the <code class="language-javascript">session.user</code> object gets set. If there was no previous session, or the session cannot be resumed, the <code class="language-javascript">session.user</code> object will not be set.
   </p>
 
   <p>
-    If <code class="language-javascript">userbase.signInWithSession</code> fails, we'll just send the user
+    If <code class="language-javascript">userbase.init</code> fails, we'll just send the user
     to the sign in page regardless of the reason.
   </p>
 
@@ -904,7 +935,7 @@
   <h2 id=>FAQ</h2>
 
   <h3 id="faq-1">What data gets end-to-end encrypted?</h3>
-  <p>All the data stored using the <a href="/docs/sdk/insert" class="font-semibold">Insert</a>, <a href="/docs/sdk/update" class="font-semibold">Update</a>, <a href="/docs/sdk/delete" class="font-semibold">Delete</a>, or <a href="/docs/sdk/transaction" class="font-semibold">Transaction</a> APIs is end-to-end encrypted, using keys that never leave the users' devices. Both the stored item and the item ID are end-to-end encrypted.</p>
+  <p>All the data stored using the <a href="/docs/sdk/insert-item" class="font-semibold">Insert</a>, <a href="/docs/sdk/update-item" class="font-semibold">Update</a>, <a href="/docs/sdk/delete-item" class="font-semibold">Delete</a>, or <a href="/docs/sdk/transaction" class="font-semibold">Transaction</a> APIs is end-to-end encrypted, using keys that never leave the users' devices. Both the stored item and the item ID are end-to-end encrypted.</p>
   <p>Other user data and metadata, such as usernames, the timestamp when users signed up, and logs about user activity, are encrypted on the wire and at rest, but are not end-to-end encrypted.</p>
 
   <h3 id="faq-2">How does Userbase help with GDPR compliance?</h3>
