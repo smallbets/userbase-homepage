@@ -13,7 +13,7 @@ body {
 }
 
 a {
-  @apply underline;
+  @apply underline font-semibold;
 }
 
 a:hover {
@@ -42,6 +42,10 @@ a.menu-item {
 
 p {
   @apply mb-4;
+}
+
+strong {
+  @apply font-semibold;
 }
 
 h1 {
