@@ -1,3 +1,18 @@
 [build]
   publish = "dist"
   command = "npm run build"
+
+[[redirects]]
+  from = "https://userbase.dev/*"
+  to = "https://userbase.com/:splat"
+  status = 301
+
+[[redirects]]
+  from = "https://www.userbase.dev/*"
+  to = "https://userbase.com/:splat"
+  status = 301
+
+[[redirects]]
+  from = "https://userbase.netlify.com/*"
+  to = "https://userbase.com/:splat"
+  status = 301
