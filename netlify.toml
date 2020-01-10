@@ -6,13 +6,17 @@
   from = "https://userbase.dev/*"
   to = "https://userbase.com/:splat"
   status = 301
+  force = true
 
 [[redirects]]
   from = "https://www.userbase.dev/*"
   to = "https://userbase.com/:splat"
   status = 301
+  force = true
 
 [[redirects]]
   from = "https://userbase.netlify.com/*"
   to = "https://userbase.com/:splat"
   status = 301
+  force = true
+  
