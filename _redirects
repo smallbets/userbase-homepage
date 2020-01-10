@@ -1,0 +1,3 @@
+https://userbase.dev/* https://userbase.com/:splat 301!
+https://www.userbase.com/* https://userbase.com/:splat 301!
+https://userbase.netlify.com/* https://userbase.com/:splat 301!
