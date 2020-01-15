@@ -1,6 +1,6 @@
 # Userbase Homepage
 
-This is what generates the https://userbase.com website.
+This is what generates the [userbase.com](https://userbase.com) website.
 
 If you want to develop websites like it was 1997, feel free to reuse this project for your website.
 
