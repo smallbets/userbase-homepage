@@ -1,0 +1,37 @@
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : Getting started</h2>
+
+  <h3>Create an admin account</h3>
+  <p>First, you need to <a href="/mailing-list/">create a free Userbase admin account</a>. No credit card required.</p>
+
+  <h3>Install the SDK</h3>
+  <p>Then, you need to include the Userbase SDK into your web app.</p>
+  <p>You can either include the SDK with a <code class="language-markup">&lt;script&gt;</code> tag:</p>
+
+  <pre>
+    <code class="language-markup"><!--
+    <script type="text/javascript" src="https://sdk.userbase.com/userbase-latest.js"></script>
+    --></code>
+  </pre>
+
+  <p>Or else, you can include the SDK into your build pipeline:</p>
+
+  <pre>
+    <code class="language-bash">
+    npm --install --save userbase-js
+    </code>
+  </pre>
+
+  <h3>Set the Application ID</h3>
+  <p>In your admin account, you will find a Trial app. Get its Application ID, and initialize the Userbase SDK with it:</p>
+
+  <pre>
+    <code class="language-javascript"><!--
+    userbase.init({ appId: 'a43ae910-fc89-43fe-a7a3-a11a53b49325' })
+    --></code>
+  </pre>
+
+  <p>And you're all set.</p>
+</div>
+
+<hr>

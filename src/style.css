@@ -53,7 +53,7 @@ h1 {
 }
 
 h2 {
-  @apply text-center text-2xl font-black leading-tight tracking-tight mb-4;
+  @apply text-center text-3xl font-black leading-tight tracking-tight mb-4;
 }
 
 h3 {
@@ -70,7 +70,7 @@ h4 {
   }
 
   h2 {
-    @apply text-4xl;
+    @apply text-5xl;
   }
 
   h3 {
@@ -79,12 +79,6 @@ h4 {
 
   h4 {
     @apply text-2xl;
-  }
-}
-
-@screen lg {
-  h2 {
-    @apply text-5xl;
   }
 }
 
