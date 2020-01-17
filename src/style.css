@@ -87,7 +87,13 @@ ul, ol {
 }
 
 .section {
-  @apply my-10 text-left tracking-tight font-light text-lg;
+  @apply mt-2 mb-10 text-left tracking-tight font-light text-lg;
+}
+
+@screen sm {
+  .section {
+    @apply mt-10
+  }
 }
 
 .mc-status:focus {
