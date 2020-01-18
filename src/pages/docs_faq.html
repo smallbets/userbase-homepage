@@ -4,28 +4,28 @@
   <h3 id="faq-1">What data does Userbase end-to-end encrypt?</h3>
   <p>All the data stored using the <a href="/docs/sdk/insert-item">insertItem</a>, <a href="/docs/sdk/update-item">updateItem</a>, <a href="/docs/sdk/delete-item">deleteItem</a>, or <a href="/docs/sdk/build-transaction">buildTransaction</a> APIs is end-to-end encrypted. Both the stored item and the item ID are end-to-end encrypted. Other user data and metadata, such as usernames, timestamps, and user activity logs, are encrypted on the wire and at rest, but are not end-to-end encrypted.</p>
 
-  <h3 id="faq-1">Where is the user's encryption key stored?</h3>
+  <h3 id="faq-2">Where is the user's encryption key stored?</h3>
   <p>The user's encryption key gets generated when the user creates an account, and this key gets encrypted itself with another key derived from the user's password. The encrypted key gets stored on the Userbase server, and the user retrieves it back after every successful login. The Userbase server never sees the user's password.</p>
 
-  <h3 id="faq-4">What happens if a user forgets the password?</h3>
+  <h3 id="faq-3">What happens if a user forgets the password?</h3>
   <p>Users should always keep a backup copy of their password in a safe place, such as a password manager. Since the encryption key needs to be decrypted by the user's password, it is not possible to recover an account if the password gets lost.</p>
 
-  <h3 id="faq-7">What can I see about my users?</h3>
+  <h3 id="faq-4">What can I see about my users?</h3>
   <p>You can see the list of usernames, the time the user accounts were created, and any other information you collect during user sign up, such as users' email, name, address, etc.</p>
 
-  <h3 id="faq-8">What can I do with my users?</h3>
+  <h3 id="faq-5">What can I do with my users?</h3>
   <p>From the Admin panel you can see all your users, suspend user accounts, and permanently close user accounts.</p>
 
-  <h3 id="faq-8">How can I close my Userbase Admin account?</h3>
+  <h3 id="faq-6">How can I close my Userbase Admin account?</h3>
   <p>You can close your Userbase Admin account from the Admin panel. Once you close your Userbase Admin account, all your apps will stop working. If you closed your account in error, please <a href="/contact/">get in touch</a> to check if we can still recover it.</p>
 
-  <h3 id="faq-8">What happens if I exceed the 1&nbsp;GB storage limit?</h3>
+  <h3 id="faq-7">What happens if I exceed the 1&nbsp;GB storage limit?</h3>
   <p>At the moment, Userbase is not metering data storage, and nothing will happen if you exceed it. In the future, Userbase will have other pricing plans that allow higher storage volumes. If you happen to be exceeding the limit when these new pricing plans become available, we will ask you to upgrade to the new plans.</p>
 
-  <h3 id="faq-9">How can I require users to pay to access my web app?</h3>
+  <h3 id="faq-8">How can I require users to pay to access my web app?</h3>
   <p>At the moment, you will have to handle payments yourself and hide the web app from non-paying users. In the future, we will support payments directly from the Userbase SDK as part of a new pricing plan.</p>
 
-  <h3 id="faq-2">How does Userbase help me with GDPR compliance?</h3>
+  <h3 id="faq-9">How does Userbase help me with GDPR compliance?</h3>
   <p>Userbase helps you implement the necessary GDPR controls, avoid personal data misuse, and give your users control over their data. If you need assistance with GDPR compliance, please <a href="/contact/">get in touch</a>.</p>
 
   <h3 id="faq-10">How durable is the data stored in Userbase?</h3>

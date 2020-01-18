@@ -1,5 +1,5 @@
 <div class="section">
-  <h2><a href="/docs/">Docs</a> : Tutorial</h2>
+  <h2><a href="/docs/">Docs</a> : Intro tutorial</h2>
 
   <p>
     In this tutorial we will build a very basic to-do web app. Even if what you're building has nothing to do with to-dos, the techniques we'll cover here can be applied to many other kinds of web apps.
@@ -828,55 +828,7 @@
     least, you'll want to add some styling.
   </p>
 
-  <p>
-    We are working on a collection of new tutorials and sample applications that will
-    show you how to do all these things with Userbase, and more. You can <a href="/mailing-list">subscribe to our mailing list</a> to get updates like these in your inbox.
-  </p>
-
-  <p>If you have any questions, or there's anything we can do to help you with your web app, please get in touch via <a href="mailto:daniel@encrypted.dev">email</a> or <a href="https://twitter.com/UserbaseHQ">Twitter</a>. Thank you!</p>
-</div>
-
-<hr>
-
-<div class="section">
-  <a class="anchor" id="faq"></a>
-  <h2 id=>FAQ</h2>
-
-  <h3 id="faq-1">What data gets end-to-end encrypted?</h3>
-  <p>All the data stored using the <a href="/docs/sdk/insert-item">Insert</a>, <a href="/docs/sdk/update-item">Update</a>, <a href="/docs/sdk/delete-item">Delete</a>, or <a href="/docs/sdk/transaction">Transaction</a> APIs is end-to-end encrypted, using keys that never leave the users' devices. Both the stored item and the item ID are end-to-end encrypted.</p>
-  <p>Other user data and metadata, such as usernames, the timestamp when users signed up, and logs about user activity, are encrypted on the wire and at rest, but are not end-to-end encrypted.</p>
-
-  <h3 id="faq-2">How does Userbase help with GDPR compliance?</h3>
-  <p>Userbase will help you implement the necessary GDPR controls, avoid personal data misuse, and give your users control over their data. More specific information about GDPR will be available soon.</p>
-
-  <h3 id="faq-3">What happens when users login from a new device or browser?</h3>
-  <p>When a user creates a new account, a key gets automatically generated in the user's browser. The user will need this key to encrypt and decrypt data, as well as to login to the account. When the key gets created, it gets saved in the browser's local storage.</p>
-  <p>When a user tries to login from a new device or browser, the user can automatically have the new device receive the key by logging in from the original device and accepting the key transfer request. If that's not possible, the user can also input the key directly while logging in.</p>
-
-  <h3 id="faq-4">What happens if a user loses the key?</h3>
-  <p>Users should always keep a backup copy of their key in a safe place, such as a password manager. If a user loses access to all devices that were used to access the account, the backup key will be necessary to recover the account. The key is required to log into the user account and to decrypt user data.</p>
-
-  <h3 id="faq-5">How can users find their key?</h3>
-  <p>The key is a simple string that is available from the Userbase SDK. Your web app should inform users to make a backup of their key when they sign up, and should provide a way to display the key when a user is logged in.</p>
-
-  <h3 id="faq-6">What happens when users forget their password?</h3>
-  <p>The key and the password are unrelated, so unlike keys, passwords can be reset if forgotten. If you let users specify an email address when they sign up, users will be able to reset their passwords on their own, through a typical password reset workflow via email. If you choose to not collect emails, then you can reset a user's password manually from the Admin panel.</p>
-
-  <h3 id="faq-7">What can I see about my users?</h3>
-  <p>You will be able to see the list of usernames, the time the accounts were created, and any other information you collect during signup, such as users' email, full name, address, etc.</p>
-
-  <h3 id="faq-8">What can I do with my users?</h3>
-  <p>From the Admin panel, you will be able to see all your users, reset user passwords, suspend user accounts, and permanently close user accounts.</p>
-
-  <h3 id="faq-9">How can I require users to pay to access my web app?</h3>
-  <p>Userbase will have an API (coming soon) to let you update user attributes from a server-side endpoint or a cloud function. This will allow you to update a user's payment status in Userbase. Then, your web app can retrieve this information and control its functionality according to the user's payment status.</p>
-
-  <h3 id="faq-10">How durable is the data stored in Userbase?</h3>
-  <p>Userbase only acknowledges data modification requests after the data has been successfully persisted to <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a>. This is a highly-durable service that synchronously replicates data to at least 3 hosts in isolated geographical zones before acknowledging a write operation. Userbase has continuous backups enabled on all its DynamoDB tables with a 35 day recovery window.</p>
-
-  <h3 id="faq-11">What services does Userbase depend on?</h3>
-  <p>Userbase runs entirely in <a href="https://aws.amazon.com/">Amazon Web Services</a>, in the us-east-1 region. The availability of the Userbase service depends on <a href="https://aws.amazon.com/ec2/">Amazon EC2</a>, <a href="https://aws.amazon.com/s3/">Amazon S3</a>, and <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a>.</p>
-
+  <p>If you have any questions, or there's anything we can do to help you with your web app, please <a href="/contact/">get in touch</a>. Thank you!</p>
 </div>
 
 <hr>
