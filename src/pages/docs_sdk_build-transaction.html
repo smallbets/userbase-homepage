@@ -6,9 +6,9 @@
   <pre>
     <code class="language-javascript">
     const operations = [
-      { command: 'Update', item: { todo: 'Item A' }, id: '0001' },
-      { command: 'Insert', item: { todo: 'Item B' }, id: '0002' },
-      { command: 'Delete', item: { todo: 'Item C' }, id: '0003' }
+      { command: 'Update', item: { todo: 'Item A' }, itemId: '0001' },
+      { command: 'Insert', item: { todo: 'Item B' }, itemId: '0002' },
+      { command: 'Delete', item: { todo: 'Item C' }, itemId: '0003' }
     ]
 
     userbase.buildTransaction({ databaseName, operations })
