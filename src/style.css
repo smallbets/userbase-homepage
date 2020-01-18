@@ -48,6 +48,10 @@ strong {
   @apply font-semibold;
 }
 
+h2>a {
+  @apply font-black;
+}
+
 h1 {
   @apply text-center text-2xl font-extrabold leading-tight tracking-tight;
 }
