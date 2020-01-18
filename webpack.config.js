@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const SocialTags = require('social-tags-webpack-plugin')
 const OpenBrowserPlugin = require('opn-browser-webpack-plugin')
 
 module.exports = (env, argv) => {
@@ -84,6 +85,27 @@ module.exports = (env, argv) => {
       }),
       ...pages,
       new FaviconsWebpackPlugin('./src/img/icon.png'),
+      new SocialTags({
+        appUrl: 'https://userbase.com/',
+        facebook: {
+          'og:url': "https://userbase.com",
+          'og:type': "website",
+          'og:title': "Userbase",
+          'og:image': './src/img/icon.png',
+          'og:description': "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
+          'og:site_name': "Userbase",
+          'og:locale': "en_US"
+        },
+        twitter: {
+          "twitter:card": "summary",
+          "twitter:site": "@UserbaseHQ",
+          "twitter:creator": "@dvassallo",
+          "twitter:url": "https://userbase.com",
+          "twitter:title": "Userbase",
+          "twitter:description": "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
+          "twitter:image": './src/img/icon.png'
+        },
+      }),
       new HtmlBeautifyPlugin({
         config: {
           html: {
