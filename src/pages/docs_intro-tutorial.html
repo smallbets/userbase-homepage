@@ -66,7 +66,7 @@
     <head>
       <meta charset="UTF-8">
       <title>Ugliest To-Do App</title>
-      <script type="text/javascript" src="https://sdk.userbase.dev/userbase-0.0.7.js"></script>
+      <script type="text/javascript" src="https://sdk.userbase.com/1/userbase.js"></script>
     </head>
     --></code>
   </pre>
@@ -137,7 +137,7 @@
           const username = document.getElementById('signup-username').value
           const password = document.getElementById('signup-password').value
   
-          userbase.signUp(username, password)
+          userbase.signUp({ username, password })
             .then((user) =&gt; alert('You signed up!'))
             .catch((e) =&gt; document.getElementById('signup-error').innerHTML = e)
         }
@@ -159,7 +159,7 @@
 
   <p>
     Next, we get the values of the username and password inputs and call
-    <code class="language-javascript">userbase.signUp(username, password)</code>. This will request a new account to be created with the Userbase service, and returns a Promise that resolves with a <code class="language-javascript">user</code> object.
+    <code class="language-javascript">userbase.signUp({ username, password })</code>. This will request a new account to be created with the Userbase service, and returns a Promise that resolves with a <code class="language-javascript">user</code> object.
   </p>
 
   <p>
@@ -212,7 +212,7 @@
         const username = document.getElementById(&#x27;login-username&#x27;).value
         const password = document.getElementById(&#x27;login-password&#x27;).value
 
-        userbase.signIn(username, password)
+        userbase.signIn({ username, password })
           .then((user) =&#x3E; alert(&#x27;You signed in!&#x27;))
           .catch((e) =&#x3E; document.getElementById(&#x27;login-error&#x27;).innerHTML = e)
       }
@@ -247,7 +247,7 @@
   </pre>
 
   <p>
-    You'll notice that this looks very similar to the sign up code from before. The <code class="language-javascript">handleLogin</code> function prevents the default form behavior, extracts the input values from the DOM, and calls <code class="language-javascript">userbase.signIn(username, password)</code>. This will attempt to sign in the user with the Userbase service, handling a success with an alert and a failure by displaying the error.
+    You'll notice that this looks very similar to the sign up code from before. The <code class="language-javascript">handleLogin</code> function prevents the default form behavior, extracts the input values from the DOM, and calls <code class="language-javascript">userbase.signIn({ username, password })</code>. This will attempt to sign in the user with the Userbase service, handling a success with an alert and a failure by displaying the error.
   </p>
 
   <p>
@@ -339,7 +339,7 @@
       const username = document.getElementById(&#x27;login-username&#x27;).value
       const password = document.getElementById('login-password').value
 
-      userbase.signIn(username, password)
+      userbase.signIn({ username, password })
         .then((user) => showTodos(user.username))
         .catch((e) => document.getElementById('login-error').innerHTML = e)
     }
@@ -355,7 +355,7 @@
 
       const password = document.getElementById('signup-password').value
 
-      userbase.signUp(username, password)
+      userbase.signUp({ username, password })
         .then((user) => showTodos(user.username))
         .catch((e) => document.getElementById('signup-error').innerHTML = e)
     }
@@ -404,11 +404,11 @@
       document.getElementById('db-loading').style.display = 'block'
       document.getElementById('db-error').innerText = ''
 
-      userbase.openDatabase('todos', handleDatabaseChange)
+      userbase.openDatabase({ databaseName: 'todos', changeHandler })
         .catch((e) => document.getElementById('db-error').innerText = e)
     }
 
-    function handleDatabaseChange(items) {
+    function changeHandler(items) {
       document.getElementById('db-loading').style.display = 'none'
 
       const todosList = document.getElementById('todos')
@@ -426,11 +426,10 @@
   </pre>
 
   <p>
-    We changed <code class="language-javascript">showTodos</code> to make a call to <code class="language-javascript">userbase.openDatabase('todos',
-    handleDatabaseChange)</code>. The <code class="language-javascript">'todos'</code> parameter is the name of the database we want to open, and <code class="language-javascript">handleDatabaseChange</code> is a callback for receiving changes to data in the database. The Userbase service will attempt to open the user's database by the
+    We changed <code class="language-javascript">showTodos</code> to make a call to <code class="language-javascript">userbase.openDatabase({ databaseName: 'todos', changeHandler })</code>. The <code class="language-javascript">'todos'</code> parameter is the name of the database we want to open, and <code class="language-javascript">changeHandler</code> is a callback for receiving changes to data in the database. The Userbase service will attempt to open the user's database by the
     name of <code class="language-javascript">'todos'</code> (creating one if it doesn't already exist). After the <code class="language-javascript">'todos'</code>
     database is opened, our callback
-    function <code class="language-javascript">handleDatabaseChanges</code> will be called whenever data changes in the database. When the Promise is resolved, the database is ready for use and we hide the loading indicator.
+    function <code class="language-javascript">changeHandlers</code> will be called whenever data changes in the database. When the Promise is resolved, the database is ready for use and we hide the loading indicator.
   </p>
 
   <p>
@@ -444,12 +443,12 @@
 
   <p>
     If the database has items in it, we'll want to render those under our to-do list.
-    Let's implement that case in <code class="language-javascript">handleDatabaseChange</code>:
+    Let's implement that case in <code class="language-javascript">changeHandler</code>:
   </p>
 
   <pre data-line="9-24">
     <code class="language-javascript"><!--
-    function handleDatabaseChange(items) {
+    function changeHandler(items) {
       document.getElementById('db-loading').style.display = 'none'
 
       const todosList = document.getElementById('todos')
@@ -513,7 +512,7 @@
 
         const todo = document.getElementById('add-todo').value
 
-        userbase.insertItem('todos', { 'todo': todo })
+        userbase.insertItem({ databaseName: 'todos', item: { 'todo': todo }})
           .then(() =&gt; document.getElementById('add-todo').value = '')
           .catch((e) =&gt; document.getElementById('add-todo-error').innerHTML = e)
       }
@@ -559,7 +558,7 @@
         document.getElementById('db-loading').style.display = 'block'
         document.getElementById('db-error').innerText = ''
 
-        userbase.openDatabase('todos', handleDatabaseChange)
+        userbase.openDatabase({ 'todos', changeHandler })
           .catch((e) => document.getElementById('db-error').innerText = e)
       }
 
@@ -587,10 +586,10 @@
       todoBox.checked = items[i].item.complete ? true : false
       todoBox.onclick = (e) => {
         e.preventDefault()
-        userbase.updateItem('todos', { 
-          'todo': items[i].item.todo, 
-          'complete': !items[i].item.complete 
-        }, items[i].itemId)
+        userbase.updateItem({ databaseName: 'todos', itemId: items[i].itemId, item: {
+          'todo': items[i].item.todo,
+          'complete': !items[i].item.complete
+        }})
         .catch((e) => document.getElementById('add-todo-error').innerHTML = e)
       }
 
@@ -627,7 +626,7 @@
       todoDelete.innerHTML = 'X'
       todoDelete.style.display = 'inline-block'
       todoDelete.onclick = () => {
-        userbase.deleteItem('todos', items[i].itemId)
+        userbase.deleteItem({ databaseName: 'todos', itemId: items[i].itemId })
           .catch((e) => document.getElementById('add-todo-error').innerHTML = e)
       }
 
@@ -708,7 +707,7 @@
         document.getElementById('signup-error').innerText = ''
       }
 
-      function handleDatabaseChange(items) {
+      function changeHandler(items) {
         const todosList = document.getElementById('todos')
 
     …
@@ -747,7 +746,7 @@
 
   <p>In order to store a session in the browser, we need to first tell the SDK to remember the user on signIn:</p>
 
-  <pre data-line="10, 12">
+  <pre data-line="11">
     <code class="language-markup">
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
@@ -758,9 +757,8 @@
 
         const username = document.getElementById(&#x27;login-username&#x27;).value
         const password = document.getElementById(&#x27;login-password&#x27;).value
-        const rememberMe = true
 
-        userbase.signIn(username, password, rememberMe)
+        userbase.signIn({ username, password, rememberMe: true })
           .then((user) => showTodos(user.username))
           .catch((e) => document.getElementById('login-error').innerHTML = e)
       }
@@ -777,7 +775,7 @@
 
   <p>Then, we add the following to our application code:</p>
 
-  <pre data-line="5-7, 17">
+  <pre data-line="5-7, 18">
     <code class="language-markup">
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
@@ -795,6 +793,7 @@
       document.getElementById('logout-button').addEventListener('click', handleLogout)
 
       document.getElementById('todo-view').style.display = 'none'
+      document.getElementById('add-todo-form').style.display = 'none'
       document.getElementById('auth-view').style.display = 'none'
 
     &lt;/script&gt;
