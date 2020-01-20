@@ -1,14 +1,14 @@
 <div class="section">
   <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : updateUser</h2>
 
-  <p><span class="font-semibold">updateUser</span> lets you update a user's account. A user must be signed in first. This API will return a promise that gets resolved once the user account has been updated.</p>
+  <p><span class="font-semibold">updateUser</span> lets you update a user's account. This API will return a promise that gets resolved once the user account has been updated.</p>
 
   <pre>
     <code class="language-javascript">userbase.updateUser({ username, password, email, profile })
-  .then(() => {
-    // user account updated
-  })
-  .catch((e) => console.error(e))</code>
+      .then(() => {
+        // user account updated
+      })
+      .catch((e) => console.error(e))</code>
   </pre>
 
   <h3 id="params">Parameters</h3>
@@ -24,7 +24,18 @@
       <span class="field">email</span> [string | null | undefined | false] - The new email for the account. If explicitly set to a falsey value, deletes the user's email.
     </li>
     <li>
-      <span class="field">profile</span> [object | null | undefined | false | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - The new profile for the account. Stored unencrypted. All keys and values must be strings. If explicitly set to a falsey value, deletes the user's profile.
+      <span class="field">profile</span> [object | null | undefined | false | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - The new profile for the account. All keys and values must be strings. If explicitly set to a falsey value, deletes the user's profile.
+    </li>
+  </ul>
+
+  <h3 id="params">Notes</h3>
+
+  <ul>
+    <li>
+      The user's <span class="field">password</span> is never sent to the server. A hash gets computed client-side, and only the hash is transmitted and stored server-side.
+    </li>
+    <li>
+      The <span class="field">username</span>, <span class="field">email</span>, and <span class="field">profile</span> are not end-to-end encrypted. They are encrypted in transit and at rest, but you will be able to see this information in the Admin panel.
     </li>
   </ul>
 

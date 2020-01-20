@@ -5,10 +5,10 @@
 
   <pre>
     <code class="language-javascript">userbase.signUp({ username, password, email, profile, rememberMe = false })
-  .then((user) => {
-    // user account created
-  })
-  .catch((e) => console.error(e))</code>
+      .then((user) => {
+        // user account created
+      })
+      .catch((e) => console.error(e))</code>
   </pre>
 
   <h3 id="params">Parameters</h3>
@@ -24,10 +24,10 @@
       <span class="field">email</span> [string | optional] - The email for the account to be created.
     </li>
     <li>
-      <span class="field">profile</span> [object | optional | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - The profile for the account to be created. Stored unencrypted. All keys and values must be strings.
+      <span class="field">profile</span> [object | optional | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - A place where to store some information about the account to be created. All keys and values must be strings.
     </li>
     <li>
-      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and key will be stored in local storage and the user will automatically sign back in when <a href="/docs/sdk/init" class="font-semibold">init</a> is called. Defaults to false.
+      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and key will be stored in local storage and the user will automatically sign back in when <a href="/docs/sdk/init/">init</a> is called. Defaults to false.
     </li>
   </ul>
 
@@ -41,6 +41,17 @@
         <li><span class="field">email</span> [string] - The user's email.</li>
         <li><span class="field">profile</span> [object] - The user's profile.</li>
       </ul>
+    </li>
+  </ul>
+
+  <h3 id="params">Notes</h3>
+
+  <ul>
+    <li>
+      The user's <span class="field">password</span> is never sent to the server. A hash gets computed client-side, and only the hash is transmitted and stored server-side.
+    </li>
+    <li>
+      The <span class="field">username</span>, <span class="field">email</span>, and <span class="field">profile</span> are not end-to-end encrypted. They are encrypted in transit and at rest, but you will be able to see this information in the Admin panel.
     </li>
   </ul>
 

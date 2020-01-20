@@ -1,12 +1,12 @@
 <div class="section">
   <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : init</h2>
 
-  <p><span class="font-semibold">init</span> lets you initialize your Userbase client and automatically log in a user using the last used session.</p>
+  <p><span class="font-semibold">init</span> needs to be the very first thing you call in your web app. It initializes the SDK with your App ID, and it also handles automatic logins when users return to your web app with an active session.</p>
 
   <pre>
     <code class="language-javascript">userbase.init({ appId })
       .then((session) => {
-        // Userbase client initialized successfully
+        // SDK initialized successfully
         
         if (session.user) {
           // there is a valid active session
@@ -20,7 +20,7 @@
   <h3 id="params">Parameters</h3>
 
   <ul>
-    <li><span class="field">appId</span> [string] - Your App ID you received when you created a Userbase application.</li>
+    <li><span class="field">appId</span> [string] - The App ID you received when you created your Userbase app.</li>
   </ul>
 
   <h3 id="result">Result</h3>

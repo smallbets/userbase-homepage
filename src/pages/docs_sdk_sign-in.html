@@ -5,23 +5,23 @@
 
   <pre>
     <code class="language-javascript">userbase.signIn({ username, password, rememberMe = false })
-  .then((user) => {
-    // user logged in
-  })
-  .catch((e) => console.error(e))</code>
+      .then((user) => {
+        // user logged in
+      })
+      .catch((e) => console.error(e))</code>
   </pre>
 
   <h3 id="params">Parameters</h3>
 
   <ul>
     <li>
-      <span class="field">username</span> [string | Len: 1-50] - The username for the account to be created.
+      <span class="field">username</span> [string | Len: 1-50] - The username for the account to be login.
     </li>
     <li>
-      <span class="field">password</span> [string | Len: 6-1000] - The password for the account to be created.
+      <span class="field">password</span> [string | Len: 6-1000] - The password for the account to be login.
     </li>
     <li>
-      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and key will be stored in local storage and the user will automatically sign back in when <a href="/docs/sdk/init" class="font-semibold">init</a> is called. Defaults to false.
+      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and encryption key will be stored in the browser's local storage and the user will automatically sign back in when <a href="/docs/sdk/init/">init</a> is called. Defaults to false.
     </li>
   </ul>
 
@@ -35,6 +35,17 @@
         <li><span class="field">email</span> [string] - The user's email.</li>
         <li><span class="field">profile</span> [object] - The user's profile.</li>
       </ul>
+    </li>
+  </ul>
+
+  <h3 id="params">Notes</h3>
+
+  <ul>
+    <li>
+      The user's <span class="field">password</span> is never sent to the server. A hash gets computed client-side, and only the hash is transmitted and stored server-side.
+    </li>
+    <li>
+      When <span class="field">rememberMe</span> is set to true, the user's encryption key will be stored in clear in the browser's local storage. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to false (the default). When <span class="field">rememberMe</span> is false, the user will always have to login with the username and password when visiting your web app.
     </li>
   </ul>
 

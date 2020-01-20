@@ -1,14 +1,14 @@
 <div class="section">
   <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : openDatabase</h2>
 
-  <p><span class="font-semibold">openDatabase</span> lets you retrieve data stored by the users of your web app. You also need to have a database open before storing or modifying user data. This API will return a promise that gets resolved once the database becomes available for use.</p>
+  <p><span class="font-semibold">openDatabase</span> lets you retrieve your user's data. You also need to have a database open before storing or modifying user data. This API will return a promise that gets resolved once the database becomes available for use.</p>
 
   <pre>
     <code class="language-javascript">userbase.openDatabase({ databaseName, changeHandler })
-  .then(() => {
-    // the database can now be used
-  })
-  .catch((e) => console.error(e))</code>
+      .then(() => {
+        // the database can now be used
+      })
+      .catch((e) => console.error(e))</code>
   </pre>
 
   <h3 id="params">Parameters</h3>
