@@ -33,7 +33,6 @@
           <span class="field">user</span> [object] - If set, this contains information about the logged in user.
           <ul>
             <li><span class="field">username</span> [string] - The user's username.</li>
-            <li><span class="field">key</span> [string] - The user's encryption key.</li>
             <li><span class="field">email</span> [string] - The user's email.</li>
             <li><span class="field">profile</span> [object] - The user's profile.</li>
           </ul>
@@ -46,12 +45,12 @@
   <h3 id="errors">Errors</h3>
 
   <ul>
+    <li>ParamsMustBeObject</li>
+    <li>AppIdAlreadySet</li>
     <li>AppIdMustBeString</li>
     <li>AppIdCannotBeBlank</li>
     <li>AppIdNotValid</li>
-    <li>KeyNotFoundHandlerMustBeFunction</li>
     <li>UserAlreadySignedIn</li>
-    <li>UserCanceledSignIn</li>
     <li>ServiceUnavailable</li>
   </ul>
 

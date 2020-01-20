@@ -32,7 +32,6 @@
       <span class="field">user</span> [object] - Contains information about the logged in user.
       <ul>
         <li><span class="field">username</span> [string] - The user's username.</li>
-        <li><span class="field">key</span> [string] - The user's encryption key.</li>
         <li><span class="field">email</span> [string] - The user's email.</li>
         <li><span class="field">profile</span> [object] - The user's profile.</li>
       </ul>
@@ -42,6 +41,7 @@
   <h3 id="errors">Errors</h3>
 
   <ul>
+    <li>ParamsMustBeObject</li>
     <li>UsernameOrPasswordMismatch</li>
     <li>UsernameCannotBeBlank</li>
     <li>UsernameTooLong</li>
@@ -50,10 +50,10 @@
     <li>PasswordTooShort</li>
     <li>PasswordTooLong</li>
     <li>PasswordMustBeString</li>
+    <li>RememberMeMustBeBoolean</li>
     <li>AppIdNotSet</li>
     <li>AppIdNotValid</li>
     <li>UserAlreadySignedIn</li>
-    <li>UserCanceledSignIn</li>
     <li>ServiceUnavailable</li>
   </ul>
 

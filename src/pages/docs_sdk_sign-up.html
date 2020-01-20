@@ -38,7 +38,6 @@
       <span class="field">user</span> [object] - Contains information about the new user.
       <ul>
         <li><span class="field">username</span> [string] - The user's username.</li>
-        <li><span class="field">key</span> [string] - The user's key.</li>
         <li><span class="field">email</span> [string] - The user's email.</li>
         <li><span class="field">profile</span> [object] - The user's profile.</li>
       </ul>
@@ -48,6 +47,7 @@
   <h3 id="errors">Errors</h3>
 
   <ul>
+    <li>ParamsMustBeObject</li>
     <li>UsernameAlreadyExists</li>
     <li>UsernameCannotBeBlank</li>
     <li>UsernameMustBeString</li>
@@ -64,10 +64,11 @@
     <li>ProfileKeyTooLong</li>
     <li>ProfileValueMustBeString</li>
     <li>ProfileValueTooLong</li>
+    <li>RememberMeMustBeBoolean</li>
+    <li>TrialExceededLimit</li>
     <li>AppIdNotSet</li>
     <li>AppIdNotValid</li>
     <li>UserAlreadySignedIn</li>
-    <li>ShowKeyHandlerMustBeFunction</li>
     <li>ServiceUnavailable</li>
   </ul>
 
