@@ -19,4 +19,8 @@
   to = "https://userbase.com/:splat"
   status = 301
   force = true
-  
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=180000; includeSubDomains;"
