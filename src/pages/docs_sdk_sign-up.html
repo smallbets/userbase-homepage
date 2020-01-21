@@ -27,7 +27,7 @@
       <span class="field">profile</span> [object | optional | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - A place where to store some information about the account to be created. All keys and values must be strings.
     </li>
     <li>
-      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and key will be stored in local storage and the user will automatically sign back in when <a href="/docs/sdk/init/">init</a> is called. Defaults to false.
+      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and encryption key will be stored in the browser's local storage. Defaults to false.
     </li>
   </ul>
 
@@ -52,6 +52,9 @@
     </li>
     <li>
       The <span class="field">username</span>, <span class="field">email</span>, and <span class="field">profile</span> are not end-to-end encrypted. They are encrypted in transit and at rest, but you will be able to see this information in the Admin panel.
+    </li>
+    <li>
+      When <span class="field">rememberMe</span> is set to true, the user's encryption key will be stored in clear in the browser's local storage. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to false (the default). When <span class="field">rememberMe</span> is false, the user will always have to login with the username and password when visiting your web app.
     </li>
   </ul>
 
