@@ -4,7 +4,7 @@
   <p><span class="font-semibold">updateUser</span> lets you update a user's account. This API will return a promise that gets resolved once the user account has been updated.</p>
 
   <pre>
-    <code class="language-javascript">userbase.updateUser({ username, password, email, profile })
+    <code class="language-javascript">userbase.updateUser({ username, currentPassword, newPassword, email, profile })
       .then(() => {
         // user account updated
       })
@@ -18,7 +18,10 @@
       <span class="field">username</span> [string | Len: 1-50] - The new username for the account.
     </li>
     <li>
-      <span class="field">password</span> [string | Len: 6-1000] - The new password for the account.
+      <span class="field">currentPassword</span> [string | Len: 6-1000] - The current password for the account. Required if newPassword provided.
+    </li>
+    <li>
+      <span class="field">newPassword</span> [string | Len: 6-1000] - The new password for the account.
     </li>
     <li>
       <span class="field">email</span> [string | null | undefined | false] - The new email for the account. If explicitly set to a falsey value, deletes the user's email.
@@ -48,6 +51,8 @@
     <li>UsernameMustBeString</li>
     <li>UsernameCannotBeBlank</li>
     <li>UsernameTooLong</li>
+    <li>CurrentPasswordMissing</li>
+    <li>CurrentPasswordIncorrect</li>
     <li>PasswordMustBeString</li>
     <li>PasswordCannotBeBlank</li>
     <li>PasswordTooShort</li>
