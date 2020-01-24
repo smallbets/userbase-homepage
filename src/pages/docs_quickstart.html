@@ -5,7 +5,7 @@
     In this tutorial we will build a very basic to-do web app. You can think of this tutorial as a demonstration of the core functionality of Userbase in the simplest way possible. We are going to focus solely on building a functional web app, and making things pretty is left as an exercise to the reader.
   </p>
 
-  <p>The entire web app we'll be building will fit in a <a href="https://github.com/encrypted-dev/userbase-samples/blob/master/ugliest-todo/index.html" target="_blank">single static HTML file of 184 lines</a>. You can also see a <a href="https://ugliest-todo.netlify.com/" target="_blank">live demo</a> of the final result.</p>
+  <p>The entire web app we'll be building will fit in a <a href="https://github.com/encrypted-dev/userbase-samples/blob/master/ugliest-todo/index.html" target="_blank">single static HTML file of 182 lines</a>. You can also see a <a href="https://ugliest-todo.netlify.com/" target="_blank">live demo</a> of the final result.</p>
 
   <h3>Setting up</h3>
 
@@ -499,7 +499,6 @@
       document.getElementById('add-todo-form').addEventListener('submit', addTodoHandler)
 
       document.getElementById('todo-view').style.display = 'none'
-      document.getElementById('add-todo-form').style.display = 'none'
 
     &lt;/script&gt;
     </code>
@@ -511,36 +510,6 @@
     will return a Promise that resolves when the data is successfully persisted to
     the database.
   </p>
-
-  <p>
-    We hide the <code class="language-markup">add-todo-form</code> element until
-    the user logs in:
-  </p>
-
-  <pre data-line="8">
-    <code class="language-markup">
-    &lt;!-- application code --&gt;
-    &lt;script type=&quot;text/javascript&quot;&gt;
-    …
-
-      function showTodos(username) {
-        document.getElementById('auth-view').style.display = 'none'
-        document.getElementById('todo-view').style.display = 'block'
-        document.getElementById('add-todo-form').style.display = 'block'
-
-        // reset the todos view
-        document.getElementById('username').innerHTML = username
-        document.getElementById('todos').innerText = ''
-        document.getElementById('db-loading').style.display = 'block'
-        document.getElementById('db-error').innerText = ''
-
-        userbase.openDatabase({ 'todos', changeHandler })
-          .catch((e) => document.getElementById('db-error').innerText = e)
-      }
-
-    &lt;/script&gt;
-    </code>
-  </pre>
 
   <p>
     Reload the page and add some to-dos. Then, reload the page again and the to-dos should automatically appear after you login. These to-dos have been successfully persisted in the end-to-end encrypted Userbase database.
@@ -738,7 +707,6 @@
       document.getElementById('logout-button').addEventListener('click', handleLogout)
 
       document.getElementById('todo-view').style.display = 'none'
-      document.getElementById('add-todo-form').style.display = 'none'
       document.getElementById('auth-view').style.display = 'none'
 
     &lt;/script&gt;
@@ -793,7 +761,7 @@
 
   <h3>What's next?</h3>
 
-  <p>And that was it! A fully working (but ugly) web app in just 184 lines of code, including markup and comments. If you have any questions, or there's anything we can do to help you with your web app, please <a href="/contact/">get in touch</a>. Thank you!</p>
+  <p>And that was it! A fully working (but ugly) web app in just 182 lines of code, including markup and comments. If you have any questions, or there's anything we can do to help you with your web app, please <a href="/contact/">get in touch</a>. Thank you!</p>
 </div>
 
 <hr>
