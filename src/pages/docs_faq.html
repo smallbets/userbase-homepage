@@ -5,10 +5,10 @@
   <p>All the data stored using the <a href="/docs/sdk/insert-item">insertItem</a>, <a href="/docs/sdk/update-item">updateItem</a>, <a href="/docs/sdk/delete-item">deleteItem</a>, or <a href="/docs/sdk/put-transaction">putTransaction</a> APIs is end-to-end encrypted. Both the stored item and the item ID are end-to-end encrypted. Other user data and metadata, such as usernames, timestamps, and user activity logs, are encrypted on the wire and at rest, but are not end-to-end encrypted.</p>
 
   <h3 id="faq-2">Where is the user's encryption key stored?</h3>
-  <p>The user's encryption key gets generated when the user creates an account, and this key gets encrypted itself with another key derived from the user's password. The encrypted key gets stored on the Userbase server, and the user retrieves it back after every successful login. The Userbase server never sees the user's password.</p>
+  <p>The user's encryption key gets generated when the user creates an account, and this key gets encrypted itself with another key derived from the user's password. The encrypted key gets stored on the Userbase server, and the user retrieves it back after every successful login. The Userbase server never sees the user's password, and it only receives an scrypt hash of the password that gets computed client-side.</p>
 
   <h3 id="faq-3">What happens if a user forgets the password?</h3>
-  <p>Users should always keep a backup copy of their password in a safe place, such as a password manager. Since the encryption key needs to be decrypted by the user's password, it is not possible to recover an account if the password gets lost.</p>
+  <p>Users should always keep a copy of their password in a safe place, such as a password manager. Since the encryption key needs to be decrypted by the user's password, it is not possible to recover an account if the password gets lost.</p>
 
   <h3 id="faq-4">What can I see about my users?</h3>
   <p>You can see the list of usernames, the time the user accounts were created, and any other information you collect during user sign up, such as users' email, name, address, etc.</p>
@@ -25,11 +25,14 @@
   <h3 id="faq-8">How can I require users to pay to access my web app?</h3>
   <p>At the moment, you will have to handle payments yourself and hide the web app from non-paying users. In the future, we will support payments directly from the Userbase SDK as part of a new pricing plan.</p>
 
+  <h3 id="faq-5">Can data be shared across users?</h3>
+  <p>This feature will be available soon. At the moment, users only have access to their own data.</p>
+
   <h3 id="faq-9">How does Userbase help me with GDPR compliance?</h3>
   <p>Userbase helps you implement the necessary GDPR controls, avoid personal data misuse, and give your users control over their data. If you need assistance with GDPR compliance, please <a href="/contact/">get in touch</a>.</p>
 
   <h3 id="faq-10">How durable is the data stored in Userbase?</h3>
-  <p>Userbase only acknowledges data modification requests after the data has been successfully persisted to <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a>. This is a highly-durable service that synchronously replicates data to at least 3 hosts in isolated geographical zones before acknowledging a write operation. Userbase has continuous backups enabled on all its DynamoDB tables with a 35 day recovery window.</p>
+  <p>Userbase only acknowledges data modification requests once the data has been successfully persisted to <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a>. This is a highly-durable service that synchronously replicates data to at least three isolated geographical zones before acknowledging a write operation. Userbase has continuous backups enabled on all its DynamoDB tables with a 35 day recovery window.</p>
 
   <h3 id="faq-11">What services does Userbase depend on?</h3>
   <p>Userbase runs entirely on <a href="https://aws.amazon.com/">Amazon Web Services</a>, in the us-east-1 region. The availability of the Userbase service depends on <a href="https://aws.amazon.com/ec2/">Amazon EC2</a>, <a href="https://aws.amazon.com/s3/">Amazon S3</a>, and <a href="https://aws.amazon.com/dynamodb/">Amazon DynamoDB</a>.</p>
