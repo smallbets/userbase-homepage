@@ -4,7 +4,7 @@
   <p><span class="font-semibold">signUp</span> lets you create user accounts for your web app. This API will return a promise that gets resolved once the user account has been created.</p>
 
   <pre>
-    <code class="language-javascript">userbase.signUp({ username, password, email, profile, rememberMe = false })
+    <code class="language-javascript">userbase.signUp({ username, password, email, profile, rememberMe = 'session' })
       .then((user) => {
         // user account created
       })
@@ -27,7 +27,7 @@
       <span class="field">profile</span> [object | optional | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - A place where to store some information about the account to be created. All keys and values must be strings.
     </li>
     <li>
-      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and key will be stored in local storage and the user will automatically sign back in when <a href="/docs/sdk/init/">init</a> is called. Defaults to false.
+      <span class="field">rememberMe</span> [string | optional] - The persistence mode for the user's session. Valid values are 'local', 'session', and 'none'. When set to 'local', the session persists even after the browser window gets closed. When set to 'session', the session persists until the browser window gets closed. And 'none' disables session persistence completely. Defaults to 'session'.
     </li>
   </ul>
 
@@ -75,7 +75,7 @@
     <li>ProfileKeyTooLong</li>
     <li>ProfileValueMustBeString</li>
     <li>ProfileValueTooLong</li>
-    <li>RememberMeMustBeBoolean</li>
+    <li>RememberMeValueNotValid</li>
     <li>TrialExceededLimit</li>
     <li>AppIdNotSet</li>
     <li>AppIdNotValid</li>

@@ -4,7 +4,7 @@
   <p><span class="font-semibold">signIn</span> lets your users log into your web app. This API will return a promise that gets resolved once the user has been logged in.</p>
 
   <pre>
-    <code class="language-javascript">userbase.signIn({ username, password, rememberMe = false })
+    <code class="language-javascript">userbase.signIn({ username, password, rememberMe = 'session' })
       .then((user) => {
         // user logged in
       })
@@ -21,7 +21,7 @@
       <span class="field">password</span> [string | Len: 6-1000] - The password for the account to be login.
     </li>
     <li>
-      <span class="field">rememberMe</span> [boolean | optional] - If true, the user's session data and encryption key will be stored in the browser's local storage and the user will automatically sign back in when <a href="/docs/sdk/init/">init</a> is called. Defaults to false.
+      <span class="field">rememberMe</span> [string | optional] - The persistence mode for the user's session. Valid values are 'local', 'session', and 'none'. When set to 'local', the session persists even after the browser window gets closed. When set to 'session', the session persists until the browser window gets closed. And 'none' disables session persistence completely. Defaults to 'session'.
     </li>
   </ul>
 
@@ -61,7 +61,7 @@
     <li>PasswordTooShort</li>
     <li>PasswordTooLong</li>
     <li>PasswordMustBeString</li>
-    <li>RememberMeMustBeBoolean</li>
+    <li>RememberMeValueNotValid</li>
     <li>AppIdNotSet</li>
     <li>AppIdNotValid</li>
     <li>UserAlreadySignedIn</li>
