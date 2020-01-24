@@ -2,22 +2,14 @@
   <h2><a href="/docs/">Docs</a> : Quickstart</h2>
 
   <p>
-    In this tutorial we will build a very basic to-do web app. Even if what you're building has nothing to do with to-dos, the techniques we'll cover here can be applied to many other kinds of web apps.
-  </p>
-
-  <p>
-    You can think of this tutorial as a demonstration of the core functionality of Userbase in the simplest way possible. We are going to focus solely on building a functional web app, and making things pretty is left as an exercise to the reader.
+    In this tutorial we will build a very basic to-do web app. You can think of this tutorial as a demonstration of the core functionality of Userbase in the simplest way possible. We are going to focus solely on building a functional web app, and making things pretty is left as an exercise to the reader.
   </p>
 
   <p>The entire web app we'll be building will fit in a <a href="https://github.com/encrypted-dev/userbase-samples/blob/master/ugliest-todo/index.html" target="_blank">single static HTML file of 184 lines</a>. You can also see a <a href="https://ugliest-todo.netlify.com/" target="_blank">live demo</a> of the final result.</p>
 
-  <h3>Prerequisites</h3>
-
-  <p>The only requirement is basic familiarity of <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" target="_blank">JavaScript</a>.</p>
-
   <h3>Setting up</h3>
 
-  <p>Let's get going. Open a new file in your favorite code editor:</p>
+  <p>Let's get going. Open a new file in your favorite code editor.</p>
 
   <pre>
     <code class="language-bash">
@@ -25,7 +17,7 @@
     </code>
   </pre>
 
-  <p>And add some boilerplate HTML:</p>
+  <p>And add some boilerplate HTML.</p>
 
   <div>
     <pre>
@@ -52,14 +44,14 @@
   </p>
 
   <a class="anchor" id="creating-a-developer-account"></a>
-  <h3>Creating a developer account</h3>
+  <h3>Creating an Admin account</h3>
 
-  <p>To complete this tutorial, you'll need to create a Userbase developer account. Upon creation, a default application named "Preview" will be created. Take note of the App ID because you'll need it in a second.</p>
+  <p>To complete this tutorial, you'll need to create a Userbase Admin account. Upon creation, a default application named "Trial" will be created. Take note of the App ID because you'll need it in a second.</p>
 
   <h3>Installing the SDK</h3>
 
   We're going to load the Userbase SDK from a CDN with a <code class="language-markup">&lt;script&gt;</code> tag in the head of
-  our page:
+  our page.
 
   <pre data-line="4">
     <code class="language-markup"><!--
@@ -77,7 +69,7 @@
 
   <p>
     Before doing anything with the Userbase SDK, we need to let it know our App ID.
-    Simply replace <code class="language-javascript">'YOUR_APP_ID'</code> with the App ID you received when you <a href="#creating-a-developer-account">created your developer account</a>:
+    Simply replace <code class="language-javascript">'YOUR_APP_ID'</code> with the App ID you received when you created your Admin account:
   </p>
 
   <pre data-line="4">
@@ -98,7 +90,7 @@
     Before our users can start creating to-dos, we need to give them a way to create an account with our app.
   </p>
 
-  <p>First, let's add a sign up form:</p>
+  <p>First, let's add a sign up form.</p>
 
   <div>
     <pre data-line="2-11">
@@ -122,7 +114,7 @@
     </pre>
   </div>
 
-  <p>Then, let's add the code to handle the form submission:</p>
+  <p>Then, let's add the code to handle the form submission.</p>
 
   <div>
     <pre data-line="5-16">
@@ -149,21 +141,11 @@
   </div>
 
   <p>
-    Now, whenever someone submits the form, the <code class="language-javascript">handleSignUp</code> function will be called.
+    Now, whenever someone submits the form, the <code class="language-javascript">handleSignUp</code> function will be called. This gets the values of the username and password inputs and calls <code class="language-javascript">userbase.signUp({ username, password })</code> to create a new user account with Userbase.
   </p>
 
   <p>
-    The first thing we do in <code class="language-javascript">handleSignUp</code> is call <code class="language-javascript">preventDefault()</code> on the
-    submit event. This will prevent the page from submitting to the server. We want to handle this form completely on the client-side.
-  </p>
-
-  <p>
-    Next, we get the values of the username and password inputs and call
-    <code class="language-javascript">userbase.signUp({ username, password })</code>. This will request a new account to be created with the Userbase service, and returns a Promise that resolves with a <code class="language-javascript">user</code> object.
-  </p>
-
-  <p>
-    Go ahead and reload the page in your browser. Enter a username and password in the form and submit. You should get an alert saying that you signed up. And if go to your Userbase developer account, you should also see the new user under your app.
+    Go ahead and reload the page in your browser. Enter a username and password in the form and submit. You should get an alert saying that you signed up. And if you go to your Userbase Admin account, you should also see the new user under your app.
   </p>
 
   <p>
@@ -171,14 +153,14 @@
   </p>
 
   <p>
-    We'll come back to this in a bit to change this function to do something more interesting.
+    We'll come back to this function in a bit to make it do something more interesting.
   </p>
 
   <h3>Letting users log in</h3>
 
   <p>Now that our users can create accounts, let's give them the ability to login.</p>
 
-  <p>First, let's add a "Login" form to the page above our "Create Account" form:</p>
+  <p>First, let's add a "Login" form to the page above our "Create Account" form.</p>
 
   <pre data-line="4-10">
     <code class="language-markup">
@@ -198,7 +180,7 @@
     </code>
   </pre>
 
-  <p>Then, let's add the code to handle the form submission:</p>
+  <p>Then, let's add the code to handle the form submission.</p>
 
   <pre data-line="5-14">
     <code class="language-markup">
@@ -227,7 +209,7 @@
     </code>
   </pre>
 
-  <p>And finally, let's bind our login form within our login handler:</p>
+  <p>And finally, let's bind our login form with our login handler.</p>
 
   <pre data-line="9">
     <code class="language-markup">
@@ -247,7 +229,7 @@
   </pre>
 
   <p>
-    You'll notice that this looks very similar to the sign up code from before. The <code class="language-javascript">handleLogin</code> function prevents the default form behavior, extracts the input values from the DOM, and calls <code class="language-javascript">userbase.signIn({ username, password })</code>. This will attempt to sign in the user with the Userbase service, handling a success with an alert and a failure by displaying the error.
+    You'll notice that this looks very similar to the sign up code from before. The <code class="language-javascript">handleLogin</code> function gets the values of the username and password inputs, and calls <code class="language-javascript">userbase.signIn({ username, password })</code>. This will attempt to sign in the user, handling a success with an alert and a failure by displaying the error.
   </p>
 
   <p>
@@ -264,11 +246,7 @@
   <h3>Showing the to-do view</h3>
 
   <p>
-    After a user signs in, we'll want to hide the authentication forms, indicate
-    to the user they are logged in, and display their to-do list.
-  </p>
-
-  <p>First, let's add a container for the to-do list under the authentication forms:</p>
+    After a user signs in, we'll want to hide the authentication forms and display their to-do list. First, let's add a container for the to-do list under the authentication forms.</p>
 
   <pre data-line="8-14">
     <code class="language-markup">
@@ -298,7 +276,7 @@
     </code>
   </pre>
 
-  <p>Then, let's add a function to display this view and initially make it hidden:</p>
+  <p>Then, let's make this view hidden by default, and add a function to display it.</p>
 
   <div>
     <pre data-line="9-13,18">
@@ -328,7 +306,7 @@
 
   <p>
     Now that we have a function to show a view for signed in users, let's change
-    <code class="language-javascript">handleLogin</code> to call this function instead of showing an alert:
+    <code class="language-javascript">handleLogin</code> to call this function instead of showing an alert.
   </p>
 
   <pre data-line="8">
@@ -346,7 +324,7 @@
     </code>
   </pre>
 
-  <p>And we do the same thing for <code class="language-javascript">handleSignUp</code>:</p>
+  <p>And we do the same thing for <code class="language-javascript">handleSignUp</code>.</p>
 
   <pre data-line="7">
     <code class="language-javascript">
@@ -370,11 +348,11 @@
   <h3>Using the database</h3>
 
   <p>
-    Each time a user signs in, we need to establish a connection with the database that will hold that user's to-dos.
+    Every time a user signs in, we need to establish a connection with the database that will hold the user's to-dos.
   </p>
 
   <p>
-    First, let's add a couple of elements for showing a loading indicator and error messages:
+    First, let's add a couple of elements for showing a loading indicator and error messages.
   </p>
 
   <pre data-line="6-7">
@@ -390,7 +368,7 @@
     --></code>
   </pre>
 
-  <p>Then, we'll change <code class="language-javascript">showTodos</code> to open a new database with the Userbase service:</p>
+  <p>Then, let's change <code class="language-javascript">showTodos</code> to open a new database connection.</p>
 
   <pre data-line="5,7-12,15-25">
     <code class="language-javascript">
@@ -426,15 +404,14 @@
   </pre>
 
   <p>
-    We changed <code class="language-javascript">showTodos</code> to make a call to <code class="language-javascript">userbase.openDatabase({ databaseName: 'todos', changeHandler })</code>. The <code class="language-javascript">'todos'</code> parameter is the name of the database we want to open, and <code class="language-javascript">changeHandler</code> is a callback for receiving changes to data in the database. The Userbase service will attempt to open the user's database by the
-    name of <code class="language-javascript">'todos'</code> (creating one if it doesn't already exist). After the <code class="language-javascript">'todos'</code>
+    We changed <code class="language-javascript">showTodos</code> to make a call to <code class="language-javascript">userbase.openDatabase({ databaseName: 'todos', changeHandler })</code>. After the <code class="language-javascript">'todos'</code>
     database is opened, our callback
-    function <code class="language-javascript">changeHandlers</code> will be called whenever data changes in the database. When the Promise is resolved, the database is ready for use and we hide the loading indicator.
+    function <code class="language-javascript">changeHandler</code> will be called whenever data changes in the database. When the Promise is resolved, the database is ready for use and we hide the loading indicator.
   </p>
 
   <p>
-    Reload the page and sign in again. You'll see the "Loading to-dos..." as a connection
-    to the database is established followed by "Empty", indicating there are
+    Reload the page and sign in again. You'll see "Loading to-dos..." while the connection
+    to the database is getting established, followed by "Empty", indicating there are
     currently no to-dos in the database.
   </p>
 
@@ -443,7 +420,7 @@
 
   <p>
     If the database has items in it, we'll want to render those under our to-do list.
-    Let's implement that case in <code class="language-javascript">changeHandler</code>:
+    Let's implement that in <code class="language-javascript">changeHandler</code>.
   </p>
 
   <pre data-line="9-24">
@@ -479,7 +456,7 @@
 
   <h3>Adding to-dos</h3>
 
-  <p>Now, let's add a form for creating new to-dos:</p>
+  <p>Now, let's add a form for creating new to-dos.</p>
 
   <script type="text/plain" data-line="10-14" class="language-markup">
   <!-- To-dos View -->
@@ -499,7 +476,7 @@
   </div>
   </script>
 
-  <p>Then, let's add the code to handle the form submission:</p>
+  <p>Then, let's add the code to handle the form submission.</p>
 
   <pre data-line="5-13,17,20">
     <code class="language-markup">
@@ -529,8 +506,7 @@
   </pre>
 
   <p>
-    In <code class="language-javascript">addTodoHandler</code> we first call <code class="language-javascript">preventDefault()</code> to stop the default form
-    behavior, pull the to-do text from the input, and then call <code class="language-javascript">userbase.insertItem</code>
+    In <code class="language-javascript">addTodoHandler</code> we get the to-do text from the input, and then call <code class="language-javascript">userbase.insertItem</code>
     with the database name and the object we want the persist. This
     will return a Promise that resolves when the data is successfully persisted to
     the database.
@@ -572,7 +548,7 @@
 
   <h3>Updating to-dos</h3>
 
-  <p>Now, let's add a checkbox to allow to-dos to be marked as completed:</p>
+  <p>Now, let's add a checkbox to allow to-dos to be marked as completed.</p>
 
   <pre data-line="4-16,26">
     <code class="language-javascript">
@@ -614,7 +590,7 @@
 
   <h3>Deleting to-dos</h3>
 
-  <p>And finally, let's create a button for deleting a to-do:</p>
+  <p>And finally, let's create a button for deleting a to-do.</p>
 
   <pre data-line="4-11">
     <code class="language-javascript">
@@ -636,7 +612,7 @@
     </code>
   </pre>
 
-  <p>And now let's append the delete button to the to-do element:</p>
+  <p>And now let's append the delete button to the to-do element.</p>
 
   <pre data-line="3">
     <code class="language-javascript">
@@ -659,7 +635,7 @@
 
   <h3>Signing out users</h3>
 
-  <p>First, let's add a logout button along with a container for displaying error messages:</p>
+  <p>First, let's add a logout button along with a container for error messages.</p>
 
   <script type="text/plain" data-line="4-5" class="language-markup">
   <!-- To-dos View -->
@@ -672,7 +648,7 @@
     <div id="todos"></div>
   </script>
 
-  <p>Then, let's add the code to handle the logout:</p>
+  <p>Then, let's add the code to handle the logout.</p>
 
   <pre data-line="9-13,21-30,40">
     <code class="language-markup">
@@ -722,13 +698,11 @@
     </code>
   </pre>
 
-  <p>The <code class="language-javascript">handleLogout</code> function calls <code class="language-javascript">userbase.signOut</code> which sends a request to end the user's session to the Userbase service. A Promise is returned that resolves when the user is signed out, in which case we hide the to-do view and show the authentication view.</p>
+  <p>The <code class="language-javascript">handleLogout</code> function calls <code class="language-javascript">userbase.signOut</code> which sends a request to end the user's session. A Promise is returned that resolves when the user is signed out, in which case we hide the to-do view and show the authentication view.</p>
 
   <h3>Automatically resuming a session</h3>
 
-  <p>Whenever a user logs in, the Userbase SDK will store information about the session in the browser to allow it to be resumed when the user returns after having navigating away.</p>
-
-  <p>Let's modify our app to automatically sign in a returning user when the page loads. First, we'll add a view that indicates we are signing in the user:</p>
+  <p>Let's modify our app to automatically sign in a returning user when the page loads. First, we'll add a loading indicator that will show while the app is trying to automatically sign in the user.</p>
 
   <pre data-line="4-5">
     <code class="language-markup">
@@ -744,36 +718,7 @@
     </code>
   </pre>
 
-  <p>In order to store a session in the browser, we need to first tell the SDK to remember the user on signIn:</p>
-
-  <pre data-line="11">
-    <code class="language-markup">
-    &#x3C;!-- application code --&#x3E;
-    &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
-      userbase.init({ appId: 'YOUR_APP_ID' })
-
-      function handleLogin(e) {
-        e.preventDefault()
-
-        const username = document.getElementById(&#x27;login-username&#x27;).value
-        const password = document.getElementById(&#x27;login-password&#x27;).value
-
-        userbase.signIn({ username, password, rememberMe: true })
-          .then((user) => showTodos(user.username))
-          .catch((e) => document.getElementById('login-error').innerHTML = e)
-      }
-
-      function handleSignUp(e) {
-        e.preventDefault()
-
-    …
-
-    &lt;/script&gt;
-
-    </code>
-  </pre>
-
-  <p>Then, we add the following to our application code:</p>
+  <p>Then, let's add the following to our <code class="language-javascript">userbase.init</code> call.</p>
 
   <pre data-line="5-7, 18">
     <code class="language-markup">
@@ -801,33 +746,54 @@
   </pre>
 
   <p>
-    We hide the authentication view initially, as we'll now only show it if an existing session can't be resumed.
+    We are now hiding the authentication view by default so that it will only show if an existing session can't be resumed.
   </p>
 
   <p>
-    Then, we make a call to <code class="language-javascript">userbase.init</code> which attempts to sign in the user
-    using an existing session as soon as our app loads.
-  </p>
-
-  <p>
-    The <code class="language-javascript">userbase.init</code> function returns a Promise that resolves when the SDK has determined if it can reuse the previous session. If so, the user gets automatically logged in, and the <code class="language-javascript">session.user</code> object gets set. If there was no previous session, or the session cannot be resumed, the <code class="language-javascript">session.user</code> object will not be set.
-  </p>
-
-  <p>
-    If <code class="language-javascript">userbase.init</code> fails, we'll just send the user
+    The <code class="language-javascript">userbase.init</code> function returns a Promise that resolves when the SDK has determined if it can reuse the previous session. If so, the user gets automatically logged in, and the <code class="language-javascript">session.user</code> object gets set. If there was no previous session, or the session cannot be resumed, the <code class="language-javascript">session.user</code> object will not be set. If <code class="language-javascript">userbase.init</code> fails, we'll just send the user
     to the sign in page regardless of the reason.
   </p>
 
+  <p>
+    Now, if we sign in and reload the page, we will get signed in automatically without having to re-enter our username and password. However, if we want the session to persist even after we close the browser's window, we need to set the <code class="language-javascript">rememberMe</code> parameter to <code class="language-javascript">'local'</code> when calling <code class="language-javascript">userbase.signIn</code> and <code class="language-javascript">userbase.signUp</code>.</p>
+
+  <pre data-line="11,22">
+    <code class="language-markup">
+    &#x3C;!-- application code --&#x3E;
+    &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
+      userbase.init({ appId: 'YOUR_APP_ID' })
+
+      function handleLogin(e) {
+        e.preventDefault()
+
+        const username = document.getElementById(&#x27;login-username&#x27;).value
+        const password = document.getElementById(&#x27;login-password&#x27;).value
+
+        userbase.signIn({ username, password, rememberMe: 'local' })
+          .then((user) => showTodos(user.username))
+          .catch((e) => document.getElementById('login-error').innerHTML = e)
+      }
+
+      function handleSignUp(e) {
+        e.preventDefault()
+
+        const username = document.getElementById('signup-username').value
+        const password = document.getElementById('signup-password').value
+  
+        userbase.signUp({ username, password, rememberMe: 'local' })
+         .then((user) => showTodos(user.username))
+          .catch((e) => document.getElementById('signup-error').innerHTML = e)
+      }
+    …
+
+    &lt;/script&gt;
+
+    </code>
+  </pre>
+
   <h3>What's next?</h3>
 
-  <p>And that was it! A fully working (but ugly) web app in just 184 lines of code, including markup and comments.</p>
-
-  <p>
-    In a real project you'll likely want to use a more sophisticated approach. For instance, you may want to use React to control the DOM, or a module bundler to package your application from multiple files. At the very
-    least, you'll want to add some styling.
-  </p>
-
-  <p>If you have any questions, or there's anything we can do to help you with your web app, please <a href="/contact/">get in touch</a>. Thank you!</p>
+  <p>And that was it! A fully working (but ugly) web app in just 184 lines of code, including markup and comments. If you have any questions, or there's anything we can do to help you with your web app, please <a href="/contact/">get in touch</a>. Thank you!</p>
 </div>
 
 <hr>
