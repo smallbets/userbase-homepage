@@ -1,7 +1,7 @@
 <div class="section">
-  <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : buildTransaction</h2>
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : putTransaction</h2>
 
-  <p><span class="font-semibold">buildTransaction</span> lets you submit multiple database operations as a single atomic batch. Either all operations succeed, or the entire batch fails. You will never see partial updates. This API will return a promise that gets resolved once the transaction has been fully applied and durably persisted to the database.</p>
+  <p><span class="font-semibold">putTransaction</span> lets you submit multiple database operations as a single atomic batch. Either all operations succeed, or the entire batch fails. You will never see partial updates. This API will return a promise that gets resolved once the transaction has been fully applied and durably persisted to the database.</p>
 
   <pre>
     <code class="language-javascript">
@@ -11,7 +11,7 @@
       { command: 'Delete', itemId: '0003' }
     ]
 
-    userbase.buildTransaction({ databaseName, operations })
+    userbase.putTransaction({ databaseName, operations })
       .then(() => {
         // transaction applied
       })
