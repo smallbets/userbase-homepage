@@ -92,7 +92,7 @@ module.exports = (env, argv) => {
           'og:type': "website",
           'og:title': "Userbase",
           'og:image': './src/img/social_card.png',
-          'og:description': "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
+          'og:description': "The easiest way to add user accounts & persistence to your static site.",
           'og:site_name': "Userbase",
           'og:locale': "en_US"
         },
@@ -102,7 +102,7 @@ module.exports = (env, argv) => {
           "twitter:creator": "@UserbaseHQ",
           "twitter:url": "https://userbase.com",
           "twitter:title": "Userbase",
-          "twitter:description": "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
+          "twitter:description": "The easiest way to add user accounts & persistence to your static site.",
           "twitter:image": './src/img/social_card.png'
         },
       }),
