@@ -91,7 +91,7 @@ module.exports = (env, argv) => {
           'og:url': "https://userbase.com",
           'og:type': "website",
           'og:title': "Userbase",
-          'og:image': './src/img/social_card.png',
+          'og:image': './src/img/og_card.png',
           'og:description': "The easiest way to add user accounts & persistence to your static site.",
           'og:site_name': "Userbase",
           'og:locale': "en_US"
@@ -103,7 +103,7 @@ module.exports = (env, argv) => {
           "twitter:url": "https://userbase.com",
           "twitter:title": "Userbase",
           "twitter:description": "The easiest way to add user accounts & persistence to your static site.",
-          "twitter:image": './src/img/social_card.png'
+          "twitter:image": './src/img/og_card.png'
         },
       }),
       new HtmlBeautifyPlugin({
