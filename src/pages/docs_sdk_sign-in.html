@@ -45,7 +45,7 @@
       The user's <span class="field">password</span> is never sent to the server. A hash gets computed client-side, and only the hash is transmitted and stored server-side.
     </li>
     <li>
-      When <span class="field">rememberMe</span> is set to true, the user's encryption key will be stored in clear in the browser's local storage. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to false (the default). When <span class="field">rememberMe</span> is false, the user will always have to login with the username and password when visiting your web app.
+      When <span class="field">rememberMe</span> is set to 'session' or 'local', the user's encryption key will be stored in clear in the browser's session or local storage respectively. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to 'none'. When <span class="field">rememberMe</span> is 'none', the user will always have to login with the username and password when visiting your web app.
     </li>
   </ul>
 
