@@ -91,19 +91,19 @@ module.exports = (env, argv) => {
           'og:url': "https://userbase.com",
           'og:type': "website",
           'og:title': "Userbase",
-          'og:image': './src/img/icon.png',
+          'og:image': './src/img/social_card.png',
           'og:description': "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
           'og:site_name': "Userbase",
           'og:locale': "en_US"
         },
         twitter: {
-          "twitter:card": "summary",
+          "twitter:card": "summary_large_image",
           "twitter:site": "@UserbaseHQ",
-          "twitter:creator": "@dvassallo",
+          "twitter:creator": "@UserbaseHQ",
           "twitter:url": "https://userbase.com",
           "twitter:title": "Userbase",
           "twitter:description": "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
-          "twitter:image": './src/img/icon.png'
+          "twitter:image": './src/img/social_card.png'
         },
       }),
       new HtmlBeautifyPlugin({
