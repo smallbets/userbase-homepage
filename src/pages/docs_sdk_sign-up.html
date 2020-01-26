@@ -53,6 +53,9 @@
     <li>
       The <span class="field">username</span>, <span class="field">email</span>, and <span class="field">profile</span> are not end-to-end encrypted. They are encrypted in transit and at rest, but you will be able to see this information in the Admin panel.
     </li>
+    <li>
+      When <span class="field">rememberMe</span> is set to 'session' or 'local', the user's encryption key will be stored in clear in the browser's session or local storage respectively. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to 'none'. When <span class="field">rememberMe</span> is 'none', the user will always have to login with the username and password when visiting your web app.
+    </li>
   </ul>
 
   <h3 id="errors">Errors</h3>
