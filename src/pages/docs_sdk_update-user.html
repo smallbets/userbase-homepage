@@ -27,7 +27,7 @@
       <span class="field">email</span> [string | null | undefined | false] - The new email for the account. If explicitly set to a falsey value, deletes the user's email.
     </li>
     <li>
-      <span class="field">profile</span> [object | null | undefined | false | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - The new profile for the account. All keys and values must be strings. If explicitly set to a falsey value, deletes the user's profile.
+      <span class="field">profile</span> [object | null | undefined | false | Key Len: 1-20 | Val Len: 1-1000 | Keys: 1-100] - The new profile for the account. All keys and values must be strings. If explicitly set to a falsey value, deletes the user's profile.
     </li>
   </ul>
 
@@ -53,6 +53,7 @@
     <li>UsernameTooLong</li>
     <li>CurrentPasswordMissing</li>
     <li>CurrentPasswordIncorrect</li>
+    <li>PasswordAttemptLimitExceeded</li>
     <li>PasswordMustBeString</li>
     <li>PasswordCannotBeBlank</li>
     <li>PasswordTooShort</li>
@@ -69,6 +70,7 @@
     <li>AppIdNotValid</li>
     <li>UserNotFound</li>
     <li>UserNotSignedIn</li>
+    <li>TooManyRequests</li>
     <li>ServiceUnavailable</li>
   </ul>
 

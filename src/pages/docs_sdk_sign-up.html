@@ -24,7 +24,7 @@
       <span class="field">email</span> [string | optional] - The email for the account to be created.
     </li>
     <li>
-      <span class="field">profile</span> [object | optional | Key Len: 1-20 | Val Len: 0-1000 | Keys: 1-100] - A place where to store some information about the account to be created. All keys and values must be strings.
+      <span class="field">profile</span> [object | optional | Key Len: 1-20 | Val Len: 1-1000 | Keys: 1-100] - A place where to store some information about the account to be created. All keys and values must be strings.
     </li>
     <li>
       <span class="field">rememberMe</span> [string | optional] - The persistence mode for the user's session. Valid values are 'local', 'session', and 'none'. When set to 'local', the session persists even after the browser window gets closed. When set to 'session', the session persists until the browser window gets closed. And 'none' disables session persistence completely. Defaults to 'session'.
@@ -38,6 +38,7 @@
       <span class="field">user</span> [object] - Contains information about the new user.
       <ul>
         <li><span class="field">username</span> [string] - The user's username.</li>
+        <li><span class="field">userId</span> [string] - The user's unique identifier.</li>
         <li><span class="field">email</span> [string] - The user's email.</li>
         <li><span class="field">profile</span> [object] - The user's profile.</li>
       </ul>
@@ -77,6 +78,7 @@
     <li>ProfileKeyMustBeString</li>
     <li>ProfileKeyTooLong</li>
     <li>ProfileValueMustBeString</li>
+    <li>ProfileValueCannotBeBlank</li>
     <li>ProfileValueTooLong</li>
     <li>RememberMeValueNotValid</li>
     <li>TrialExceededLimit</li>
