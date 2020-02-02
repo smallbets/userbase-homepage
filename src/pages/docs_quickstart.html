@@ -125,7 +125,7 @@
           const username = document.getElementById('signup-username').value
           const password = document.getElementById('signup-password').value
   
-          userbase.signUp({ username, password })
+          userbase.signUp({ username, password, rememberMe: 'none' })
             .then((user) =&gt; alert('You signed up!'))
             .catch((e) =&gt; document.getElementById('signup-error').innerHTML = e)
         }
@@ -190,7 +190,7 @@
         const username = document.getElementById(&#x27;login-username&#x27;).value
         const password = document.getElementById(&#x27;login-password&#x27;).value
 
-        userbase.signIn({ username, password })
+        userbase.signIn({ username, password, rememberMe: 'none' })
           .then((user) =&#x3E; alert(&#x27;You signed in!&#x27;))
           .catch((e) =&#x3E; document.getElementById(&#x27;login-error&#x27;).innerHTML = e)
       }
@@ -313,7 +313,7 @@
       const username = document.getElementById(&#x27;login-username&#x27;).value
       const password = document.getElementById('login-password').value
 
-      userbase.signIn({ username, password })
+      userbase.signIn({ username, password, rememberMe: 'none' })
         .then((user) => showTodos(user.username))
         .catch((e) => document.getElementById('login-error').innerHTML = e)
     }
@@ -329,7 +329,7 @@
 
       const password = document.getElementById('signup-password').value
 
-      userbase.signUp({ username, password })
+      userbase.signUp({ username, password, rememberMe: 'none' })
         .then((user) => showTodos(user.username))
         .catch((e) => document.getElementById('signup-error').innerHTML = e)
     }
