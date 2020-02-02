@@ -137,7 +137,7 @@
   </div>
 
   <p>
-    Now, whenever someone submits the form, the <code class="language-javascript">handleSignUp</code> function will be called. This gets the values of the username and password inputs and calls <code class="language-javascript">userbase.signUp({ username, password })</code> to create a new user account with Userbase.
+    Now, whenever someone submits the form, the <code class="language-javascript">handleSignUp</code> function will be called. This gets the values of the username and password inputs and calls <code class="language-javascript">userbase.signUp({ username, password, rememberMe: 'none' })</code> to create a new user account with Userbase. We are specifying <code class="language-javascript">rememberMe: 'none'</code> because we won't implement automatic login until the end of the guide.
   </p>
 
   <p>
@@ -225,7 +225,7 @@
   </pre>
 
   <p>
-    You'll notice that this looks very similar to the sign up code from before. The <code class="language-javascript">handleLogin</code> function gets the values of the username and password inputs, and calls <code class="language-javascript">userbase.signIn({ username, password })</code>. This will attempt to sign in the user, handling a success with an alert and a failure by displaying the error.
+    You'll notice that this looks very similar to the sign up code from before. The <code class="language-javascript">handleLogin</code> function gets the values of the username and password inputs, and calls <code class="language-javascript">userbase.signIn({ username, password, rememberMe: 'none' })</code>. This will attempt to sign in the user, handling a success with an alert and a failure by displaying the error.
   </p>
 
   <p>
@@ -685,7 +685,7 @@
 
   <p>Then, let's add the following to our <code class="language-javascript">userbase.init</code> call.</p>
 
-  <pre data-line="5-7, 18">
+  <pre data-line="5-7, 17">
     <code class="language-markup">
     &#x3C;!-- application code --&#x3E;
     &#x3C;script type=&#x22;text/javascript&#x22;&#x3E;
@@ -714,12 +714,12 @@
   </p>
 
   <p>
-    The <code class="language-javascript">userbase.init</code> function returns a Promise that resolves when the SDK has determined if it can reuse the previous session. If so, the user gets automatically logged in, and the <code class="language-javascript">session.user</code> object gets set. If there was no previous session, or the session cannot be resumed, the <code class="language-javascript">session.user</code> object will not be set. If <code class="language-javascript">userbase.init</code> fails, we'll just send the user
-    to the sign in page regardless of the reason.
+    The <code class="language-javascript">userbase.init</code> function returns a Promise that resolves when the SDK has determined if it can reuse the previous session. If so, the user gets automatically logged in, and the <code class="language-javascript">session.user</code> object gets set. If there was no previous session, or the session cannot be resumed, the <code class="language-javascript">session.user</code> object will not be set. If <code class="language-javascript">userbase.init</code> fails, we'll just send the user to the sign in page regardless of the reason.
   </p>
 
   <p>
-    Now, if we sign in and reload the page, we will get signed in automatically without having to re-enter our username and password. However, if we want the session to persist even after we close the browser's window, we need to set the <code class="language-javascript">rememberMe</code> parameter to <code class="language-javascript">'local'</code> when calling <code class="language-javascript">userbase.signIn</code> and <code class="language-javascript">userbase.signUp</code>.</p>
+    Next, we want to tell the SDK to persist the session even after we refresh the page or close the browser's window. To do that, we need to set the <code class="language-javascript">rememberMe</code> parameter to either <code class="language-javascript">'local'</code> (persists after the window gets closed) or <code class="language-javascript">'session'</code> (persists only when the page gets refreshed) when calling <code class="language-javascript">userbase.signIn</code> and <code class="language-javascript">userbase.signUp</code>. Let's set ours to <code class="language-javascript">'local'</code>.
+  </p>
 
   <pre data-line="11,22">
     <code class="language-markup">
@@ -754,6 +754,10 @@
 
     </code>
   </pre>
+
+  <p>
+    Now, if we sign in and close the page, we will get signed in automatically next time we open it, without having to re-enter our username and password.
+  </p>
 
   <h3>What's next?</h3>
 
