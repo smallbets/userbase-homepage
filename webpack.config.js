@@ -18,12 +18,25 @@ module.exports = (env, argv) => {
   fs.readdirSync('./src/pages/').forEach(file => {
     const page = file.split('.')[0]
     let filename = './'
+    let title = 'Logins and persistence for static sites'
 
     if (page !== 'index') {
       const pagePath = page.split('_')
       for (let i = 0; i < pagePath.length; i++) {
         filename += pagePath[i] + '/'
       }
+
+      fs.readFile('./src/pages/' + file, 'utf-8', (err, data) => {
+        if (err) throw err
+
+        data = data.split('\n')
+
+        console.log(data[0].startsWith('<!--'))
+        
+        if (data[0].startsWith('<!-- ') && data[0].endsWith('-->')) {
+          title = data[0].replace('<!-- ', '').replace('-->', '').trim()
+        }
+      })
     }
 
     filename += 'index.html'
@@ -31,7 +44,7 @@ module.exports = (env, argv) => {
     pages.push(new HtmlWebPackPlugin({
       template: './src/template.html',
       filename,
-      templateParameters() { return { page } }
+      templateParameters() { return { page, title } }
     }))
   })
 
