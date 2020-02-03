@@ -90,9 +90,9 @@ module.exports = (env, argv) => {
         facebook: {
           'og:url': "https://userbase.com",
           'og:type': "website",
-          'og:title': "Userbase",
+          'og:title': "The easiest way to add user accounts & persistence to your static site.",
           'og:image': './src/img/og_card.png',
-          'og:description': "The easiest way to add user accounts & persistence to your static site.",
+          'og:description': "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
           'og:site_name': "Userbase",
           'og:locale': "en_US"
         },
@@ -101,8 +101,8 @@ module.exports = (env, argv) => {
           "twitter:site": "@UserbaseHQ",
           "twitter:creator": "@UserbaseHQ",
           "twitter:url": "https://userbase.com",
-          "twitter:title": "Userbase",
-          "twitter:description": "The easiest way to add user accounts & persistence to your static site.",
+          "twitter:title": "The easiest way to add user accounts & persistence to your static site.",
+          "twitter:description": "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
           "twitter:image": './src/img/og_card.png'
         },
       }),
