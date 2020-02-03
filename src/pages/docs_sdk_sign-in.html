@@ -16,7 +16,7 @@
 
   <ul>
     <li>
-      <span class="field">username</span> [string | Len: 1-50] - The username for the account to be login.
+      <span class="field">username</span> [string | Len: 1-100] - The username for the account to be login.
     </li>
     <li>
       <span class="field">password</span> [string | Len: 6-1000] - The password for the account to be login.
@@ -36,6 +36,8 @@
         <li><span class="field">userId</span> [string] - The user's unique identifier.</li>
         <li><span class="field">email</span> [string] - The user's email.</li>
         <li><span class="field">profile</span> [object] - The user's profile.</li>
+        <li><span class="field">usedTempPassword</span> [boolean] - Indicates if the user has signed in with a temporary password from the <a href="/docs/sdk/forgot-password/">forgotPassword</a> workflow. You may want to prompt the user to change the password when this is true.</li>
+        
       </ul>
     </li>
   </ul>

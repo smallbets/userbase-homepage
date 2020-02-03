@@ -31,8 +31,6 @@ module.exports = (env, argv) => {
 
         data = data.split('\n')
 
-        console.log(data[0].startsWith('<!--'))
-        
         if (data[0].startsWith('<!-- ') && data[0].endsWith('-->')) {
           title = data[0].replace('<!-- ', '').replace('-->', '').trim()
         }
