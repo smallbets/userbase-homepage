@@ -529,7 +529,7 @@
         e.preventDefault()
         userbase.updateItem({ databaseName: 'todos', itemId: items[i].itemId, item: {
           'todo': items[i].item.todo,
-          'complete': !items[i].item.complete
+          'complete': e.currentTarget.checked
         }})
         .catch((e) => document.getElementById('add-todo-error').innerHTML = e)
       }
