@@ -1,6 +1,5 @@
 const fs = require('fs')
 const path = require('path')
-const glob = require('glob')
 const webpack = require('webpack')
 const TerserPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
@@ -8,7 +7,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
-const SocialTags = require('social-tags-webpack-plugin')
 const OpenBrowserPlugin = require('opn-browser-webpack-plugin')
 
 module.exports = (env, argv) => {
@@ -19,6 +17,7 @@ module.exports = (env, argv) => {
     const page = file.split('.')[0]
     let filename = './'
     let title = 'Logins and persistence for static sites'
+    let desc = 'The easiest way to add user accounts & persistence to your static site.'
 
     if (page !== 'index') {
       const pagePath = page.split('_')
@@ -33,6 +32,7 @@ module.exports = (env, argv) => {
 
         if (data[0].startsWith('<!-- ') && data[0].endsWith('-->')) {
           title = data[0].replace('<!-- ', '').replace('-->', '').trim()
+          desc = 'Userbase: ' + title
         }
       })
     }
@@ -42,7 +42,7 @@ module.exports = (env, argv) => {
     pages.push(new HtmlWebPackPlugin({
       template: './src/template.html',
       filename,
-      templateParameters() { return { page, title } }
+      templateParameters() { return { page, title, desc } }
     }))
   })
 
@@ -96,27 +96,6 @@ module.exports = (env, argv) => {
       }),
       ...pages,
       new FaviconsWebpackPlugin('./src/img/icon.png'),
-      new SocialTags({
-        appUrl: 'https://userbase.com/',
-        facebook: {
-          'og:url': "https://userbase.com",
-          'og:type': "website",
-          'og:title': "The easiest way to add user accounts & persistence to your static site.",
-          'og:image': './src/img/og_card.png',
-          'og:description': "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
-          'og:site_name': "Userbase",
-          'og:locale': "en_US"
-        },
-        twitter: {
-          "twitter:card": "summary_large_image",
-          "twitter:site": "@UserbaseHQ",
-          "twitter:creator": "@UserbaseHQ",
-          "twitter:url": "https://userbase.com",
-          "twitter:title": "The easiest way to add user accounts & persistence to your static site.",
-          "twitter:description": "Create secure and private web apps using only static JavaScript, HTML, and CSS.",
-          "twitter:image": './src/img/og_card.png'
-        },
-      }),
       new HtmlBeautifyPlugin({
         config: {
           html: {
