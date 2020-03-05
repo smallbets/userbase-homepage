@@ -5,7 +5,7 @@
   <p><span class="font-semibold">signUp</span> lets you create user accounts for your web app. This API will return a promise that gets resolved once the user account has been created.</p>
 
   <pre>
-    <code class="language-javascript">userbase.signUp({ username, password, email, profile, rememberMe = 'session' })
+    <code class="language-javascript">userbase.signUp({ username, password, email, profile, rememberMe: 'session' })
       .then((user) => {
         // user account created
       })
