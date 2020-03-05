@@ -5,30 +5,36 @@
   <p><span class="font-semibold">updateUser</span> lets you update a user's account. This API will return a promise that gets resolved once the user account has been updated.</p>
 
   <pre>
-    <code class="language-javascript">userbase.updateUser({ username, currentPassword, newPassword, email, profile })
-      .then(() => {
+    <code class="language-javascript">
+      userbase.updateUser({
+        username: 'example-new-username',
+        currentPassword: 'example-password',
+        newPassword: 'example-new-password',
+        email: 'example@email.com', 
+        profile: { example: 'value' }
+      }).then(() => {
         // user account updated
-      })
-      .catch((e) => console.error(e))</code>
+      }).catch((e) => console.error(e))
+    </code>
   </pre>
 
   <h3 id="params">Parameters</h3>
 
   <ul>
     <li>
-      <span class="field">username</span> [string | Len: 1-100] - The new username for the account.
+      <span class="field">username</span> [string | Len: 1-100 | optional] - The new username for the account.
     </li>
     <li>
-      <span class="field">currentPassword</span> [string | Len: 6-1000] - The current password for the account. Required if newPassword provided.
+      <span class="field">currentPassword</span> [string | Len: 6-1000 | optional] - The current password for the account. Required if newPassword provided.
     </li>
     <li>
-      <span class="field">newPassword</span> [string | Len: 6-1000] - The new password for the account.
+      <span class="field">newPassword</span> [string | Len: 6-1000 | optional] - The new password for the account.
     </li>
     <li>
-      <span class="field">email</span> [string | null | undefined | false] - The new email for the account. If explicitly set to a falsey value, deletes the user's email.
+      <span class="field">email</span> [string | null | undefined | false | optional] - The new email for the account. If explicitly set to a falsey value, deletes the user's email.
     </li>
     <li>
-      <span class="field">profile</span> [object | null | undefined | false | Key Len: 1-20 | Val Len: 1-1000 | Keys: 1-100] - The new profile for the account. All keys and values must be strings. If explicitly set to a falsey value, deletes the user's profile.
+      <span class="field">profile</span> [object | null | undefined | false | Key Len: 1-20 | Val Len: 1-1000 | Keys: 1-100 | optional] - The new profile for the account. All keys and values must be strings. If explicitly set to a falsey value, deletes the user's profile.
     </li>
   </ul>
 

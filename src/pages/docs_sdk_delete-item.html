@@ -5,11 +5,14 @@
   <p><span class="font-semibold">deleteItem</span> lets you delete an item from a user's database. This API will return a promise that gets resolved once the item has been durably deleted from the database.</p>
 
   <pre>
-    <code class="language-javascript">userbase.deleteItem({ databaseName, itemId })
-      .then(() => {
+    <code class="language-javascript">
+      userbase.deleteItem({
+        databaseName: 'example-database-name',
+        itemId: '0001' 
+      }).then(() => {
         // item deleted
-      })
-      .catch((e) => console.error(e))</code>
+      }).catch((e) => console.error(e))
+    </code>
   </pre>
 
   <h3 id="params">Parameters</h3>
