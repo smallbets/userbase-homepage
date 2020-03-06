@@ -5,16 +5,17 @@
   <p><span class="font-semibold">init</span> needs to be the very first thing you call in your web app. It initializes the SDK with your App ID, and it also handles automatic logins when users return to your web app with an active session.</p>
 
   <pre>
-    <code class="language-javascript">userbase.init({ appId })
-      .then((session) => {
+    <code class="language-javascript">
+      userbase.init({
+        appId: 'YOUR_APP_ID'
+      }).then((session) => {
         // SDK initialized successfully
         
         if (session.user) {
           // there is a valid active session
           console.log(session.user.username)
         }
-      })
-      .catch((e) => console.error(e))
+      }).catch((e) => console.error(e))
     </code>
   </pre>
 

@@ -5,11 +5,15 @@
   <p><span class="font-semibold">updateItem</span> lets you modify an existing item in a user's database. This API will return a promise that gets resolved once the item has been durably updated in the database.</p>
 
   <pre>
-    <code class="language-javascript">userbase.updateItem({ databaseName, item, itemId })
-      .then(() => {
+    <code class="language-javascript">
+      userbase.updateItem({
+        databaseName: 'example-database-name',
+        item: { example: 'Updated Sample Item A' },
+        itemId: '0001'
+      }).then(() => {
         // item updated
-      })
-      .catch((e) => console.error(e))</code>
+      }).catch((e) => console.error(e))
+    </code>
   </pre>
 
   <h3 id="params">Parameters</h3>
@@ -19,7 +23,7 @@
       <span class="field">databaseName</span> [string | Len: 1-50] - The database name to use.
     </li>
     <li>
-      <span class="field">item</span> [object | Max size: 10&nbsp;KB] - The object to overwrite the existing item with.
+      <span class="field">item</span> [object | string | number | boolean | null | Max size: 10&nbsp;KB] - The object to overwrite the existing item with.
     </li>
     <li>
       <span class="field">itemId</span> [string | Len: 1-100] - The unique identifier of the item to replace.

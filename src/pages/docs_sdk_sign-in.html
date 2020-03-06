@@ -5,11 +5,14 @@
   <p><span class="font-semibold">signIn</span> lets your users log into your web app. This API will return a promise that gets resolved once the user has been logged in.</p>
 
   <pre>
-    <code class="language-javascript">userbase.signIn({ username, password, rememberMe: 'session' })
-      .then((user) => {
+    <code class="language-javascript">
+      userbase.signIn({
+        username: 'example-username',
+        password: 'example-password'
+      }).then((user) => {
         // user logged in
-      })
-      .catch((e) => console.error(e))</code>
+      }).catch((e) => console.error(e))
+    </code>
   </pre>
 
   <h3 id="params">Parameters</h3>

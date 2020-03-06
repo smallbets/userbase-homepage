@@ -5,8 +5,11 @@
   <p><span class="font-semibold">deleteUser</span> lets you delete the logged in user and all its data. This API will return a promise that gets resolved once the user gets marked for deletion. It will also automatically invalidate the user's session and log out the user.</p>
 
   <pre>
-    <code class="language-javascript">userbase.deleteUser()
-      .catch((e) => console.error(e))</code>
+    <code class="language-javascript">
+      userbase.deleteUser().then(() => {
+        // user marked for deletion
+      }).catch((e) => console.error(e))
+    </code>
   </pre>
 
   <h3 id="errors">Errors</h3>

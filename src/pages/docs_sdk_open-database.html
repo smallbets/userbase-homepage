@@ -5,11 +5,16 @@
   <p><span class="font-semibold">openDatabase</span> lets you retrieve your user's data. You also need to have a database open before storing or modifying user data. This API will return a promise that gets resolved once the database becomes available for use.</p>
 
   <pre>
-    <code class="language-javascript">userbase.openDatabase({ databaseName, changeHandler })
-      .then(() => {
+    <code class="language-javascript">
+      userbase.openDatabase({
+        databaseName: 'example-database-name',
+        changeHandler: function (items) {
+          // update your application state with the database items
+        }
+      }).then(() => {
         // the database can now be used
-      })
-      .catch((e) => console.error(e))</code>
+      }).catch((e) => console.error(e))
+    </code>
   </pre>
 
   <h3 id="params">Parameters</h3>

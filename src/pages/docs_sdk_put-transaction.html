@@ -6,17 +6,16 @@
 
   <pre>
     <code class="language-javascript">
-    const operations = [
-      { command: 'Update', item: { todo: 'Item A' } },
-      { command: 'Insert', item: { todo: 'Item B' }, itemId: '0002' },
-      { command: 'Delete', itemId: '0003' }
-    ]
-
-    userbase.putTransaction({ databaseName, operations })
-      .then(() => {
-        // transaction applied
-      })
-      .catch((e) => console.error(e))
+    userbase.putTransaction({
+      databaseName: 'example-database-name',
+      operations: [
+        { command: 'Insert', item: { example: 'Sample Item A' } },
+        { command: 'Update', item: { example: 'Sample Item B' }, itemId: '0002' },
+        { command: 'Delete', itemId: '0003' }
+      ]
+    }).then(() => {
+      // transaction applied
+    }).catch((e) => console.error(e))
     </code>
   </pre>
 
