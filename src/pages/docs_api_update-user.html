@@ -1,0 +1,33 @@
+<!-- Docs - API - Update User -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/api/">API</a> : Update User</h2>
+
+  <p>The <span class="font-semibold">Update User</span> API lets you modify the protectedProfile property of any of your users by providing the ID of a user from your account. The user ID can be obtained from the Admin panel, or from the <a href="/docs/sdk/sign-up/">signUp</a>, <a href="/docs/sdk/sign-in/">signIn</a>, or <a href="/docs/sdk/init/">init</a> methods in the <a href="/docs/sdk/">Userbase SDK</a>.</p>
+
+  <pre>
+    <code class="language-bash">
+      curl 'https://v1.userbase.com/v1/admin/users/$USER_ID' \
+        -XPOST \
+        -H "Authorization: Bearer $ACCESS_TOKEN" \
+        -H "Content-Type: application/json" \
+        --data-binary '{ "protectedProfile":  {"paid", "true"} }'
+    </code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">USER_ID</span> - The user ID to modify.
+    </li>
+    <li>
+      <span class="field">ACCESS_TOKEN</span> - Your access token.
+    </li>
+    <li>
+      <span class="field">Request Body</span> - The updated user metadata. Right now, only the <span class="field">protectedProfile</span> property can be modified by this API. The protected profile can only be modified by the Admin API, so it can be used for metadata that shouldn't by updated directly by the user (such as payment status info).
+    </li>
+  </ul>
+
+</div>
+
+<hr>
