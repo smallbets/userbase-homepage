@@ -1,0 +1,41 @@
+<!-- Docs - API - Get App -->
+<div class="section">
+    <h2><a href="/docs/">Docs</a> : <a href="/docs/api/">API</a> : Get App</h2>
+
+    <p>The <span class="font-semibold">Get App</span> API lets you retrieve the name, id, and creation date for the app and all related users by providing the ID of the app. The app ID can be obtained from the Apps page.</p>
+
+    <pre>
+    <code class="language-bash">
+      curl 'https://v1.userbase.com/v1/admin/apps/$APP_ID' \
+        -XGET \
+        -H 'Authorization: Bearer $ACCESS_TOKEN'
+    </code>
+  </pre>
+
+    <h3 id="params">Parameters</h3>
+
+    <ul>
+        <li>
+            <span class="field">APP_ID</span> - The app ID to retrieve.
+        </li>
+        <li>
+            <span class="field">ACCESS_TOKEN</span> - Your access token.
+        </li>
+    </ul>
+
+    <h3 id="result">Result</h3>
+
+    <ul>
+        <li><span class="field">appName</span> [string] - The app's name.</li>
+        <li><span class="field">appId</span> [string] - The app's unique identifier.</li>
+        <li><span class="field">creationDate</span> [string] - The timestamp when the user was created.</li>
+        <li><span class="field">users</span> [array] - A list of user objects.</li>
+        <li><span class="field">users.username</span> [string] - The user's username.</li>
+        <li><span class="field">users.userId</span> [string] - The user's unique identifier.</li>
+        <li><span class="field">users.appId</span> [string] - The app id which the user belogs to.</li>
+        <li><span class="field">users.creationDate</span> [string] - The timestamp when the user was created.</li>
+    </ul>
+
+</div>
+
+<hr>
