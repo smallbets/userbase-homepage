@@ -1,0 +1,64 @@
+<!-- Docs - SDK - updatePaymentMethod -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : updatePaymentMethod</h2>
+
+  <p>
+    <span class="font-semibold">updatePaymentMethod</span> redirects your users to a Stripe Checkout form that allows the user to input a new credit card.
+  </p>
+
+  <pre>
+    <code class="language-javascript">
+      userbase.updatePaymentMethod({
+        successUrl: 'https://example.com/success',
+        cancelUrl: 'https://example.com/cancel'
+      }).then(() => {
+        // user successfully redirected to Stripe Checkout form
+      }).catch((e) => console.error(e))
+    </code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">sucessUrl</span> [string] - The URL the user will be redirected to upon successfully saving their new credit card.
+    </li>
+    <li>
+      <span class="field">cancelUrl</span> [string] - The URL the user will be redirected to upon canceling the form.
+    </li>
+  </ul>
+
+  <h3 id="params">Notes</h3>
+
+  <ul>
+    <li>
+      This function is especially useful for when your user's credit card fails. At the end of a billing cycle your user gets charged for example, but their card has expired. Calling this function will update their credit card and pay off the outstanding subscription automatically.
+    </li>
+    <li>
+      The credit card the user sets here will be used to pay their subscription going forward.
+    </li>
+  </ul>
+
+  <h3 id="errors">Errors</h3>
+
+  <ul>
+    <li>ParamsMustBeObject</li>
+    <li>SuccessUrlMissing</li>
+    <li>SuccessUrlMustBeString</li>
+    <li>SuccessUrlInvalid</li>
+    <li>CancelUrlMissing</li>
+    <li>CancelUrlMustBeString</li>
+    <li>CancelUrlInvalid</li>
+    <li>StripeError</li>
+    <li>StripeJsLibraryMissing</li>
+    <li>SubscriptionNotPurchased</li>
+    <li>StripeAccountNotConnected</li>
+    <li>PaymentsDisabled</li>
+    <li>UserNotSignedIn</li>
+    <li>TooManyRequests</li>
+    <li>ServiceUnavailable</li>
+  </ul>
+
+</div>
+
+<hr>
