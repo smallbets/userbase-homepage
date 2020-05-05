@@ -36,8 +36,13 @@
           <ul>
             <li><span class="field">username</span> [string] - The user's username.</li>
             <li><span class="field">userId</span> [string] - The user's unique identifier.</li>
+            <li><span class="field">creationDate</span> [string] - The date the user was created.</li>
             <li><span class="field">email</span> [string] - The user's email.</li>
             <li><span class="field">profile</span> [object] - The user's profile.</li>
+            <li><span class="field">paymentsMode</span> [string] - The app's payments mode set in your Admin panel. Can be 'disabled', 'test', or 'prod'.</li>
+            <li><span class="field">subscriptionStatus</span> [string] - The user's subscription status. Can be 'active', 'incomplete', 'incomplete_expired', 'past_due', 'canceled', or 'unpaid'. Each status is explained further <a href="https://stripe.com/docs/api/subscriptions/object#subscription_object-status" target="_blank">here</a>.</li>
+            <li><span class="field">trialExpirationDate</span> [string] - The date the user's trial expires.</li>
+            <li><span class="field">cancelSubscriptionAt</span> [string] - The date the user's subscription is set to be canceled.</li>
           </ul>
         </li>
         <li><span class="field">lastUsedUsername</span> [string] - If set, this is the username of the last user that was logged in.</li>

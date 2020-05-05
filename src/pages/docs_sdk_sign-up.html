@@ -43,8 +43,11 @@
       <ul>
         <li><span class="field">username</span> [string] - The user's username.</li>
         <li><span class="field">userId</span> [string] - The user's unique identifier.</li>
+        <li><span class="field">creationDate</span> [string] - The date the user was created.</li>
         <li><span class="field">email</span> [string] - The user's email.</li>
         <li><span class="field">profile</span> [object] - The user's profile.</li>
+        <li><span class="field">paymentsMode</span> [string] - The app's payments mode set in your Admin panel. Can be 'disabled', 'test', or 'prod'.</li>
+        <li><span class="field">trialExpirationDate</span> [string] - The date the user's trial expires.</li>
       </ul>
     </li>
   </ul>
@@ -60,6 +63,9 @@
     </li>
     <li>
       When <span class="field">rememberMe</span> is set to 'session' or 'local', the user's encryption key will be stored in clear in the browser's session or local storage respectively. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to 'none'. When <span class="field">rememberMe</span> is 'none', the user will always have to login with the username and password when visiting your web app.
+    </li>
+    <li>
+      When the app's <span class="field">paymentsMode</span> is set to 'test' or 'prod' in the admin panel, and the app's subscription plan has a trial period set in Stripe, the <span class="field">trialExpirationDate</span> is determined based on the trial period and the date the user is created.
     </li>
   </ul>
 

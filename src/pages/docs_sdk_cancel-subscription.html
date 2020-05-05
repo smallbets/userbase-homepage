@@ -1,0 +1,59 @@
+<!-- Docs - SDK - cancelSubscription -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : cancelSubscription</h2>
+
+  <p>
+    <span class="font-semibold">cancelSubscription</span> lets your users cancel their subscription.
+  </p>
+
+  <pre>
+    <code class="language-javascript">
+      userbase.cancelSubscription().then((result) => {
+        // user sucessfully canceled subscription
+      }).catch((e) => console.error(e))
+    </code>
+  </pre>
+
+  <h3 id="result">Result</h3>
+
+  <ul>
+    <li>
+      <span class="field">result</span> [object] - Contains the date the subscription is set to be canceled.
+      <ul>
+        <li><span class="field">cancelSubscriptionAt</span> [string] - The date the user's subscription is set to be canceled.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="params">Notes</h3>
+
+  <ul>
+    <li>
+      Your user will not be charged again for the subscription your app is currently set to after successfully calling this function.
+    </li>
+    <li>
+      If your user is subscribed to a plan and you delete that subscription plan on your app in the Admin panel and then set a new plan, this function will not cancel that user's subscription plan. You must manually delete that user's plan in the Stripe dashboard.
+    </li>
+    <li>
+      This sets your user’s subscription to cancel at the end of the current period. For example, if your user purchases a yearly subscription on May 4th, 2021 and then cancels the subscription on June 10th, 2021, then your user’s subscription will cancel on May 4th, 2022.
+    </li>
+    <li>
+      After this function is called successfully, your user's <span class="field">cancelSubscriptionAt</span> will be set to to the date the subscription is set to be canceled. If the user's <span class="field">subscriptionStatus</span> was set to 'active' before calling this function, the user will still be able to call <a href="/docs/sdk/open-database/">openDatabase</a> on an app with payments enabled until the subscription is canceled on that date.
+    </li>
+  </ul>
+
+  <h3 id="errors">Errors</h3>
+
+  <ul>
+    <li>SubscriptionPlanNotSet</li>
+    <li>StripeAccountNotConnected</li>
+    <li>PaymentsDisabled</li>
+    <li>SubscriptionAlreadyCanceled</li>
+    <li>UserNotSignedIn</li>
+    <li>TooManyRequests</li>
+    <li>ServiceUnavailable</li>
+  </ul>
+
+</div>
+
+<hr>

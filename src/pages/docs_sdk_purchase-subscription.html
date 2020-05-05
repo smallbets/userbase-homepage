@@ -1,0 +1,85 @@
+<!-- Docs - SDK - purchaseSubscription -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : purchaseSubscription</h2>
+
+  <p>
+    <span class="font-semibold">purchaseSubscription</span> redirects your users to a <a href="https://stripe.com/docs/payments/checkout" target="_blank">Stripe Checkout</a> form, a Stripe-hosted payment page designed to reduce friction accepting payment from your users. To call this function, you must first do the following:
+    <ul>
+      <li>
+        Include the <a href="https://stripe.com/docs/js/including" target="_blank">Stripe.js client</a> in your web app.
+      </li>
+      <li>
+        Connect a Stripe account to your Userbase admin account in the <a href="https://v1.userbase.com/#edit-account" target="_blank">Account</a> section in your Admin panel.
+      </li>
+      <li>
+        Create a new test subscription plan in your <a href="https://dashboard.stripe.com/test/subscriptions/products/create" target="_blank">Stripe dashboard</a>.
+      </li>
+      <li>
+        Set the test subscription plan ID on your app in your <a href="https://v1.userbase.com/" target="_blank">Admin panel</a> and enable payments.
+      </li>
+    </ul>   
+  </p>
+
+  <pre>
+    <code class="language-javascript">
+      userbase.purchaseSubscription({
+        successUrl: 'https://example.com/success',
+        cancelUrl: 'https://example.com/cancel'
+      }).then(() => {
+        // user successfully redirected to Stripe Checkout form
+      }).catch((e) => console.error(e))
+    </code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">sucessUrl</span> [string] - The URL the user will be redirected to upon successful payment.
+    </li>
+    <li>
+      <span class="field">cancelUrl</span> [string] - The URL the user will be redirected to upon canceling payment.
+    </li>
+  </ul>
+
+  <h3 id="params">Notes</h3>
+
+  <ul>
+    <li>
+      To accept payments in production, you will need to purchase the payments add-on subscription.
+    </li>
+    <li>
+      Upon successful payment, the user's <span class="field">subscriptionStatus</span> will be set to 'active'. This allows the user to successfully call <a href="/docs/sdk/open-database/">openDatabase</a> on an app with payments enabled.
+    </li>
+    <li>
+      The user's credit card will be charged automatically at the start of every billing period. For example, if the user purchases a yearly subscription on May 4th, then the user will be charged on May 4th every year until they cancel.
+    </li>
+    <li>
+      You can customize your Stripe Checkout form in your <a href="https://dashboard.stripe.com/settings/branding" target="_blank">Stripe dashboard</a>.
+    </li>
+  </ul>
+
+  <h3 id="errors">Errors</h3>
+
+  <ul>
+    <li>ParamsMustBeObject</li>
+    <li>SuccessUrlMissing</li>
+    <li>SuccessUrlMustBeString</li>
+    <li>SuccessUrlInvalid</li>
+    <li>CancelUrlMissing</li>
+    <li>CancelUrlMustBeString</li>
+    <li>CancelUrlInvalid</li>
+    <li>StripeError</li>
+    <li>StripeJsLibraryMissing</li>
+    <li>SubscriptionPlanNotSet</li>
+    <li>SubscriptionPlanAlreadyPurchased</li>
+    <li>StripeAccountNotConnected</li>
+    <li>PaymentsDisabled</li>
+    <li>UserNotSignedIn</li>
+    <li>TooManyRequests</li>
+    <li>ServiceUnavailable</li>
+  </ul>
+
+</div>
+
+<hr>
