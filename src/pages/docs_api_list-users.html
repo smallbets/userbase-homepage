@@ -1,0 +1,67 @@
+<!-- Docs - API - List Users -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/api/">API</a> : List Users</h2>
+
+  <p>The <span class="font-semibold">List Users</span> API lets you retrieve all the users of an app and their associated metadata by providing the app ID. The app ID can be obtained from the <a href="https://v1.userbase.com/" target="_blank">Admin panel</a>. This endpoint is paginated.</p>
+
+  <pre>
+    <code class="language-bash">
+      curl 'https://v1.userbase.com/v1/admin/apps/$APP_ID/users?nextPageToken=$NEXT_PAGE_TOKEN' \
+        -XGET \
+        -H 'Authorization: Bearer $ACCESS_TOKEN'
+    </code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">APP_ID</span> - The app ID to retrieve.
+    </li>
+    <li>
+      <span class="field">NEXT_PAGE_TOKEN</span> - The next page of users to retrieve.
+    </li>
+    <li>
+      <span class="field">ACCESS_TOKEN</span> - Your access token.
+    </li>
+  </ul>
+
+  <h3 id="result">Result</h3>
+
+  <ul>
+    <li><span class="field">nextPageToken</span> [string] - Each response has a max limit of around 1mb of users. If this limit is reached, this token is provided in the response, and must be provided in the next request to get the next page of users.</li>
+
+    <li><span class="field">users</span> [array]</li>
+      <ul>
+      <li><span class="field">username</span> [string] - The user's username.</li>
+      <li><span class="field">userId</span> [string] - The user's unique identifier.</li>
+      <li><span class="field">appId</span> [string] - The app id which the user belogs to.</li>
+      <li><span class="field">creationDate</span> [string] - The timestamp when the user was created.</li>
+      <li><span class="field">deleted</span> [string] - The timestamp when the user was deleted.</li>
+      <li><span class="field">profile</span> [object] - The user's profile.</li>
+      <li><span class="field">protectedProfile</span> [object] - The user's protected profile. The protected profile can only be modified by the Admin API, so it can be used for metadata that shouldn't by updated directly by the user (such as payment status info).</li>
+
+      <li><span class="field">testStripeData</span> [object] - The user's relevant test Stripe data.</li>
+        <ul>
+          <li><span class="field">customerId</span> [string] - The users's unique customer identifier generated automatically by Stripe when the user succesfully purchases a subscription.</li>
+          <li><span class="field">subscriptionStatus</span> [string] - The user's subscription status. Can be 'active', 'incomplete', 'incomplete_expired', 'past_due', 'canceled', or 'unpaid'. Each status is explained further <a href="https://stripe.com/docs/api/subscriptions/object#subscription_object-status" target="_blank">here</a>.</li>
+          <li><span class="field">trialExpirationDate</span> [string] - The date the user's trial expires.</li>
+          <li><span class="field">cancelSubscriptionAt</span> [string] - The date the user's subscription is set to be canceled.</li>
+          <li><span class="field">subscriptionId</span> [string] - The users's unique subscription identifier generated automatically by Stripe when the user succesfully purchases a subscription.</li>
+          <li><span class="field">subscriptionPlanId</span> [string] - The subscription plan the user is subscribed to.</li>
+        </ul>
+      <li><span class="field">prodStripeData</span> [object] - The user's relevant production Stripe data.</li>
+        <ul>
+          <li><span class="field">customerId</span> [string] - The users's unique customer identifier generated automatically by Stripe when the user succesfully purchases a subscription.</li>
+          <li><span class="field">subscriptionStatus</span> [string] - The user's subscription status. Can be 'active', 'incomplete', 'incomplete_expired', 'past_due', 'canceled', or 'unpaid'. Each status is explained further <a href="https://stripe.com/docs/api/subscriptions/object#subscription_object-status" target="_blank">here</a>.</li>
+          <li><span class="field">trialExpirationDate</span> [string] - The date the user's trial expires.</li>
+          <li><span class="field">cancelSubscriptionAt</span> [string] - The date the user's subscription is set to be canceled.</li>
+          <li><span class="field">subscriptionId</span> [string] - The users's unique subscription identifier generated automatically by Stripe when the user succesfully purchases a subscription.</li>
+          <li><span class="field">subscriptionPlanId</span> [string] - The subscription plan the user is subscribed to.</li>
+        </ul>  
+      </ul>
+  </ul>
+
+</div>
+
+<hr>

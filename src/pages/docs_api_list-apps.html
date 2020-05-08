@@ -1,0 +1,47 @@
+<!-- Docs - API - List Apps -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/api/">API</a> : List Apps</h2>
+
+  <p>The <span class="font-semibold">List Apps</span> API lets you retrieve all of your apps. This endpoint is paginated.</p>
+
+  <pre>
+    <code class="language-bash">
+      curl 'https://v1.userbase.com/v1/admin/apps?nextPageToken=$NEXT_PAGE_TOKEN' \
+        -XGET \
+        -H 'Authorization: Bearer $ACCESS_TOKEN'
+    </code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">NEXT_PAGE_TOKEN</span> - The next page of apps to retrieve.
+    </li>
+    <li>
+      <span class="field">ACCESS_TOKEN</span> - Your access token.
+    </li>
+  </ul>
+
+  <h3 id="result">Result</h3>
+
+  <ul>
+    <li><span class="field">nextPageToken</span> [string] - Each response has a max limit of around 1mb of apps. If this limit is reached, this token is provided in the response, and must be provided in the next request to get the next page of apps.</li>
+
+    <li><span class="field">apps</span> [array]</li>
+      <ul>
+        <li><span class="field">appName</span> [string] - The app's name.</li>
+        <li><span class="field">appId</span> [string] - The app's unique identifier.</li>
+        <li><span class="field">creationDate</span> [string] - The timestamp when the app was created.</li>
+        <li><span class="field">deleted</span> [string] - The timestamp when the app was deleted, if the app has been deleted.</li>
+        <li><span class="field">paymentsMode</span> [string] - The app's payments mode set in your Admin panel. Can be 'disabled', 'test', or 'prod'.</li>
+        <li><span class="field">testSubscriptionPlanId</span> [string] - The app's test subscription plan set in your Admin panel.</li>
+        <li><span class="field">testTrialPeriodDays</span> [number] - The number of trial days set on the app's test subscription plan in your Stripe Dashboard.</li>
+        <li><span class="field">prodSubscriptionPlanId</span> [string] - The app's prod subscription plan set in your Admin panel.</li>
+        <li><span class="field">prodTrialPeriodDays</span> [number] - The number of trial days set on the app's prod subscription plan in your Stripe Dashboard.</li>
+      </ul>
+  </ul>
+
+</div>
+
+<hr>

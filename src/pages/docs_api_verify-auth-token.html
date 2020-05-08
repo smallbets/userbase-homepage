@@ -1,0 +1,28 @@
+<!-- Docs - API - Verify Auth Token -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/api/">API</a> : Verify Auth Token</h2>
+
+  <p>The <span class="font-semibold">Verify Auth Token</span> API lets you verify that a user is signed in to Userbase. This is useful if you want the user to interact with a service separate from Userbase, such as another database, or only serve content to authenticated users for example. It returns successfully if the user is signed in.</p>
+
+  <pre>
+    <code class="language-bash">
+      curl 'https://v1.userbase.com/v1/admin/auth-tokens/$AUTH_TOKEN' \
+        -XGET \
+        -H 'Authorization: Bearer $ACCESS_TOKEN'
+    </code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">AUTH_TOKEN</span> - The user's auth token provided in the response to the <a href="/docs/sdk/sign-up/">signUp</a>, <a href="/docs/sdk/sign-in/">signIn</a>, or <a href="/docs/sdk/init/">init</a> methods.
+    </li>
+    <li>
+      <span class="field">ACCESS_TOKEN</span> - Your access token.
+    </li>
+  </ul>
+
+</div>
+
+<hr>
