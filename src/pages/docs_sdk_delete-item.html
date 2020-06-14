@@ -22,6 +22,9 @@
       <span class="field">databaseName</span> [string | Len: 1-50] - The database name to use.
     </li>
     <li>
+      <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
+    </li>
+    <li>
       <span class="field">itemId</span> [string | Len: 1-100] - The unique identifier of the item to delete.
     </li>
   </ul>
@@ -35,6 +38,12 @@
     <li>DatabaseNameMustBeString</li>
     <li>DatabaseNameCannotBeBlank</li>
     <li>DatabaseNameTooLong</li>
+    <li>DatabaseNameRestricted</li>
+    <li>DatabaseIdMustBeString</li>
+    <li>DatabaseIdCannotBeBlank</li>
+    <li>DatabaseIdInvalidLength</li>
+    <li>DatabaseIdNotAllowed</li>
+    <li>DatabaseNotFound</li>
     <li>ItemIdMissing</li>
     <li>ItemIdMustBeString</li>
     <li>ItemIdCannotBeBlank</li>
