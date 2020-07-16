@@ -1,0 +1,86 @@
+<!-- Docs - SDK - getFile -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : getFile</h2>
+
+  <p><span class="font-semibold">getFile</span> lets you retrieve files uploaded via <a href="/docs/sdk/upload-file/">uploadFile</a>. You can retrieve entire files at a time, or retrieve partial files to stream them for example.</p>
+
+  <pre>
+    <code class="language-javascript">
+      userbase.getFile({
+        databaseName: 'example-database-name',
+        fileId: 'example-id'        
+      }).then(({ file }) => {
+        // file object available        
+      }).catch((e) => console.error(e))</code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">databaseName</span> [string | Len: 1-50] - The database name to use.
+    </li>
+    <li>
+      <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
+    </li>
+    <li>
+      <span class="field">fileId</span> [string | Len: 36] - The file's unique identifier.
+    </li>
+    <li>
+      <span class="field">range</span> [object | optional] - The range of bytes to retrieve.
+      <ul>
+        <li><span class="field">start</span> [number] - The first byte to retrieve inclusive.</li>
+        <li><span class="field">end</span> [number] - The last byte to retrieve exclusive.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="result">Result</h3>
+
+  <ul>
+    <li><span class="field">file</span> [File]</li>
+  </ul>
+
+  <h3 id="notes">Notes</h3>
+
+  <ul>
+    <li>
+      You can find a file's <span class="field">fileId</span> via <a href="/docs/sdk/open-database/">openDatabase</a>.
+    </li>
+  </ul>
+
+  <h3 id="errors">Errors</h3>
+
+  <ul>
+    <li>ParamsMustBeObject</li>
+    <li>DatabaseNotOpen</li>
+    <li>DatabaseNameMissing</li>
+    <li>DatabaseNameMustBeString</li>
+    <li>DatabaseNameCannotBeBlank</li>
+    <li>DatabaseNameTooLong</li>
+    <li>DatabaseNameRestricted</li>
+    <li>DatabaseIdMustBeString</li>
+    <li>DatabaseIdCannotBeBlank</li>
+    <li>DatabaseIdInvalidLength</li>
+    <li>DatabaseIdNotAllowed</li>
+    <li>DatabaseIsReadOnly</li>
+    <li>FileIdMissing</li>
+    <li>FileIdMustBeString</li>
+    <li>FileIdCannotBeBlank</li>
+    <li>FileIdTooLong</li>
+    <li>FileNotFound</li>
+    <li>RangeMissingStart</li>
+    <li>RangeMissingEnd</li>
+    <li>RangeStartMustBeNumber</li>
+    <li>RangeEndMustBeNumber</li>
+    <li>RangeStartMustBeGreaterThanZero</li>
+    <li>RangeEndMustBeGreaterThanRangeStart</li>
+    <li>RangeEndMustBeLessThanFileSize</li>
+    <li>UserNotSignedIn</li>    
+    <li>TooManyRequests</li>
+    <li>ServiceUnavailable</li>
+  </ul>
+
+</div>
+
+<hr>

@@ -34,6 +34,9 @@
           <ul>
             <li><span class="field">itemId</span> [string] - The item's unique identifier.</li>
             <li><span class="field">item</span> [object] - The stored item.</li>
+            <li><span class="field">fileId</span> [string | optional] - The attached file's unique identifier (if a file has been attached to this item via <a href="/docs/sdk/upload-file/">uploadFile</a>). This can be passed to <a href="/docs/sdk/get-file/">getFile</a> to retrieve the file.</li>
+            <li><span class="field">fileName</span> [string | optional] - The attached file's name.</li>
+            <li><span class="field">fileSize</span> [number | optional] - The attached file's size in bytes.</li>
           </ul>
         </li>
       </ul>
