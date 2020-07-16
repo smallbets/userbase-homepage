@@ -1,12 +1,12 @@
 <!-- Docs - SDK - getVerificationMessage -->
 <div class="section">
-  <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : Get Verification Message</h2>
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : getVerificationMessage</h2>
 
   <p>The <span class="font-semibold">Get Verification Message</span> API lets you retrieve a user's verification message. The user can give this verification message to other users in person (by scanning a QR code for example), or through a secure 3rd party channel such as <a href="https://signal.org/en/" target="_blank">Signal</a>. Other users can then take the user's verification message and call <a href="/docs/sdk/verify-user/">verifyUser</a> to make sure that they are sharing data directly with that user and not a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank">man-in-the-middle</a>.</p>
   
   <pre>
     <code class="language-javascript">
-      userbase.getVerificationMessage().then((verificationMessage) => {
+      userbase.getVerificationMessage().then(({ verificationMessage }) => {
         // verification message to give to other users so they can verify you
       }).catch((e) => console.error(e))
     </code>

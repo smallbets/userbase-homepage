@@ -45,7 +45,13 @@
       You can provide either a <span class="field">databaseName</span> or a <span class="field">databaseId</span>, but not both.
     </li>
     <li>
+      To access a database that has been shared with a user, a user can find the database's <span class="field">databaseId</span> via <a href="/docs/sdk/get-databases/">getDatabases</a> and then provide that <span class="field">databaseId</span> to <a href="/docs/sdk/open-database/">openDatabase</a>. 
+    </li>
+    <li>
       A user can verify another user via <a href="/docs/sdk/verify-user/">verifyUser</a> at any point, either before or after sharing a database. Verifying a user after sharing a database will enable the verifier to make sure they shared the database directly with the expected user, and not a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank">man-in-the-middle</a>.
+    </li>
+    <li>
+      If a user deletes their account via <a href="/docs/sdk/delete-user/">deleteUser</a> and they are the owner of a database, that database will be deleted even if it has been shared with other users.
     </li>
   </ul>
 
