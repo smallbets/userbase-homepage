@@ -44,6 +44,7 @@
         </li>
       </ul>
     </li>
+    <li><span class="field">sessionLength</span> [number | optional | Unit: hours | Min: 0.084 (5 mins) | Max: 8760 (1 yr) ] - If resuming a session, this is the number of hours the user's session will extend. Defaults to 24.</li>
   </ul>
 
   <h3 id="result">Result</h3>
@@ -81,6 +82,10 @@
     <li>AppIdMustBeString</li>
     <li>AppIdCannotBeBlank</li>
     <li>AppIdNotValid</li>
+    <li>UpdateUserHandlerMustBeFunction</li>
+    <li>SessionLengthMustBeNumber</li>
+    <li>SessionLengthTooShort</li>
+    <li>SessionLengthTooLong</li>
     <li>UserAlreadySignedIn</li>
     <li>ServiceUnavailable</li>
   </ul>

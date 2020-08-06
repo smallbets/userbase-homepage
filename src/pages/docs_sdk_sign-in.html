@@ -27,6 +27,9 @@
     <li>
       <span class="field">rememberMe</span> [string | optional] - The persistence mode for the user's session. Valid values are 'local', 'session', and 'none'. When set to 'local', the session persists even after the browser window gets closed. When set to 'session', the session persists until the browser window gets closed. And 'none' disables session persistence completely. Defaults to 'session'.
     </li>
+    <li>
+      <span class="field">sessionLength</span> [number | optional | Unit: hours | Min: 0.084 (5 mins) | Max: 8760 (1 yr) ] - The number of hours the user's session will remain active. Defaults to 24.
+    </li>
   </ul>
 
   <h3 id="result">Result</h3>
@@ -45,8 +48,7 @@
         <li><span class="field">paymentsMode</span> [string] - The app's payments mode set in your Admin panel. Can be 'disabled', 'test', or 'prod'.</li>
         <li><span class="field">subscriptionStatus</span> [string] - The user's subscription status. Can be 'active', 'incomplete', 'incomplete_expired', 'past_due', 'canceled', or 'unpaid'. Each status is explained further <a href="https://stripe.com/docs/api/subscriptions/object#subscription_object-status" target="_blank">here</a>.</li>
         <li><span class="field">trialExpirationDate</span> [string] - The date the user's trial expires.</li>
-        <li><span class="field">cancelSubscriptionAt</span> [string] - The date the user's subscription is set to be canceled.</li>
-        
+        <li><span class="field">cancelSubscriptionAt</span> [string] - The date the user's subscription is set to be canceled.</li>        
       </ul>
     </li>
   </ul>
@@ -58,7 +60,7 @@
       The user's <span class="field">password</span> is never sent to the server. A hash gets computed client-side, and only the hash is transmitted and stored server-side.
     </li>
     <li>
-      When <span class="field">rememberMe</span> is set to 'session' or 'local', the user's encryption key will be stored in clear in the browser's session or local storage respectively. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to 'none'. When <span class="field">rememberMe</span> is 'none', the user will always have to login with the username and password when visiting your web app.
+      When <span class="field">rememberMe</span> is set to 'session' or 'local', the user's encryption key and session token will be stored in clear in the browser's session or local storage respectively. This means someone with access to the user's device will be able to access a user's account and all their data until the user explicitly signs out, or the user's session expires. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to 'none'. When <span class="field">rememberMe</span> is 'none', the user will always have to login with the username and password when visiting your web app.
     </li>
   </ul>
 
@@ -78,6 +80,9 @@
     <li>PasswordMustBeString</li>
     <li>PasswordAttemptLimitExceeded</li>
     <li>RememberMeValueNotValid</li>
+    <li>SessionLengthMustBeNumber</li>
+    <li>SessionLengthTooShort</li>
+    <li>SessionLengthTooLong</li>
     <li>KeyNotFound</li>
     <li>AppIdNotSet</li>
     <li>AppIdNotValid</li>
