@@ -44,6 +44,7 @@
         <li><span class="field">creationDate</span> [string] - The date the user was created.</li>
         <li><span class="field">email</span> [string] - The user's email.</li>
         <li><span class="field">profile</span> [object] - The user's profile.</li>
+        <li><span class="field">protectedProfile</span> [object] - The user's protected profile set via <a href="/docs/api/update-user/">Update User</a> in the <a href="/docs/api/">Admin API</a>.</li>
         <li><span class="field">usedTempPassword</span> [boolean] - Indicates if the user has signed in with a temporary password from the <a href="/docs/sdk/forgot-password/">forgotPassword</a> workflow. You may want to prompt the user to change the password when this is true.</li>
         <li><span class="field">paymentsMode</span> [string] - The app's payments mode set in your Admin panel. Can be 'disabled', 'test', or 'prod'.</li>
         <li><span class="field">subscriptionStatus</span> [string] - The user's subscription status. Can be 'active', 'incomplete', 'incomplete_expired', 'past_due', 'canceled', or 'unpaid'. Each status is explained further <a href="https://stripe.com/docs/api/subscriptions/object#subscription_object-status" target="_blank">here</a>.</li>
