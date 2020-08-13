@@ -2,8 +2,10 @@
 <div class="section">
   <h2><a href="/docs/">Docs</a> : FAQ</h2>
 
+  The following is a curated list of our most frequently asked questions. If interested in a more detailed explanation of Userbase's inner workings, see <a href="https://github.com/encrypted-dev/userbase/blob/8d488cef645eee384c65ef5e3c51c7fa4a6c5469/docs/userbase_architecture.md">this document</a>.
+
   <h3 id="faq-1">What data does Userbase end-to-end encrypt?</h3>
-  <p>All the data stored using the <a href="/docs/sdk/insert-item">insertItem</a>, <a href="/docs/sdk/update-item">updateItem</a>, <a href="/docs/sdk/delete-item">deleteItem</a>, or <a href="/docs/sdk/put-transaction">putTransaction</a> APIs is end-to-end encrypted. Both the stored item and the item ID are end-to-end encrypted. Other user data and metadata, such as usernames, timestamps, and user activity logs, are encrypted on the wire and at rest, but are not end-to-end encrypted.</p>
+  <p>All the data stored using the <a href="/docs/sdk/open-database">openDatabase</a>, <a href="/docs/sdk/insert-item">insertItem</a>, <a href="/docs/sdk/update-item">updateItem</a>, <a href="/docs/sdk/delete-item">deleteItem</a>, <a href="/docs/sdk/put-transaction">putTransaction</a>, or <a href="/docs/sdk/upload-file">uploadFile</a> APIs is end-to-end encrypted. This includes database names, items, item ID's, and files. Other user data and metadata, such as usernames, timestamps, and user activity logs, are encrypted on the wire and at rest, but are not end-to-end encrypted.</p>
 
   <h3 id="faq-2">Where is the user's encryption key stored?</h3>
   <p>The user's encryption key gets randomly generated when the user creates an account, and this key gets encrypted itself with another key derived from the user's password. The encrypted key gets stored on the Userbase server, and the user retrieves it back after every successful login. The Userbase server never sees the user's password, and it only receives an scrypt hash of the password that gets computed client-side.</p>
@@ -21,10 +23,10 @@
   <p>You can close your Userbase Admin account from the Admin panel. Once you close your Userbase Admin account, all your apps will stop working. If you closed your account in error, please <a href="/contact/">get in touch</a> to check if we can still recover it.</p>
 
   <h3 id="faq-7">What happens if I exceed the 1&nbsp;GB storage limit?</h3>
-  <p>At the moment, Userbase is not metering data storage, and nothing will happen if you exceed it. In the future, Userbase will have other pricing plans that allow higher storage volumes. If you happen to be exceeding the limit when these new pricing plans become available, we will ask you to upgrade to the new plans.</p>
+  <p>Your apps will continue to function normally, but we will ask you to upgrade your storage plan.</p>
 
-  <h3 id="faq-5">Can data be shared across users?</h3>
-  <p>This feature will be available soon. At the moment, users only have access to their own data.</p>
+  <h3 id="faq-8">Can data be shared across users?</h3>
+  <p>Yes, using the <a href="/docs/sdk/share-database">shareDatabase</a> API.</p>
 
   <h3 id="faq-9">How does Userbase help me with GDPR compliance?</h3>
   <p>Userbase helps you implement the necessary GDPR controls, avoid personal data misuse, and give your users control over their data. If you need assistance with GDPR compliance, please <a href="/contact/">get in touch</a>.</p>
