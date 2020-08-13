@@ -2,8 +2,6 @@
 <div class="section">
   <h2><a href="/docs/">Docs</a> : FAQ</h2>
 
-  The following is a curated list of our most frequently asked questions. If interested in a more detailed explanation of Userbase's inner workings, see <a href="https://github.com/encrypted-dev/userbase/blob/8d488cef645eee384c65ef5e3c51c7fa4a6c5469/docs/userbase_architecture.md">this document</a>.
-
   <h3 id="faq-1">What data does Userbase end-to-end encrypt?</h3>
   <p>All the data stored using the <a href="/docs/sdk/open-database">openDatabase</a>, <a href="/docs/sdk/insert-item">insertItem</a>, <a href="/docs/sdk/update-item">updateItem</a>, <a href="/docs/sdk/delete-item">deleteItem</a>, <a href="/docs/sdk/put-transaction">putTransaction</a>, or <a href="/docs/sdk/upload-file">uploadFile</a> APIs is end-to-end encrypted. This includes database names, items, item ID's, and files. Other user data and metadata, such as usernames, timestamps, and user activity logs, are encrypted on the wire and at rest, but are not end-to-end encrypted.</p>
 
