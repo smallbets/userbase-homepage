@@ -12,13 +12,13 @@
   <p>Resetting a user's password is possible, but only when the user has provided an email address during <a href="/docs/sdk/sign-up/">signUp</a> or <a href="/docs/sdk/update-user/">updateUser</a>, and when the user has previously signed in with the <span class="field">rememberMe</span> option set to 'local'. In this case, the user will have the encryption key saved in the browser's local storage, and the user will be able to regain access to the account by getting a temporary password via email. The user must still have access to a previously used device in order to be able to reset the password. Therefore, if you want to allow your users to reset their password, make sure to set <span class="field">rememberMe</span> to 'local' during <a href="/docs/sdk/sign-up/">signUp</a> and <a href="/docs/sdk/sign-in/">signIn</a>, and make sure you require an email address during <a href="/docs/sdk/sign-up/">signUp</a> and <a href="/docs/sdk/update-user/">updateUser</a>. We still recommend that you inform your users that since their data is end-to-end encrypted, they should take care to store their password in a safe place, such as a password manager. Recovery will not be possible if the user loses access to all previously used devices.</p>
 
   <h3 id="faq-4">What can I see about my users?</h3>
-  <p>You can see the list of usernames, the time the user accounts were created, and any other information you collect during user sign up, such as users' email, name, address, etc.</p>
+  <p>You can see the list of usernames, the time the user accounts were created, the user's email address or profile if provided, custom fields set by you via <a href="/docs/api/update-user/">Update User</a> in the <a href="/docs/api/">Admin API</a>, as well as subscription data if accepting payments.</p>
 
   <h3 id="faq-5">What can I do with my users?</h3>
-  <p>From the Admin panel you can see all your users, suspend user accounts, and permanently close user accounts.</p>
+  <p>From the Admin panel you can see all your users, permanently delete user accounts, and generate access tokens to interact with users via the <a href="/docs/api/">Admin API</a>. Using the Admin API, you can see all users, update custom fields on users, and authenticate users.</p>
 
-  <h3 id="faq-6">How can I close my Userbase Admin account?</h3>
-  <p>You can close your Userbase Admin account from the Admin panel. Once you close your Userbase Admin account, all your apps will stop working. If you closed your account in error, please <a href="/contact/">get in touch</a> to check if we can still recover it.</p>
+  <h3 id="faq-6">How can I delete my Userbase Admin account?</h3>
+  <p>You can delete your Userbase Admin account from the Admin panel. Once you delete your Userbase Admin account, all your apps will stop working. If you deleted your account in error, please <a href="/contact/">get in touch</a> to check if we can still recover it.</p>
 
   <h3 id="faq-7">What happens if I exceed the 1&nbsp;GB storage limit?</h3>
   <p>Your apps will continue to function normally, but we will ask you to upgrade your storage plan.</p>
