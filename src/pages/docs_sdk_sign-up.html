@@ -33,6 +33,9 @@
     <li>
       <span class="field">rememberMe</span> [string | optional] - The persistence mode for the user's session. Valid values are 'local', 'session', and 'none'. When set to 'local', the session persists even after the browser window gets closed. When set to 'session', the session persists until the browser window gets closed. And 'none' disables session persistence completely. Defaults to 'session'.
     </li>
+    <li>
+      <span class="field">sessionLength</span> [number | optional | Unit: hours | Min: 0.084 (5 mins) | Max: 8760 (1 yr) ] - The number of hours the user's session will remain active. Defaults to 24.
+    </li>
   </ul>
 
   <h3 id="result">Result</h3>
@@ -63,7 +66,7 @@
       The <span class="field">username</span>, <span class="field">email</span>, and <span class="field">profile</span> are not end-to-end encrypted. They are encrypted in transit and at rest, but you will be able to see this information in the Admin panel.
     </li>
     <li>
-      When <span class="field">rememberMe</span> is set to 'session' or 'local', the user's encryption key will be stored in clear in the browser's session or local storage respectively. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to 'none'. When <span class="field">rememberMe</span> is 'none', the user will always have to login with the username and password when visiting your web app.
+      When <span class="field">rememberMe</span> is set to 'session' or 'local', the user's encryption key and session token will be stored in clear in the browser's session or local storage respectively. Someone with access to these values will be able to access a user's account and all their data until the user explicitly signs out, or the user's session expires. If you want to avoid this, you will need to set <span class="field">rememberMe</span> to 'none'. When <span class="field">rememberMe</span> is 'none', the user will always have to login with the username and password when visiting your web app.
     </li>
     <li>
       When the app's <span class="field">paymentsMode</span> is set to 'test' or 'prod' in the admin panel, and the app's subscription plan has a trial period set in Stripe, the <span class="field">trialExpirationDate</span> is determined based on the trial period and the date the user is created.
@@ -94,6 +97,9 @@
     <li>ProfileValueCannotBeBlank</li>
     <li>ProfileValueTooLong</li>
     <li>RememberMeValueNotValid</li>
+    <li>SessionLengthMustBeNumber</li>
+    <li>SessionLengthTooShort</li>
+    <li>SessionLengthTooLong</li>
     <li>TrialExceededLimit</li>
     <li>AppIdNotSet</li>
     <li>AppIdNotValid</li>
