@@ -37,6 +37,30 @@
             <li><span class="field">fileId</span> [string | optional] - The attached file's unique identifier (if a file has been attached to this item via <a href="/docs/sdk/upload-file/">uploadFile</a>). This can be passed to <a href="/docs/sdk/get-file/">getFile</a> to retrieve the file.</li>
             <li><span class="field">fileName</span> [string | optional] - The attached file's name.</li>
             <li><span class="field">fileSize</span> [number | optional] - The attached file's size in bytes.</li>
+            <li>
+              <span class="field">createdBy</span> [object] - The item creator's attribution data.
+              <ul>
+                <li><span class="field">timestamp</span> [date] - The date the item was created.</li>
+                <li><span class="field">username</span> [string | optional] - The item creator's username. Not present if the user has been deleted.</li>
+                <li><span class="field">userDeleted</span> [boolean | optional] - Whether or not the user has been deleted.</li>
+              </ul>
+            </li>
+            <li>
+              <span class="field">updatedBy</span> [object | optional] - Attribution data for the latest update.
+              <ul>
+                <li><span class="field">timestamp</span> [date] - The date the item was most recently updated.</li>
+                <li><span class="field">username</span> [string | optional] - The item updater's username. Not present if the user has been deleted.</li>
+                <li><span class="field">userDeleted</span> [boolean | optional] - Whether or not the user has been deleted.</li>
+              </ul>
+            </li>
+            <li>
+              <span class="field">fileUploadedBy</span> [object | optional] - Attribution data for the attached file.
+              <ul>
+                <li><span class="field">timestamp</span> [date] - The date the file was uploaded.</li>
+                <li><span class="field">username</span> [string | optional] - The file uploader's username. Not present if the user has been deleted.</li>
+                <li><span class="field">userDeleted</span> [boolean | optional] - Whether or not the user has been deleted.</li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
@@ -57,6 +81,9 @@
     </li>
     <li>
       You can retrieve the <span class="field">databaseId</span> of databases the user received access to from other users via <a href="/docs/sdk/get-databases/">getDatabases</a>.
+    </li>
+    <li>
+      Attribution data provided by the <span class="field">createdBy</span>, <span class="field">updatedBy</span>, and <span class="field">fileUploadedBy</span> fields is only available in newly created databases.
     </li>
   </ul>
 
