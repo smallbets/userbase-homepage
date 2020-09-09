@@ -23,6 +23,7 @@
 
   <ul>
     <li><span class="field">appId</span> [string] - The App ID you received when you created your Userbase app.</li>
+    <li><span class="field">sessionLength</span> [number | optional | Unit: hours | Min: 0.084 (5 mins) | Max: 8760 (1 yr) ] - If resuming a session, this is the number of hours the user's session will extend. Defaults to 24.</li>
     <li>
       <span class="field">updateUserHandler</span> [function | optional] - A callback that gets invoked when a user is updated.
       <ul>
@@ -45,7 +46,6 @@
         </li>
       </ul>
     </li>
-    <li><span class="field">sessionLength</span> [number | optional | Unit: hours | Min: 0.084 (5 mins) | Max: 8760 (1 yr) ] - If resuming a session, this is the number of hours the user's session will extend. Defaults to 24.</li>
   </ul>
 
   <h3 id="result">Result</h3>
