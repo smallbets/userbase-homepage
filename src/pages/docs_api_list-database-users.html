@@ -1,0 +1,45 @@
+<!-- Docs - API - List Database Users -->
+<div class="section">
+  <h2><a href="/docs/">Docs</a> : <a href="/docs/api/">API</a> : List Database Users</h2>
+
+  <p>The <span class="font-semibold">List Database Users</span> API lets you retrieve all the users who have access to a database. Database ID's can be obtained from the <a href="/docs/sdk/get-databases">getDatabases</a> function in the SDK. This endpoint is paginated.</p>
+
+  <pre>
+    <code class="language-bash">
+      curl 'https://v1.userbase.com/v1/admin/databases/$DATABASE_ID/users?nextPageToken=$NEXT_PAGE_TOKEN' \
+        -XGET \
+        -H 'Authorization: Bearer $ACCESS_TOKEN'
+    </code>
+  </pre>
+
+  <h3 id="params">Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">DATABASE_ID</span> - The database ID to retrieve.
+    </li>
+    <li>
+      <span class="field">NEXT_PAGE_TOKEN</span> - The next page of users to retrieve.
+    </li>
+    <li>
+      <span class="field">ACCESS_TOKEN</span> - Your access token.
+    </li>
+  </ul>
+
+  <h3 id="result">Result</h3>
+
+  <ul>
+    <li><span class="field">nextPageToken</span> [string] - Each response has a max limit of around 1mb of users. If this limit is reached, this token is provided in the response, and must be provided in the next request to get the next page of users.</li>
+
+    <li><span class="field">users</span> [array]</li>
+      <ul>
+        <li><span class="field">userId</span> [string] - The user's unique identifier.</li>
+        <li><span class="field">isOwner</span> [boolean] - Whether or not the user owns the database.</li>
+        <li><span class="field">readOnly</span> [boolean] - Whether or not the user has read only permissions to the database.</li>
+        <li><span class="field">resharingAllowed</span> [boolean] - Whether or not the user has permission to reshare the database.</li>
+      </ul>
+  </ul>
+
+</div>
+
+<hr>
