@@ -11,17 +11,23 @@
   <h3 id="faq-12">Has the code been audited?</h3>
   <p>Yes, <a href="https://www.cossacklabs.com/">Cossack Labs</a> - an independent team of security specialists - audited the code. See more on the security review <a href="/announcements#1-security-review">here</a>.</p>
 
-  <h3 id="faq-13">Can Userbase be used without end-to-end encryption enabled?</h3>
-  <p>Yes, Userbase offers two encryption modes for each app you create: 'end-to-end' and 'server-side'.</p>
-  <p><b>End-to-end (default): </b>Userbase encrypts all database operations in the browser with user-controlled keys. No one but your users and the people they share data with can access their encrypted data, not even us. This mode helps you prevent personal data misuse, and lets you offer a high level of data privacy.</p>
-  <p><b>Server-side: </b>Userbase encrypts data on the wire and at rest. The Userbase server has access to user data stored in this mode. This mode still protects you from personal data misuse, and offers a higher level of data privacy than most comparable services.</p>
+  <h3 id="faq-13">Can Userbase be used without end-to-end encryption?</h3>
+  <p>Yes, Userbase offers two encryption modes for each app you create: <span class="field">end-to-end</span> and <span class="field">server-side</span>.</p>
+  
+  <h5>End-to-end (default)</h5>
+  <p>Userbase encrypts all database operations in the browser with user-controlled keys. No one but your users and the people they share data with can access their encrypted data, not even us. This mode helps you prevent personal data misuse, and lets you offer a high level of data privacy.</p>
+  
+  <h5>Server-side</h5>
+  <p>Userbase encrypts data on the wire and at rest. The Userbase server has access to user data stored in this mode. This mode still protects you from personal data misuse, and offers a higher level of data privacy than most comparable services.</p>
 
-  <h3 id="faq-3">What happens if a user forgets their password in the 'end-to-end' encryption mode?</h3>
+  <h3 id="faq-3">What happens if a user forgets their password?</h3>
+  
+  <h5>In the end-to-end encryption mode (the default)... </h5>
   <p>Regaining access to end-to-end encrypted data is possible, but only when the user has provided an email address during <a href="/docs/sdk/sign-up/">signUp</a> or <a href="/docs/sdk/update-user/">updateUser</a>, and when the user has previously signed in with the <span class="field">rememberMe</span> option set to 'local'. In this case, the user will have the encryption key saved in the browser's local storage, and the user will be able to regain full access to their data by getting a temporary password via email. The user must still have access to a previously used device in order to be able to reset the password in this way. Therefore, if you want to allow your users to reset their password, make sure to set <span class="field">rememberMe</span> to 'local' during <a href="/docs/sdk/sign-up/">signUp</a> and <a href="/docs/sdk/sign-in/">signIn</a>, and make sure you require an email address during <a href="/docs/sdk/sign-up/">signUp</a> and <a href="/docs/sdk/update-user/">updateUser</a>. We still recommend that when you use the 'end-to-end' encryption mode, you inform your users that since their data is end-to-end encrypted, they should take care to store their password in a safe place, such as a password manager. Recovery will not be possible if the user loses access to all previously used devices.</p>
   <p>If the user forgets their password and loses access to all previously devices, the user can still regain access to their account and delete all inaccessible end-to-end encrypted data by passing the <span class="field">deleteEndToEndEncryptedData</span> parameter to <a href="/docs/sdk/forgot-password">forgotPassword</a>.</p>
 
-  <h3 id="faq-14">What happens if a user forgets their password in the 'server-side' encryption mode?</h3>
-  <p>The user can call the <a href="/docs/sdk/forgot-password">forgotPassword</a> function to have a temporary password sent to their email. The user can then sign in using the temporary password, and then change their password using <a href="/docs/sdk/update-user/">updateUser</a> to regain access to their account and all their data, just like normal. Make sure you require an email address from your users during <a href="/docs/sdk/sign-up/">signUp</a> and <a href="/docs/sdk/update-user/">updateUser</a>.</p>
+  <h5>In the server-side encryption mode... </h5>
+  <p>The user can call <a href="/docs/sdk/forgot-password">forgotPassword</a> to have a temporary password sent to their email. The user can then sign in using the temporary password, and then change their password using <a href="/docs/sdk/update-user/">updateUser</a> to regain access to their account and all their data, just like normal. Make sure you require an email address from your users during <a href="/docs/sdk/sign-up/">signUp</a> and <a href="/docs/sdk/update-user/">updateUser</a>.</p>
 
   <h3 id="faq-4">What can I see about my users?</h3>
   <p>You can see the list of usernames, the time the user accounts were created, the user's email address or profile if provided, custom fields set by you via <a href="/docs/api/update-user/">Update User</a> in the <a href="/docs/api/">Admin API</a>, as well as subscription data if accepting payments.</p>
