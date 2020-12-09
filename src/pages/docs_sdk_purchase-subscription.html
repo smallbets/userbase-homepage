@@ -9,22 +9,24 @@
         Include the <a href="https://stripe.com/docs/js/including" target="_blank">Stripe.js client</a> in your web app.
       </li>
       <li>
-        Connect a Stripe account to your Userbase admin account in the <a href="https://v1.userbase.com/#edit-account" target="_blank">Account</a> section in your Admin panel.
+        Connect a Stripe account to your Userbase admin account in your <a href="https://v1.userbase.com/#edit-account" target="_blank">Admin panel</a>.
       </li>
       <li>
-        Create a new test subscription plan in your <a href="https://dashboard.stripe.com/test/subscriptions/products/create" target="_blank">Stripe dashboard</a>.
+        Create a product with a recurring price in your <a href="https://dashboard.stripe.com/test/products/create" target="_blank">Stripe dashboard</a>.
       </li>
       <li>
-        Set the test subscription plan ID on your app in your <a href="https://v1.userbase.com/" target="_blank">Admin panel</a> and enable payments.
+        Take note of the price ID in the Stripe dashboard (it starts with '<span class="field">price_</span>').
       </li>
-    </ul>   
+    </ul>
+    And you're good to go!
   </p>
 
   <pre>
     <code class="language-javascript">
       userbase.purchaseSubscription({
         successUrl: 'https://example.com/success',
-        cancelUrl: 'https://example.com/cancel'
+        cancelUrl: 'https://example.com/cancel',
+        priceId: 'price_1HsI6AE3KJTop1QHR00YQXPr'
       }).then(() => {
         // user successfully redirected to Stripe Checkout form
       }).catch((e) => console.error(e))
@@ -40,19 +42,22 @@
     <li>
       <span class="field">cancelUrl</span> [string] - The URL the user will be redirected to upon canceling payment.
     </li>
+    <li>
+      <span class="field">priceId</span> [string] - The price ID the user will purchase. You can find this ID in your <a href="https://dashboard.stripe.com/test/products" target="_blank">Stripe dashboard</a> after creating a product with a recurring price.
+    </li>
   </ul>
 
   <h3 id="notes">Notes</h3>
 
   <ul>
     <li>
-      You can set a trial on a subscription plan in your <a href="https://dashboard.stripe.com/test/subscriptions/products" target="_blank">Stripe dashboard</a>. Users who sign up for an app with payments enabled and a trial set will start out in trial mode. Users have full capabilities until the trial expires.
+      You can offer a free trial via your <a href="https://v1.userbase.com/#edit-account" target="_blank">Admin panel</a>. Users who sign up for an app with a free trial set will start out in trial mode. Users have full capabilities until the trial expires.
     </li>
     <li>
       To accept payments in production, you will need to purchase the payments add-on subscription.
     </li>
     <li>
-      Upon successful payment, the user's <span class="field">subscriptionStatus</span> will be set to 'active'. This allows the user to successfully call <a href="/docs/sdk/open-database/">openDatabase</a> on an app with payments enabled.
+      Upon successful payment, the user's <span class="field">subscriptionStatus</span> will be set to 'active'. This allows the user to successfully call <a href="/docs/sdk/open-database/">openDatabase</a> on an app that requires payment.
     </li>
     <li>
       The user's credit card will be charged automatically at the start of every billing period. For example, if the user purchases a yearly subscription on May 4th, then the user will be charged on May 4th every year until they cancel.
