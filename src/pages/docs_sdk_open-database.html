@@ -24,9 +24,6 @@
       <span class="field">databaseName</span> [string | Len: 1-50] - The database name to use.
     </li>
     <li>
-      <span class="field">databaseId</span> [string | optional] - The database's unique identifier. This can only be used to open a database the user received access to from another user via <a href="/docs/sdk/share-database/">shareDatabase</a>.
-    </li>
-    <li>
       <span class="field">changeHandler</span> [function] - A callback that gets invoked when the database gets modified.
       <ul>
         <li>
@@ -67,17 +64,25 @@
     </li>
   </ul>
 
+  <h3 id="advanced-params">Advanced Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">shareToken</span> [string | optional] - This token can only be used to open a database another user shared via <a href="/docs/sdk/share-database/">shareDatabase</a>.
+    </li>
+    <li>
+      <span class="field">databaseId</span> [string | optional] - The database's unique identifier. This can only be used to open a database the user received access to directly from another user via <a href="/docs/sdk/share-database/">shareDatabase</a>.
+    </li>
+  </ul>
+
   <h3 id="notes">Notes</h3>
 
   <ul>
     <li>
-      You can provide either a <span class="field">databaseName</span> or a <span class="field">databaseId</span>, but not both.
-    </li>
-    <li>
       If the user provides a new <span class="field">databaseName</span> for the first time, this will create a new database and the user will be the owner.
     </li>
     <li>
-      To interact with a database the user received access to from another user via <a href="/docs/sdk/share-database/">shareDatabase</a>, you must provide the database's <span class="field">databaseId</span>. Providing a <span class="field">databaseName</span> will simply open a new database and the user will be the owner.     
+      To interact with a database the user received access to from another user via <a href="/docs/sdk/share-database/">shareDatabase</a>, you must provide either the <span class="field">databaseId</span> or a <span class="field">shareToken</span>. Providing a <span class="field">databaseName</span> will simply open a new database and the user will be the owner.     
     </li>
     <li>
       You can retrieve the <span class="field">databaseId</span> of databases the user received access to from other users via <a href="/docs/sdk/get-databases/">getDatabases</a>.
@@ -102,6 +107,9 @@
     <li>DatabaseIdInvalidLength</li>
     <li>DatabaseIdNotAllowed</li>
     <li>DatabaseIdNotAllowedForOwnDatabase</li>
+    <li>ShareTokenInvalid</li>
+    <li>ShareTokenNotFound</li>
+    <li>ShareTokenNotAllowedForOwnDatabase</li>
     <li>DatabaseNotFound</li>
     <li>ChangeHandlerMissing</li>
     <li>ChangeHandlerMustBeFunction</li>

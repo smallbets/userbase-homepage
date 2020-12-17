@@ -21,9 +21,6 @@
       <span class="field">databaseName</span> [string | Len: 1-50] - The database name to use.
     </li>
     <li>
-      <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
-    </li>
-    <li>
       <span class="field">fileId</span> [string | Len: 36] - The file's unique identifier.
     </li>
     <li>
@@ -46,6 +43,17 @@
   <ul>
     <li>
       You can find a file's <span class="field">fileId</span> via <a href="/docs/sdk/open-database/">openDatabase</a>.
+    </li>
+  </ul>
+
+  <h3 id="advanced-params">Advanced Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">shareToken</span> [string | optional] - The token used to access a shared database.
+    </li>
+    <li>
+      <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
     </li>
   </ul>
 

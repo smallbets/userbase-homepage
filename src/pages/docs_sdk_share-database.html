@@ -2,8 +2,20 @@
 <div class="section">
   <h2><a href="/docs/">Docs</a> : <a href="/docs/sdk/">SDK</a> : shareDatabase</h2>
 
-  <p><span class="font-semibold">shareDatabase</span> lets you share a database with another user.</p>
+  <p><span class="font-semibold">shareDatabase</span> lets you share a database with another user. Use this function to retrieve a token that any other user can use to open the database, or to share a database directly with another user.</p>
 
+  Retrieving a share token:
+  <pre>
+    <code class="language-javascript">
+      userbase.shareDatabase({
+        databaseName: 'example-database-name'
+      }).then(({ shareToken }) => {
+        // Any other user can now open the database using this share token      
+      }).catch((e) => console.error(e))
+    </code>
+  </pre>
+
+  Sharing directly with another user:
   <pre>
     <code class="language-javascript">
       userbase.shareDatabase({
@@ -25,16 +37,24 @@
       <span class="field">databaseId</span> [string | optional] - The database to share's unique identifier. Can be used in place of <span class="field">databaseName</span>.
     </li>
     <li>
-      <span class="field">username</span> [string] - The username to share the database with.
-    </li>
-    <li>
-      <span class="field">requireVerified</span> [boolean | optional] - Requires the user be verified via <a href="/docs/sdk/verify-user/">verifyUser</a>. Defaults to <span class="field">true</span>. This ensures the user is sharing the database directly with the expected user, and not a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank">man-in-the-middle</a>.
+      <span class="field">username</span> [string | optional] - The username to share the database with.
     </li>
     <li>
       <span class="field">readOnly</span> [boolean | optional] - Sets the recipient's access permissions to read only. Defaults to <span class="field">true</span>.
     </li>
     <li>
-      <span class="field">resharingAllowed</span> [boolean | optional] - Sets the recipient's permissions to reshare the database. Defaults to <span class="field">false</span>.
+      <span class="field">requireVerified</span> [boolean | optional] - If a username is provided, requires the user be verified via <a href="/docs/sdk/verify-user/">verifyUser</a>. Defaults to <span class="field">true</span> when a username is provided. This ensures the user is sharing the database directly with the expected user, and not a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank">man-in-the-middle</a>.
+    </li>
+    <li>
+      <span class="field">resharingAllowed</span> [boolean | optional] - If a username is provided, sets the recipient's permissions to reshare the database. Defaults to <span class="field">false</span>.
+    </li>
+  </ul>
+
+  <h3 id="result">Result</h3>
+
+  <ul>
+    <li>
+      <span class="field">shareToken</span> [string | optional] - Any other user can pass this value to <a href="/docs/sdk/open-database/">openDatabase</a>. This is only returned when no username is provided as a parameter.
     </li>
   </ul>
 
@@ -42,13 +62,16 @@
 
   <ul>
     <li>
-      You can provide either a <span class="field">databaseName</span> or a <span class="field">databaseId</span>, but not both.
+      Be aware that the <span class="field">shareToken</span> is sensitive. It can be used by anyone to access data stored in a database.
     </li>
     <li>
-      To access a database that has been shared with a user, a user can find the database's <span class="field">databaseId</span> via <a href="/docs/sdk/get-databases/">getDatabases</a> and then provide that <span class="field">databaseId</span> to <a href="/docs/sdk/open-database/">openDatabase</a>. 
+      Each database can have two existing share tokens at a time - a read-only token, and a write token. Generating a new share token overwrites the existing share token that has the provided read/write permissions set.
     </li>
     <li>
-      A user can verify another user via <a href="/docs/sdk/verify-user/">verifyUser</a> at any point, either before or after sharing a database. Verifying a user after sharing a database will enable the verifier to make sure they shared the database directly with the expected user, and not a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank">man-in-the-middle</a>.
+      To access a database that has been shared directly with a username, the recieving user can find the database's <span class="field">databaseId</span> via <a href="/docs/sdk/get-databases/">getDatabases</a>, and then provide that <span class="field">databaseId</span> to <a href="/docs/sdk/open-database/">openDatabase</a>. 
+    </li>
+    <li>
+      A user can verify another user via <a href="/docs/sdk/verify-user/">verifyUser</a> at any point. Verifying a user <span class="italic">after</span> sharing a database directly with that user enables the verifier to make sure they shared the database with the expected user, and not a <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank">man-in-the-middle</a>.
     </li>
     <li>
       If a user deletes their account via <a href="/docs/sdk/delete-user/">deleteUser</a> and they are the owner of a database, that database will be deleted even if it has been shared with other users.
@@ -68,8 +91,8 @@
     <li>DatabaseIdCannotBeBlank</li>
     <li>DatabaseIdInvalidLength</li>
     <li>DatabaseIdNotAllowed</li>
-    <li>DatabaseNotFound</li>
-    <li>UsernameMissing</li>
+    <li>ShareTokenNotAllowed</li>
+    <li>DatabaseNotFound</li>    
     <li>UsernameCannotBeBlank</li>
     <li>UsernameMustBeString</li>
     <li>ReadOnlyMustBeBoolean</li>

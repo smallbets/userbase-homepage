@@ -26,10 +26,18 @@
       <span class="field">databaseName</span> [string | Len: 1-50] - The database name to use.
     </li>
     <li>
-      <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
+      <span class="field">operations</span> [Array | Len: 1-10] - The <a href="/docs/sdk/insert-item/">insert</a>, <a href="/docs/sdk/update-item/">update</a>, or <a href="/docs/sdk/delete-item/">delete</a> operations to execute as an atomic transaction. There is a limit of 10 operations per transaction.
+    </li>
+  </ul>
+
+  <h3 id="advanced-params">Advanced Parameters</h3>
+
+  <ul>
+    <li>
+      <span class="field">shareToken</span> [string | optional] - The token used to access a shared database.
     </li>
     <li>
-      <span class="field">operations</span> [Array | Len: 1-10] - The <a href="/docs/sdk/insert-item/">insert</a>, <a href="/docs/sdk/update-item/">update</a>, or <a href="/docs/sdk/delete-item/">delete</a> operations to execute as an atomic transaction. There is a limit of 10 operations per transaction.
+      <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
     </li>
   </ul>
 
