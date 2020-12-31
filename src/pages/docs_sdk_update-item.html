@@ -39,6 +39,21 @@
     <li>
       <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
     </li>
+    <li>
+      <span class="field">writeAccess</span> [object | null | undefined | false | optional] - Access controls for the item.  If explicitly set to a falsey value, removes the controls already set.
+      <ul>
+        <li><span class="field">onlyCreator</span> [boolean | optional] - If true, only the item creator can update or delete the item.</li>
+        <li><span class="field">users</span> [Array | Max: 10 | optional] - The users allowed to update or delete the item.</li>
+        <ul>
+          <li>
+            <span class="field">user</span> [object]
+            <ul>
+              <li><span class="field">username</span> [string]</li>
+            </ul>
+          </li>          
+        </ul>
+      </ul>
+    </li>
   </ul>
 
   <h3 id="errors">Errors</h3>
@@ -65,6 +80,7 @@
     <li>ItemTooLarge</li>
     <li>ItemDoesNotExist</li>
     <li>ItemUpdateConflict</li>
+    <li>TransactionUnauthorized</li>
     <li>UserNotSignedIn</li>
     <li>UserNotFound</li>
     <li>TooManyRequests</li>
