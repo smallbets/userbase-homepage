@@ -33,16 +33,19 @@
   <p>You can see the list of usernames, the time the user accounts were created, the user's email address or profile if provided, custom fields set by you via <a href="/docs/api/update-user/">Update User</a> in the <a href="/docs/api/">Admin API</a>, as well as subscription data if accepting payments.</p>
 
   <h3 id="faq-5">What can I do with my users?</h3>
-  <p>From the Admin panel you can see all your users, permanently delete user accounts, and generate access tokens to interact with users via the <a href="/docs/api/">Admin API</a>. Using the Admin API, you can see all users, update custom fields on users, and authenticate users.</p>
+  <p>From the Admin panel you can see all your users, permanently delete user accounts, and generate access tokens to interact with users via the <a href="/docs/api/">Admin API</a>. Using the Admin API, you can see all users, update custom fields on users, and authenticate users. Using <a href="https://www.npmjs.com/package/userbase-js-node" target="_blank">userbase-js-node</a>, you can selectively share databases with users and modify data in those databases, or interact with databases users share with you.</p>
 
   <h3 id="faq-6">How can I delete my Userbase Admin account?</h3>
   <p>You can delete your Userbase Admin account from the Admin panel. Once you delete your Userbase Admin account, all your apps will stop working. If you deleted your account in error, please <a href="/contact/">get in touch</a> to check if we can still recover it.</p>
 
-  <h3 id="faq-7">What happens if I exceed the 1&nbsp;GB storage limit?</h3>
-  <p>Your apps will continue to function normally, but we will ask you to upgrade your storage plan.</p>
+  <h3 id="faq-7">What happens if I exceed the storage limit?</h3>
+  <p>Your apps will continue to function normally, but we will ask you to upgrade to a storage plan. If you have already purchased a storage plan, we charge $0.10 / GB / month per for each GB stored above the plan's limit.</p>
 
   <h3 id="faq-8">Can data be shared across users?</h3>
   <p>Yes, using the <a href="/docs/sdk/share-database">shareDatabase</a> API.</p>
+
+  <h3 id="faq-14">Can data be shared globally?</h3>
+  <p>Yes, by generating share tokens using the <a href="/docs/sdk/share-database">shareDatabase</a> API and sharing those tokens. A tutorial on this is coming soon.</p>
 
   <h3 id="faq-9">How does Userbase help me with GDPR compliance?</h3>
   <p>Userbase helps you implement the necessary GDPR controls, avoid personal data misuse, and give your users control over their data. If you need assistance with GDPR compliance, please <a href="/contact/">get in touch</a>.</p>
