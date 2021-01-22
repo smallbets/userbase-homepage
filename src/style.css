@@ -12,6 +12,10 @@ body {
   }
 }
 
+b {
+  @apply font-bold;
+}
+
 a {
   @apply underline font-semibold;
 }
@@ -94,6 +98,11 @@ ul, ol {
   @apply list-disc mb-4 ml-8;
 }
 
+ul.no-bullets {
+  @apply ml-6;
+  list-style-type: none;
+}
+
 .section {
   @apply mt-2 mb-10 text-left tracking-tight font-light text-lg;
 }
@@ -130,9 +139,15 @@ ul, ol {
   @apply font-semibold
 }
 
+.small-hr {
+  border-top-width: 3px;
+  margin: auto;
+  width: 40%;
+}
+
 a.anchor {
   @apply block relative;
-  top: -50px;
+  top: -65px;
 }
 
 pre[class*="language-"]:before, pre[class*="language-"]:after {
