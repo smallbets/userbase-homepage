@@ -61,8 +61,8 @@
             <li>
               <span class="field">writeAccess</span> [object | optional] - Access controls set on the item.
               <ul>
-                <li><span class="field">onlyCreator</span> [boolean | optional] - If true, only the item creator can update or delete the item.</li>
-                <li><span class="field">users</span> [Array | optional] - If set, these are the users allowed to update or delete the item.</li>
+                <li><span class="field">onlyCreator</span> [boolean | optional] - If true, only the item creator or database owner can modify the item.</li>
+                <li><span class="field">users</span> [Array | optional] - If set, these are the users allowed to modify the item.</li>
                 <ul>
                   <li><span class="field">username</span> [string]</li>
                 </ul>
