@@ -8,6 +8,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 const OpenBrowserPlugin = require('opn-browser-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = (env, argv) => {
 
@@ -108,7 +109,12 @@ module.exports = (env, argv) => {
         }
       }),
       new webpack.NoEmitOnErrorsPlugin(),
-      new webpack.WatchIgnorePlugin(['./dist'])
+      new webpack.WatchIgnorePlugin(['./dist']),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: './src/bitcoin.pdf' }
+        ]
+      }),
     ]
   }
 
