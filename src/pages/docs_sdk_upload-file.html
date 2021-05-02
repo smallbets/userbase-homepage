@@ -11,7 +11,7 @@
         itemId: 'example-id',
         file: new File(['example'], 'example.txt', { type: 'text/plain' }),
         progressHandler: ({ bytesTransferred }) => {
-          // Display progress using bytesTransffered / file's size
+          // Display progress using bytesTransferred / file's size
         }
       }).then(() => {
         // file stored durably
@@ -42,7 +42,10 @@
       <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
     </li>
     <li>
-      <span class="field">progressHandler</span> [function | optional] - Monitor upload progress.
+      <span class="field">progressHandler</span> [function | optional] - A callback that gets invoked for each chunk the file uploads.
+      <ul>
+        <li><span class="field">bytesTransferred</span> [number] - Total bytes uploaded to the server.</li>
+      </ul>
     </li>
   </ul>
 
