@@ -9,7 +9,10 @@
       userbase.uploadFile({
         databaseName: 'example-database-name',
         itemId: 'example-id',
-        file: new File(['example'], 'example.txt', { type: 'text/plain' })
+        file: new File(['example'], 'example.txt', { type: 'text/plain' }),
+        progressHandler: ({ bytesTransferred }) => {
+          // Display progress using bytesTransffered / file's size
+        }
       }).then(() => {
         // file stored durably
       }).catch((e) => console.error(e))</code>
@@ -37,6 +40,9 @@
     </li>
     <li>
       <span class="field">databaseId</span> [string | optional] - The database's unique identifier.
+    </li>
+    <li>
+      <span class="field">progressHandler</span> [function | optional] - Monitor upload progress.
     </li>
   </ul>
 
