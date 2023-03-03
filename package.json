@@ -23,7 +23,7 @@
     "copy-webpack-plugin": "^6.4.1",
     "cross-env": "^6.0.3",
     "css-loader": "^2.1.1",
-    "favicons-webpack-plugin": "^1.0.2",
+    "favicons-webpack-plugin": "^6.0.0",
     "file-loader": "^3.0.1",
     "html-beautify-webpack-plugin": "^1.0.5",
     "html-loader": "^0.5.5",
